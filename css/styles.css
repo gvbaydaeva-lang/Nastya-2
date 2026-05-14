@@ -997,11 +997,17 @@ img {
 }
 
 @media (max-width: 900px) {
-  .tariffs {
+  .tariffs:not(.tariffs--pending) {
     grid-template-columns: 1fr;
     max-width: 420px;
     margin-inline: auto;
   }
+}
+
+.tariffs.tariffs--pending {
+  display: block;
+  max-width: none;
+  margin-inline: 0;
 }
 
 .tariff {
@@ -1079,9 +1085,13 @@ img {
 }
 
 @media (max-width: 900px) {
-  .reviews {
+  .reviews:not(.reviews--pending) {
     grid-template-columns: 1fr;
   }
+}
+
+.reviews.reviews--pending {
+  display: block;
 }
 
 .review {
@@ -1153,12 +1163,18 @@ img {
   font-size: 1.0625rem;
   color: var(--text-muted);
   margin: 0 0 1rem;
+  line-height: 1.65;
 }
 
-.curator__bio p:last-of-type {
-  margin: 0 0 1.75rem;
+.curator__body {
+  font-size: 1.0625rem;
   color: var(--text-muted);
-  font-size: 0.95rem;
+  margin: 0 0 1rem;
+  line-height: 1.65;
+}
+
+.curator__bio .curator__body:last-of-type {
+  margin-bottom: 1.75rem;
 }
 
 /* === FAQ === */
