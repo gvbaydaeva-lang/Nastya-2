@@ -13,6 +13,12 @@
   --accent-dim: #9a7544;
   --accent-glow: rgba(201, 160, 98, 0.15);
   --accent-subtle: rgba(201, 160, 98, 0.08);
+  /* тёплый «песочный» блок «О платформе» */
+  --about-warm-top: #201d19;
+  --about-warm-mid: #1b1916;
+  --about-warm-deep: #161412;
+  --about-warm-text-panel: rgba(22, 20, 18, 0.82);
+  --about-warm-text-border: rgba(201, 160, 98, 0.12);
   --font-sans: "Manrope", system-ui, sans-serif;
   --font-display: "Outfit", var(--font-sans);
   --radius: 14px;
@@ -636,7 +642,85 @@ img {
   line-height: 1.55;
 }
 
-/* === About === */
+/* === About (тёплая секция + атмосферный фон) === */
+.section--about {
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(201, 160, 98, 0.08);
+  border-bottom: 1px solid rgba(201, 160, 98, 0.08);
+  background: linear-gradient(
+    165deg,
+    #232019 0%,
+    var(--about-warm-top) 22%,
+    var(--about-warm-mid) 55%,
+    var(--about-warm-deep) 100%
+  );
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  padding-top: clamp(4.75rem, 11vw, 7rem);
+  padding-bottom: clamp(4.75rem, 11vw, 7rem);
+}
+
+.section--about .container.about {
+  position: relative;
+  z-index: 1;
+}
+
+.about__atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about__atmosphere-img {
+  position: absolute;
+  width: 118%;
+  height: 118%;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  object-position: 58% 42%;
+  opacity: 0.26;
+  filter: blur(26px) saturate(0.78) brightness(0.58);
+}
+
+.about__atmosphere-wash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 85% 70% at 35% 40%, rgba(201, 160, 98, 0.09) 0%, transparent 58%);
+  opacity: 0.65;
+}
+
+.about__atmosphere-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(28, 25, 22, 0.2) 0%,
+    rgba(26, 23, 20, 0.42) 38%,
+    rgba(22, 20, 18, 0.78) 68%,
+    rgba(20, 18, 16, 0.9) 100%
+  );
+}
+
+.about__atmosphere-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 95% 90% at 50% 50%, transparent 0%, transparent 42%, rgba(12, 11, 10, 0.35) 100%);
+}
+
+@media (max-width: 800px) {
+  .about__atmosphere-scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(26, 23, 20, 0.35) 0%,
+      rgba(22, 20, 18, 0.82) 45%,
+      rgba(20, 18, 16, 0.92) 100%
+    );
+  }
+}
+
 .about {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
@@ -668,14 +752,13 @@ img {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  background: radial-gradient(ellipse 80% 70% at 50% 45%, #141311 0%, #0a0a09 72%);
-  border: 1px solid rgba(201, 160, 98, 0.12);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(201, 160, 98, 0.1);
   box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.4) inset,
-    0 32px 80px rgba(0, 0, 0, 0.45),
-    0 0 120px rgba(201, 160, 98, 0.06);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+    0 0 0 1px rgba(0, 0, 0, 0.12) inset,
+    0 20px 50px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .about__eco::before {
@@ -683,9 +766,9 @@ img {
   position: absolute;
   inset: -1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(201, 160, 98, 0.14) 0%, transparent 42%, transparent 58%, rgba(154, 117, 68, 0.08) 100%);
+  background: linear-gradient(135deg, rgba(201, 160, 98, 0.1) 0%, transparent 45%, transparent 60%, rgba(154, 117, 68, 0.06) 100%);
   pointer-events: none;
-  opacity: 0.55;
+  opacity: 0.45;
   z-index: 0;
 }
 
@@ -841,6 +924,34 @@ img {
   .about__dust {
     animation: none !important;
   }
+}
+
+.about__text {
+  padding: clamp(1.35rem, 3.5vw, 2.35rem);
+  border-radius: var(--radius-lg);
+  background: var(--about-warm-text-panel);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--about-warm-text-border);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 28px 64px rgba(0, 0, 0, 0.22);
+}
+
+.about__text .section__title--left {
+  color: #f2f0eb;
+}
+
+.about__text .about__lead {
+  color: rgba(218, 214, 204, 0.94);
+}
+
+.about__text .about__list li {
+  color: rgba(205, 200, 190, 0.92);
+}
+
+.about__text .about__list strong {
+  color: #f6f4ef;
 }
 
 .about__lead {

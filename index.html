@@ -102,7 +102,21 @@
     </section>
 
     <!-- 3. О платформе -->
-    <section class="section" id="about">
+    <section class="section section--about" id="about">
+      <div class="about__atmosphere" aria-hidden="true">
+        <img
+          class="about__atmosphere-img"
+          src="assets/hero-evening-workspace.png"
+          alt=""
+          width="1600"
+          height="1067"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="about__atmosphere-wash"></div>
+        <div class="about__atmosphere-scrim"></div>
+        <div class="about__atmosphere-vignette"></div>
+      </div>
       <div class="container about">
         <div class="about__visual reveal" aria-hidden="true">
           <div class="about__eco">
@@ -119,9 +133,9 @@
                   <stop offset="100%" stop-color="#6b5344" stop-opacity="0.25" />
                 </linearGradient>
                 <radialGradient id="about-vignette" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#0a0a09" stop-opacity="0" />
-                  <stop offset="72%" stop-color="#0a0a09" stop-opacity="0.35" />
-                  <stop offset="100%" stop-color="#0a0a09" stop-opacity="0.92" />
+                  <stop offset="0%" stop-color="#1e1c19" stop-opacity="0" />
+                  <stop offset="68%" stop-color="#1a1815" stop-opacity="0.28" />
+                  <stop offset="100%" stop-color="#161412" stop-opacity="0.75" />
                 </radialGradient>
                 <filter id="about-glow-soft" x="-40%" y="-40%" width="180%" height="180%">
                   <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="b" />
@@ -138,8 +152,8 @@
                   </feMerge>
                 </filter>
               </defs>
-              <!-- фон -->
-              <rect width="480" height="480" fill="#0c0b09" />
+              <!-- фон SVG — мягко вписан в секцию -->
+              <rect width="480" height="480" fill="transparent" />
               <rect width="480" height="480" fill="url(#about-vignette)" />
               <circle cx="240" cy="240" r="200" fill="rgba(201,160,98,0.03)" />
               <circle cx="240" cy="240" r="120" fill="rgba(201,160,98,0.04)" />
