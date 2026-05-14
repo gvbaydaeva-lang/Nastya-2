@@ -49,32 +49,4 @@
       el.classList.add("is-visible");
     });
   }
-
-  var form = document.getElementById("lead-form");
-  if (form) {
-    var successEl = document.getElementById("form-success");
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var btn = form.querySelector('button[type="submit"]');
-      var original = btn ? btn.textContent : "";
-      if (btn) {
-        btn.disabled = true;
-        btn.textContent = "Отправляем…";
-      }
-      if (successEl) {
-        successEl.hidden = true;
-      }
-      window.setTimeout(function () {
-        if (btn) {
-          btn.disabled = false;
-          btn.textContent = original;
-        }
-        form.reset();
-        if (successEl) {
-          successEl.hidden = false;
-        }
-        // Подключение: Formspree, Getform, Tilda, свой backend или mailto — замените блок выше.
-      }, 900);
-    });
-  }
 })();
