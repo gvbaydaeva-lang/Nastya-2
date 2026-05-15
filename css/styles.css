@@ -1006,6 +1006,23 @@ img {
   position: relative;
   width: min(100%, 560px);
   margin: 0.5rem auto 0;
+  padding-right: 2px;
+}
+
+/* Постоянный трек справа — виден сразу (macOS overlay scrollbar не скрывает подсказку) */
+.directions-scroll.is-scrollable::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 3px;
+  bottom: 4px;
+  width: 11px;
+  border-radius: 999px;
+  background: rgba(201, 160, 98, 0.1);
+  border: 1px solid rgba(201, 160, 98, 0.22);
+  box-shadow: inset 0 0 12px rgba(201, 160, 98, 0.06);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .directions-scroll__list {
@@ -1014,38 +1031,51 @@ img {
   gap: 0.85rem;
   max-height: min(420px, 58vh);
   overflow-x: hidden;
-  overflow-y: auto;
-  padding: 0.35rem 0.5rem 0.35rem 0.15rem;
+  overflow-y: scroll;
+  padding: 0.35rem 1rem 0.35rem 0.15rem;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-gutter: stable;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(201, 160, 98, 0.45) rgba(255, 255, 255, 0.04);
+  /* Firefox: трек + ползунок всегда при переполнении */
+  scrollbar-width: auto;
+  scrollbar-color: #b89458 rgba(201, 160, 98, 0.14);
 }
 
 .directions-scroll__list::-webkit-scrollbar {
-  width: 7px;
+  width: 10px;
+  -webkit-appearance: none;
 }
 
 .directions-scroll__list::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(201, 160, 98, 0.12);
   border-radius: 999px;
+  margin: 6px 0;
+  border: 1px solid rgba(201, 160, 98, 0.16);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
 .directions-scroll__list::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, rgba(201, 160, 98, 0.55), rgba(154, 117, 68, 0.45));
+  background: linear-gradient(180deg, #d4ad6e 0%, #c9a062 45%, #9a7544 100%);
   border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  min-height: 56px;
+  border: 2px solid rgba(17, 17, 15, 0.45);
+  box-shadow:
+    0 0 10px rgba(201, 160, 98, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .directions-scroll__list::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, rgba(212, 173, 110, 0.7), rgba(154, 117, 68, 0.55));
+  background: linear-gradient(180deg, #e0bc7a 0%, #d4ad6e 50%, #a8834f 100%);
+}
+
+.directions-scroll__list::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #c9a062 0%, #8a6838 100%);
 }
 
 .directions-scroll__gradient {
   position: absolute;
   left: 0;
-  right: 0.65rem;
+  right: 1rem;
   height: 52px;
   pointer-events: none;
   z-index: 2;
@@ -1083,15 +1113,39 @@ img {
 @media (max-width: 767px) {
   .directions-scroll {
     width: 100%;
+    padding-right: 0;
+  }
+
+  .directions-scroll.is-scrollable::before {
+    width: 10px;
+    right: 2px;
+    top: 3px;
+    bottom: 3px;
   }
 
   .directions-scroll__list {
     max-height: min(380px, 52vh);
-    padding-right: 0.35rem;
+    padding-right: 0.85rem;
+    scrollbar-width: auto;
+    scrollbar-color: #b89458 rgba(201, 160, 98, 0.16);
+  }
+
+  .directions-scroll__list::-webkit-scrollbar {
+    width: 9px;
+  }
+
+  .directions-scroll__list::-webkit-scrollbar-track {
+    margin: 4px 0;
+    background: rgba(201, 160, 98, 0.14);
+  }
+
+  .directions-scroll__list::-webkit-scrollbar-thumb {
+    min-height: 48px;
+    border-width: 1.5px;
   }
 
   .directions-scroll__gradient {
-    right: 0.5rem;
+    right: 0.85rem;
     height: 44px;
   }
 }
