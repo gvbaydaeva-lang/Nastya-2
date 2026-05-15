@@ -160,14 +160,28 @@
       feed.classList.toggle("is-scrolled-mid", !atStart && !atEnd);
     }
 
+    var mobileTariffMq =
+      window.matchMedia && window.matchMedia("(max-width: 767px)");
+
+    function isMobileTariffView() {
+      return mobileTariffMq && mobileTariffMq.matches;
+    }
+
     function updateTariffParallax() {
       if (prefersReduced) return;
 
       var feedRect = feed.getBoundingClientRect();
       var feedCenter = feedRect.left + feedRect.width * 0.5;
+      var mobile = isMobileTariffView();
 
       cards.forEach(function (card) {
         if (!card.classList.contains("is-inview")) return;
+
+        /* На мобиле карточка 2: без дробного сдвига — иначе Safari размывает JPEG */
+        if (mobile && card.getAttribute("data-tariff") === "2") {
+          card.style.setProperty("--tariff-lift", "0px");
+          return;
+        }
 
         var rect = card.getBoundingClientRect();
         var cardCenter = rect.left + rect.width * 0.5;

@@ -1558,6 +1558,30 @@ img {
   .tariff-slide img {
     max-height: min(68vh, 460px);
   }
+
+  /* Карточка 2: без blur/scale и дробного transform — чёткое изображение на Retina */
+  .tariff-slide[data-tariff="2"] {
+    will-change: opacity;
+  }
+
+  .tariff-slide[data-tariff="2"].tariff-slide--entrance {
+    filter: none;
+    transform: translate3d(0, 24px, 0);
+  }
+
+  .tariff-slide[data-tariff="2"].tariff-slide--entrance.is-inview {
+    transform: translate3d(0, 0, 0);
+    filter: none;
+    will-change: auto;
+  }
+
+  .tariff-slide[data-tariff="2"] img {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    image-rendering: auto;
+    -webkit-transform: translateZ(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
