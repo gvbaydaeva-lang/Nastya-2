@@ -1559,8 +1559,10 @@ img {
     max-height: min(68vh, 460px);
   }
 
-  /* Карточка 2: без blur/scale и дробного transform — чёткое изображение на Retina */
+  /* Карточка 2: без blur/scale; поверх градиентов ленты — без тёмной полосы по центру */
   .tariff-slide[data-tariff="2"] {
+    position: relative;
+    z-index: 3;
     will-change: opacity;
   }
 
@@ -1576,11 +1578,16 @@ img {
   }
 
   .tariff-slide[data-tariff="2"] img {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    image-rendering: auto;
-    -webkit-transform: translateZ(0);
+    position: relative;
+    z-index: 1;
+    transform: none;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+  }
+
+  /* Когда 2-й тариф по центру — убираем наложение боковых затемнений */
+  .tariffs-feed.tariffs-feed--card-2-centered .tariffs-feed__fade {
+    opacity: 0;
   }
 }
 

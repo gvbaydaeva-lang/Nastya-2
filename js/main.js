@@ -199,9 +199,28 @@
       updateTariffParallax();
     }
 
+    function updateCard2Centered() {
+      if (!isMobileTariffView()) {
+        feed.classList.remove("tariffs-feed--card-2-centered");
+        return;
+      }
+
+      var card2 = track.querySelector('[data-tariff="2"]');
+      if (!card2) return;
+
+      var feedRect = feed.getBoundingClientRect();
+      var cardRect = card2.getBoundingClientRect();
+      var feedCenter = feedRect.left + feedRect.width * 0.5;
+      var cardCenter = cardRect.left + cardRect.width * 0.5;
+      var centered = Math.abs(cardCenter - feedCenter) < Math.max(28, cardRect.width * 0.14);
+
+      feed.classList.toggle("tariffs-feed--card-2-centered", centered);
+    }
+
     function onFeedScroll() {
       updateFeedEdges();
       updateTariffParallax();
+      updateCard2Centered();
     }
 
     if (prefersReduced) {
@@ -220,6 +239,7 @@
               entry.target.classList.add("is-inview");
               cardIo.unobserve(entry.target);
               updateTariffParallax();
+              updateCard2Centered();
             }
           });
         },
@@ -241,11 +261,13 @@
     window.addEventListener("resize", function () {
       updateFeedEdges();
       updateTariffParallax();
+      updateCard2Centered();
     });
 
     window.requestAnimationFrame(function () {
       updateFeedEdges();
       updateTariffParallax();
+      updateCard2Centered();
     });
   }
 
