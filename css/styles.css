@@ -595,9 +595,19 @@ img {
   gap: 1rem;
 }
 
+@media (min-width: 901px) {
+  .audience__item:last-child {
+    grid-column: 2 / span 2;
+  }
+}
+
 @media (max-width: 900px) {
   .audience {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .audience__item:last-child {
+    grid-column: auto;
   }
 }
 
@@ -1554,4 +1564,33 @@ img {
 
 .reveal--delay {
   transition-delay: 0.12s;
+}
+
+/* === Mobile-only: переносы подзаголовков (≤767px) === */
+@media (max-width: 767px) {
+  .subtitle-m-br::before {
+    content: "\A";
+    white-space: pre;
+  }
+
+  #directions .section__subtitle--directions {
+    font-size: clamp(0.9rem, 3.85vw, 0.98rem);
+    line-height: 1.52;
+    max-width: 21.5rem;
+    margin-inline: auto;
+    text-wrap: balance;
+  }
+
+  #tariffs .section__subtitle--tariffs {
+    font-size: clamp(0.9rem, 3.85vw, 0.98rem);
+    line-height: 1.5;
+    max-width: 21.75rem;
+    margin-inline: auto;
+    text-wrap: balance;
+  }
+
+  #reviews .section__subtitle--reviews .reviews-subtitle-tail {
+    display: block;
+    margin-top: 0.4em;
+  }
 }
