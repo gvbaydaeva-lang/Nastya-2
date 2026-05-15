@@ -272,4 +272,103 @@
   }
 
   initTariffsFeed();
+
+  /* Отзывы: стопка карточек, смена при скролле страницы */
+  function initReviewsStack() {
+    var section = document.getElementById("reviews");
+    var scroller = document.getElementById("reviews-stack-scroller");
+    var stack = document.getElementById("reviews-stack");
+    if (!section || !scroller || !stack) return;
+
+    var cards = stack.querySelectorAll(".review-card");
+    var count = cards.length;
+    if (count < 2) return;
+
+    var ticking = false;
+
+    function setCardVars(card, vars) {
+      Object.keys(vars).forEach(function (key) {
+        card.style.setProperty(key, vars[key]);
+      });
+    }
+
+    function updateReviewsStack() {
+      var start = scroller.offsetTop;
+      var end = start + scroller.offsetHeight - window.innerHeight;
+      var range = Math.max(end - start, 1);
+      var p = (window.scrollY - start) / range;
+      p = Math.max(0, Math.min(1, p));
+
+      var raw = p * (count - 1);
+      var currentTop = Math.min(Math.floor(raw), count - 1);
+      var dismissT = raw - currentTop;
+      var mobile =
+        window.matchMedia && window.matchMedia("(max-width: 767px)").matches;
+      var stackYOffset = mobile ? 10 : 12;
+      var stackRot = mobile ? 2.2 : 2.8;
+      var stackScaleStep = mobile ? 0.024 : 0.028;
+
+      cards.forEach(function (card, i) {
+        if (i < currentTop) {
+          setCardVars(card, {
+            "--dismiss-y": "-125%",
+            "--dismiss-rot": "-9deg",
+            "--stack-y": "0px",
+            "--stack-rot": "0deg",
+            "--card-scale": "0.96",
+            "--card-opacity": "0",
+            "--card-z": "0"
+          });
+          return;
+        }
+
+        if (i === currentTop) {
+          setCardVars(card, {
+            "--dismiss-y": -dismissT * 118 + "%",
+            "--dismiss-rot": -dismissT * 7 + "deg",
+            "--stack-y": "0px",
+            "--stack-rot": "0deg",
+            "--card-scale": String(1 - dismissT * 0.045),
+            "--card-opacity": String(1 - dismissT * 0.9),
+            "--card-z": "100"
+          });
+          return;
+        }
+
+        var sp = i - currentTop;
+        setCardVars(card, {
+          "--dismiss-y": "0%",
+          "--dismiss-rot": "0deg",
+          "--stack-y": sp * stackYOffset + "px",
+          "--stack-rot": sp * stackRot + "deg",
+          "--card-scale": String(1 - sp * stackScaleStep),
+          "--card-opacity": String(Math.max(0.4, 1 - sp * 0.07)),
+          "--card-z": String(100 - sp)
+        });
+      });
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(function () {
+        updateReviewsStack();
+        ticking = false;
+      });
+    }
+
+    if (prefersReduced) {
+      section.classList.add("reviews-stack--static");
+      cards.forEach(function (card) {
+        card.style.cssText = "";
+      });
+      return;
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    updateReviewsStack();
+  }
+
+  initReviewsStack();
 })();
