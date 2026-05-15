@@ -1021,16 +1021,44 @@ img {
 }
 
 .direction-card {
+  min-width: 0;
   padding: 1.5rem 1.35rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  transition: transform 0.3s var(--ease-out), border-color 0.25s ease;
+  transition:
+    transform 0.35s var(--ease-out),
+    border-color 0.25s ease,
+    box-shadow 0.35s var(--ease-out),
+    opacity 0.35s var(--ease-out);
 }
 
-.direction-card:hover {
-  transform: translateY(-3px);
+.direction-card--entrance {
+  opacity: 0;
+  transform: scale(0.94) translateY(14px);
+  transition:
+    transform 0.42s var(--ease-out),
+    opacity 0.38s var(--ease-out),
+    border-color 0.25s ease,
+    box-shadow 0.35s var(--ease-out);
+  transition-delay: var(--entrance-delay, 0s);
+  will-change: transform, opacity;
+}
+
+.direction-card--entrance.is-inview {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.direction-card--entrance.is-inview:hover {
+  transform: translateY(-3px) scale(1);
   border-color: var(--border-strong);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.22);
+}
+
+.direction-card:not(.direction-card--entrance):hover,
+.direction-card--entrance:not(.is-inview):hover {
+  border-color: var(--border);
 }
 
 .direction-card--wide {
@@ -1040,16 +1068,55 @@ img {
 
 .direction-card h3 {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: clamp(1.05rem, 2.5vw, 1.15rem);
   font-weight: 500;
-  margin: 0 0 0.4rem;
+  line-height: 1.3;
+  margin: 0 0 0.45rem;
   color: var(--text);
+  letter-spacing: -0.01em;
 }
 
 .direction-card p {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: clamp(0.8125rem, 2.2vw, 0.875rem);
+  line-height: 1.55;
   color: var(--text-muted);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Заголовок секции — мягкое появление (как в AnimatedList) */
+#directions .section__head.reveal.is-visible .section__title {
+  animation: directions-title-in 0.55s var(--ease-out) both;
+}
+
+@keyframes directions-title-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .direction-card--entrance {
+    opacity: 1;
+    transform: none;
+    transition: border-color 0.2s ease;
+    will-change: auto;
+  }
+
+  .direction-card--entrance.is-inview:hover {
+    transform: translateY(-2px);
+  }
+
+  #directions .section__head.reveal.is-visible .section__title {
+    animation: none;
+  }
 }
 
 /* === Support === */

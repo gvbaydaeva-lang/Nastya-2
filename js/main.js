@@ -49,4 +49,45 @@
       el.classList.add("is-visible");
     });
   }
+
+  /* Направления: поочерёдное появление карточек (адаптация AnimatedList) */
+  function initDirectionsStagger() {
+    var grid = document.getElementById("directions-grid");
+    if (!grid) return;
+
+    var cards = grid.querySelectorAll(".direction-card--entrance");
+    if (!cards.length) return;
+
+    var staggerMs = 90;
+
+    function revealCards() {
+      cards.forEach(function (card, index) {
+        card.style.setProperty("--entrance-delay", index * staggerMs + "ms");
+        card.classList.add("is-inview");
+      });
+    }
+
+    if (prefersReduced) {
+      revealCards();
+      return;
+    }
+
+    if ("IntersectionObserver" in window) {
+      var gridIo = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            revealCards();
+            gridIo.unobserve(grid);
+          });
+        },
+        { rootMargin: "0px 0px -6% 0px", threshold: 0.1 }
+      );
+      gridIo.observe(grid);
+    } else {
+      revealCards();
+    }
+  }
+
+  initDirectionsStagger();
 })();
