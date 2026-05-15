@@ -319,8 +319,36 @@
           <h2 class="section__title">Тарифы</h2>
           <p class="section__subtitle section__subtitle--tariffs">На платформе представлено несколько тарифов с разным наполнением.<span class="subtitle-m-br" aria-hidden="true"></span> Вы сможете выбрать подходящий вариант под свои цели и комфортный старт в онлайне.<span class="subtitle-m-br" aria-hidden="true"></span> Стоимость тарифа зависит от наполнения и количества доступных направлений.</p>
         </header>
-        <div class="tariffs tariffs--pending" data-slot="tariffs-media">
-          <!-- сюда позже: изображения тарифов -->
+        <p class="tariffs-feed__hint reveal">Листайте ленту тарифов →</p>
+        <div class="tariffs-feed is-scrollable" id="tariffs-feed">
+          <div class="tariffs-feed__fade tariffs-feed__fade--left" aria-hidden="true"></div>
+          <div class="tariffs-feed__track" id="tariffs-track">
+            <article class="tariff-slide tariff-slide--entrance" data-tariff="1">
+              <img src="assets/tariffs/tariff-01.jpg" alt="Тариф «Базовые курсы»" width="600" height="1200" loading="lazy" decoding="async">
+            </article>
+            <article class="tariff-slide tariff-slide--entrance" data-tariff="2">
+              <img src="assets/tariffs/tariff-02.jpg" alt="Тариф «Новые направления»" width="600" height="1200" loading="lazy" decoding="async">
+            </article>
+            <article class="tariff-slide tariff-slide--entrance" data-tariff="3">
+              <img src="assets/tariffs/tariff-03.jpg" alt="Тариф «Всё включено»" width="600" height="1200" loading="lazy" decoding="async">
+            </article>
+            <article class="tariff-slide tariff-slide--entrance" data-tariff="4">
+              <img src="assets/tariffs/tariff-04.jpg" alt="Тарифы по направлениям" width="600" height="1200" loading="lazy" decoding="async">
+            </article>
+            <article class="tariff-slide tariff-slide--entrance" data-tariff="5">
+              <img src="assets/tariffs/tariff-05.jpg" alt="Тариф «Премиум»" width="600" height="1200" loading="lazy" decoding="async">
+            </article>
+            <article class="tariff-slide tariff-slide--entrance" data-tariff="6">
+              <img src="assets/tariffs/tariff-06.jpg" alt="Тариф «VIP»" width="600" height="1200" loading="lazy" decoding="async">
+            </article>
+            <article class="tariff-slide tariff-slide--entrance" data-tariff="7">
+              <img src="assets/tariffs/tariff-07.jpg" alt="Тариф «Инфографика»" width="600" height="1200" loading="lazy" decoding="async">
+            </article>
+            <article class="tariff-slide tariff-slide--entrance" data-tariff="8">
+              <img src="assets/tariffs/tariff-08.jpg" alt="Тариф «Нейростарт»" width="600" height="1200" loading="lazy" decoding="async">
+            </article>
+          </div>
+          <div class="tariffs-feed__fade tariffs-feed__fade--right" aria-hidden="true"></div>
         </div>
       </div>
     </section>

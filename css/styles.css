@@ -1397,6 +1397,186 @@ img {
   color: var(--accent-dim);
 }
 
+/* === Tariffs feed (горизонтальная лента) === */
+.tariffs-feed__hint {
+  margin: 0 0 1rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent-dim);
+  text-align: center;
+}
+
+.tariffs-feed {
+  position: relative;
+  margin: 0 calc(-1 * var(--space));
+  padding: 0.35rem 0 1.25rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #c9a062 rgba(201, 160, 98, 0.12);
+}
+
+.tariffs-feed.is-scrollable::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  bottom: 0;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(201, 160, 98, 0.12);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.tariffs-feed::-webkit-scrollbar {
+  height: 10px;
+  -webkit-appearance: none;
+}
+
+.tariffs-feed::-webkit-scrollbar-track {
+  background: rgba(201, 160, 98, 0.12);
+  border-radius: 999px;
+  margin: 0 var(--space);
+}
+
+.tariffs-feed::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #d4ad6e 0%, #c9a062 45%, #9a7544 100%);
+  border-radius: 999px;
+  min-width: 56px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.tariffs-feed::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #e0bc7a 0%, #d4ad6e 50%, #a8834f 100%);
+  background-clip: padding-box;
+}
+
+.tariffs-feed__track {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  width: max-content;
+  min-height: min(72vh, 540px);
+  padding: 0.5rem var(--space) 1.75rem;
+}
+
+.tariffs-feed__fade {
+  position: absolute;
+  top: 0;
+  bottom: 1.75rem;
+  width: clamp(2rem, 8vw, 4.5rem);
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.35s ease;
+}
+
+.tariffs-feed__fade--left {
+  left: 0;
+  background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
+}
+
+.tariffs-feed__fade--right {
+  right: 0;
+  background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
+}
+
+.tariffs-feed.is-scrolled-start .tariffs-feed__fade--left {
+  opacity: 0;
+}
+
+.tariffs-feed.is-scrolled-end .tariffs-feed__fade--right {
+  opacity: 0;
+}
+
+.tariff-slide {
+  flex: 0 0 auto;
+  width: clamp(260px, 78vw, 340px);
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  will-change: transform, opacity;
+}
+
+.tariff-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(72vh, 520px);
+  object-fit: contain;
+  object-position: top center;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow:
+    0 18px 48px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(201, 160, 98, 0.06);
+}
+
+.tariff-slide--entrance {
+  opacity: 0;
+  transform: translateY(28px) scale(0.94);
+  filter: blur(2px);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.55s ease;
+}
+
+.tariff-slide--entrance.is-inview {
+  opacity: 1;
+  transform: translateY(var(--tariff-lift, 0px)) scale(1);
+  filter: blur(0);
+}
+
+@media (min-width: 900px) {
+  .tariff-slide {
+    width: clamp(300px, 28vw, 360px);
+  }
+}
+
+@media (max-width: 767px) {
+  .tariffs-feed__hint {
+    font-size: 0.75rem;
+  }
+
+  .tariffs-feed__track {
+    min-height: min(68vh, 480px);
+    gap: 0.85rem;
+  }
+
+  .tariff-slide {
+    width: min(82vw, 300px);
+  }
+
+  .tariff-slide img {
+    max-height: min(68vh, 460px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tariffs-feed {
+    scroll-behavior: auto;
+  }
+
+  .tariff-slide--entrance {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+
+  .tariff-slide--entrance.is-inview {
+    transform: none;
+  }
+}
+
 /* === Reviews === */
 .reviews {
   display: grid;
