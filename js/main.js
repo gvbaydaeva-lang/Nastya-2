@@ -273,18 +273,53 @@
 
   initTariffsFeed();
 
-  /* Отзывы: стопка карточек, смена при скролле страницы */
+  /* Отзывы: стопка карточек, смена при скролле (десктоп) / свайп по одной (мобила) */
   function initReviewsStack() {
     var section = document.getElementById("reviews");
     var scroller = document.getElementById("reviews-stack-scroller");
     var stack = document.getElementById("reviews-stack");
-    if (!section || !scroller || !stack) return;
+    var sticky = scroller && scroller.querySelector(".reviews-stack-sticky");
+    if (!section || !scroller || !stack || !sticky) return;
 
     var cards = stack.querySelectorAll(".review-card");
     var count = cards.length;
     if (count < 2) return;
 
+    var mobileMq =
+      window.matchMedia && window.matchMedia("(max-width: 767px)");
     var ticking = false;
+    var activeIndex = 0;
+    var animFromIndex = 0;
+    var isAnimating = false;
+    var animLockMs = 580;
+    var touchStartY = 0;
+    var touchStartX = 0;
+    var touchTracking = false;
+    var swipeAxisLocked = false;
+    var SWIPE_THRESHOLD = 48;
+
+    function isMobileReviews() {
+      return mobileMq && mobileMq.matches;
+    }
+
+    function getScrollRange() {
+      var start = scroller.offsetTop;
+      var end = start + scroller.offsetHeight - window.innerHeight;
+      return { start: start, range: Math.max(end - start, 1) };
+    }
+
+    function indexFromScrollY(scrollY) {
+      var metrics = getScrollRange();
+      var p = (scrollY - metrics.start) / metrics.range;
+      p = Math.max(0, Math.min(1, p));
+      return Math.round(p * (count - 1));
+    }
+
+    function scrollYForIndex(index) {
+      var metrics = getScrollRange();
+      var p = index / (count - 1);
+      return metrics.start + p * metrics.range;
+    }
 
     function setCardVars(card, vars) {
       Object.keys(vars).forEach(function (key) {
@@ -292,18 +327,8 @@
       });
     }
 
-    function updateReviewsStack() {
-      var start = scroller.offsetTop;
-      var end = start + scroller.offsetHeight - window.innerHeight;
-      var range = Math.max(end - start, 1);
-      var p = (window.scrollY - start) / range;
-      p = Math.max(0, Math.min(1, p));
-
-      var raw = p * (count - 1);
-      var currentTop = Math.min(Math.floor(raw), count - 1);
-      var dismissT = raw - currentTop;
-      var mobile =
-        window.matchMedia && window.matchMedia("(max-width: 767px)").matches;
+    function applyStackState(currentTop, dismissT) {
+      var mobile = isMobileReviews();
       var stackYOffset = mobile ? 10 : 12;
       var stackRot = mobile ? 2.2 : 2.8;
       var stackScaleStep = mobile ? 0.024 : 0.028;
@@ -348,6 +373,56 @@
       });
     }
 
+    function updateReviewsStack() {
+      if (isMobileReviews()) {
+        if (isAnimating) {
+          var metricsAnim = getScrollRange();
+          var pAnim = (window.scrollY - metricsAnim.start) / metricsAnim.range;
+          pAnim = Math.max(0, Math.min(1, pAnim));
+          var rawAnim = pAnim * (count - 1);
+          var from = Math.min(animFromIndex, activeIndex);
+          var span = Math.max(Math.abs(activeIndex - animFromIndex), 1);
+          var dismissT = Math.max(0, Math.min(1, (rawAnim - from) / span));
+          var currentTop = dismissT < 0.96 ? from : activeIndex;
+          if (dismissT >= 0.96) {
+            dismissT = 0;
+          }
+          applyStackState(currentTop, dismissT);
+          return;
+        }
+
+        applyStackState(activeIndex, 0);
+        return;
+      }
+
+      var metrics = getScrollRange();
+      var p = (window.scrollY - metrics.start) / metrics.range;
+      p = Math.max(0, Math.min(1, p));
+      var raw = p * (count - 1);
+      var currentTop = Math.min(Math.floor(raw), count - 1);
+      var dismissT = raw - currentTop;
+      applyStackState(currentTop, dismissT);
+    }
+
+    function goToIndex(nextIndex, smooth) {
+      nextIndex = Math.max(0, Math.min(count - 1, nextIndex));
+      if (isAnimating || nextIndex === activeIndex) return;
+
+      animFromIndex = activeIndex;
+      isAnimating = true;
+      activeIndex = nextIndex;
+      window.scrollTo({
+        top: scrollYForIndex(nextIndex),
+        behavior: smooth ? "smooth" : "auto"
+      });
+
+      window.setTimeout(function () {
+        isAnimating = false;
+        window.scrollTo({ top: scrollYForIndex(activeIndex), behavior: "auto" });
+        updateReviewsStack();
+      }, animLockMs);
+    }
+
     function onScroll() {
       if (ticking) return;
       ticking = true;
@@ -355,6 +430,55 @@
         updateReviewsStack();
         ticking = false;
       });
+    }
+
+    function onTouchStart(e) {
+      if (!isMobileReviews() || isAnimating || e.touches.length !== 1) return;
+      touchTracking = true;
+      swipeAxisLocked = false;
+      touchStartY = e.touches[0].clientY;
+      touchStartX = e.touches[0].clientX;
+    }
+
+    function onTouchMove(e) {
+      if (!touchTracking || !isMobileReviews() || isAnimating) return;
+
+      var dy = e.touches[0].clientY - touchStartY;
+      var dx = e.touches[0].clientX - touchStartX;
+
+      if (!swipeAxisLocked) {
+        if (Math.abs(dy) < 10 && Math.abs(dx) < 10) return;
+        swipeAxisLocked = true;
+        if (Math.abs(dy) <= Math.abs(dx)) {
+          touchTracking = false;
+          return;
+        }
+      }
+
+      if (Math.abs(dy) > 8) {
+        e.preventDefault();
+      }
+    }
+
+    function onTouchEnd(e) {
+      if (!touchTracking || !isMobileReviews()) return;
+      touchTracking = false;
+      swipeAxisLocked = false;
+
+      if (isAnimating) return;
+
+      var dy = touchStartY - e.changedTouches[0].clientY;
+      if (Math.abs(dy) < SWIPE_THRESHOLD) return;
+
+      var nextIndex = activeIndex + (dy > 0 ? 1 : -1);
+      if (nextIndex === activeIndex) return;
+
+      goToIndex(nextIndex, true);
+    }
+
+    function onTouchCancel() {
+      touchTracking = false;
+      swipeAxisLocked = false;
     }
 
     if (prefersReduced) {
@@ -367,6 +491,13 @@
 
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
+
+    stack.addEventListener("touchstart", onTouchStart, { passive: true });
+    stack.addEventListener("touchmove", onTouchMove, { passive: false });
+    stack.addEventListener("touchend", onTouchEnd, { passive: true });
+    stack.addEventListener("touchcancel", onTouchCancel, { passive: true });
+
+    activeIndex = indexFromScrollY(window.scrollY);
     updateReviewsStack();
   }
 

@@ -1704,11 +1704,14 @@ img {
   .reviews-stack-sticky {
     top: calc(var(--header-h) + 0.75rem);
     height: calc(100vh - var(--header-h) - 1.75rem);
+    pointer-events: auto;
   }
 
   .reviews-stack {
     width: min(340px, 94vw);
     height: min(58vh, 460px);
+    pointer-events: auto;
+    touch-action: none;
   }
 
   .review-card img {
