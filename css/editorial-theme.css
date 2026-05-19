@@ -2,7 +2,7 @@
 
 :root {
   --font-sans: "General Sans", "Manrope", system-ui, sans-serif;
-  --font-display: "General Sans", "Manrope", system-ui, sans-serif;
+  --font-display: "General Sans", "Satoshi", "Manrope", system-ui, sans-serif;
   --bg: #f3efe8;
   --bg-elevated: #eee7dd;
   --bg-muted: #e5ddd2;
@@ -30,49 +30,38 @@
   --about-warm-deep: #dccfc0;
 }
 
-body,
+html {
+  font-family: var(--font-sans);
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--text);
+  background: var(--bg);
+  background-image: linear-gradient(180deg, #f7f3ec 0%, var(--bg) 40%, #efe9df 100%);
+}
+
 button,
 input,
 textarea,
 select {
-  font-family: var(--font-sans);
-  color: var(--text);
-}
-
-body {
-  background: var(--bg);
-  background-image: linear-gradient(180deg, #f7f3ec 0%, var(--bg) 40%, #efe9df 100%);
+  font-family: inherit;
 }
 
 h1,
 h2,
 h3,
 h4,
-.logo,
-.section__title,
-.hero__title,
-.platform-fit__card-title,
-.direction-card h3,
-.support__card h3,
-.faq__question,
-.curator__name,
-.cta-final__title,
-.btn,
-.tariffs-feed__hint {
+h5,
+h6 {
   font-family: var(--font-display);
   letter-spacing: -0.02em;
 }
 
 p,
-.section__subtitle,
-.hero__lead,
-.platform-fit__lead,
-.direction-card p,
-.support__card p,
-.faq__answer,
-.nav a,
-.link-arrow,
-.eyebrow {
+a,
+li,
+label {
   font-family: var(--font-sans);
 }
 
@@ -199,6 +188,14 @@ a:hover {
   overflow: hidden;
 }
 
+.hero__picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .hero__scene-img {
   position: absolute;
   inset: 0;
@@ -206,69 +203,27 @@ a:hover {
   height: 100%;
   max-width: none;
   object-fit: cover;
-  /* Портрет: низ кадра = стол и ноутбук; сад — сверху как фон */
   object-position: 62% 100%;
   opacity: 1;
   filter:
     saturate(0.94)
     contrast(1.03)
     brightness(0.98)
-    sepia(0.06)
-    hue-rotate(-3deg);
-  transform: none;
+    sepia(0.05)
+    hue-rotate(-2deg);
 }
 
-/* Тонирование только слева — ноутбук справа без затемнения */
-.hero__scene-tone {
+.hero__scene-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background:
-    linear-gradient(
-      108deg,
-      rgba(88, 98, 72, 0.22) 0%,
-      rgba(108, 102, 86, 0.12) 28%,
-      transparent 48%
-    ),
-    radial-gradient(ellipse 70% 55% at 12% 30%, rgba(118, 108, 88, 0.12) 0%, transparent 65%);
-  -webkit-mask-image: linear-gradient(100deg, #000 0%, #000 32%, transparent 46%);
-  mask-image: linear-gradient(100deg, #000 0%, #000 32%, transparent 46%);
-  pointer-events: none;
-}
-
-.hero__scene-readability {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  width: min(46%, 480px);
   background: linear-gradient(
     100deg,
-    rgba(255, 252, 247, 0.65) 0%,
-    rgba(248, 242, 234, 0.35) 42%,
-    transparent 100%
+    rgba(255, 252, 247, 0.93) 0%,
+    rgba(252, 248, 242, 0.7) 20%,
+    rgba(248, 242, 234, 0.32) 36%,
+    transparent 54%
   );
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  -webkit-mask-image: linear-gradient(100deg, #000 0%, #000 38%, transparent 68%);
-  mask-image: linear-gradient(100deg, #000 0%, #000 38%, transparent 68%);
-  pointer-events: none;
-}
-
-.hero__scene-fade {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  background:
-    linear-gradient(
-      102deg,
-      rgba(255, 252, 247, 0.96) 0%,
-      rgba(248, 242, 234, 0.84) 14%,
-      rgba(240, 233, 222, 0.42) 28%,
-      transparent 40%
-    ),
-    radial-gradient(ellipse 100% 88% at 2% 38%, rgba(255, 252, 247, 0.7) 0%, transparent 52%);
-  -webkit-mask-image: linear-gradient(100deg, #000 0%, #000 38%, transparent 48%);
-  mask-image: linear-gradient(100deg, #000 0%, #000 38%, transparent 48%);
   pointer-events: none;
 }
 
@@ -368,7 +323,8 @@ a:hover {
 
 @media (min-width: 901px) {
   .hero__scene-img {
-    object-position: right bottom;
+    /* Ноутбук целиком справа снизу; стул вне кадра; сад сверху */
+    object-position: 52% 68%;
   }
 
   .hero__title {

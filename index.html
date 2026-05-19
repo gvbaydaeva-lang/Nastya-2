@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/editorial-theme.css">
@@ -37,19 +38,23 @@
     <!-- 1. Hero -->
     <section class="hero">
       <div class="hero__scene" aria-hidden="true">
-        <img
-          class="hero__scene-img"
-          src="assets/hero-garden-workspace.jpg"
-          alt=""
-          width="736"
-          height="1104"
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-        >
-        <div class="hero__scene-tone"></div>
-        <div class="hero__scene-readability"></div>
-        <div class="hero__scene-fade"></div>
+        <picture class="hero__picture">
+          <source
+            media="(min-width: 901px)"
+            srcset="assets/hero-garden-workspace.jpg"
+          >
+          <img
+            class="hero__scene-img"
+            src="assets/hero-garden-workspace.jpg"
+            alt=""
+            width="736"
+            height="1104"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          >
+        </picture>
+        <div class="hero__scene-overlay"></div>
       </div>
       <div class="container hero__grid">
         <div class="hero__content reveal">
