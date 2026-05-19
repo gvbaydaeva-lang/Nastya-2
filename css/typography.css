@@ -27,11 +27,33 @@ h2,
   line-height: 1.1;
 }
 
-.hero__title {
+.hero__title,
+.hero-title,
+.hero__title *,
+.hero-title *,
+.hero__title-line,
+.hero__title span,
+.hero__title em,
+.hero-title-line,
+h1.hero__title .hero__title-line,
+h1.hero__title em,
+.hero .hero__title *,
+.hero__title .accent,
+.hero__title .highlight,
+.hero__title .word {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.hero__title,
+.hero-title {
   line-height: 1.08;
 }
 
-.hero__title em {
+.hero__title em,
+.hero__title .accent,
+.hero__title .highlight {
   font-family: inherit;
   font-weight: 400;
   font-style: normal;

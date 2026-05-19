@@ -92,11 +92,12 @@ h2,
 p,
 a,
 button,
-span,
 li,
 input,
 textarea,
 label,
+.logo,
+.logo__muted,
 .nav,
 .nav a,
 .direction-card,
@@ -256,11 +257,13 @@ label,
 }
 
 .hero__title em {
+  font-family: inherit;
   background: linear-gradient(135deg, #ff9a3d 0%, #f4efe7 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 400;
+  font-style: normal;
 }
 
 .hero__lead,
