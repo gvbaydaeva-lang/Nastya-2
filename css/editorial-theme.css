@@ -648,6 +648,26 @@ a:hover {
   align-items: start;
 }
 
+.section--platform-fit .platform-fit__anim {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.section--platform-fit .platform-fit__anim > .platform-fit__card {
+  height: 100%;
+}
+
+.section--platform-fit .platform-fit__anim--wide {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.section--platform-fit .platform-fit__anim--wide .platform-fit__perks-bar {
+  margin-top: 0;
+}
+
 .section--platform-fit .platform-fit__card {
   position: relative;
   display: flex;
@@ -681,25 +701,7 @@ a:hover {
   pointer-events: none;
 }
 
-.section--platform-fit .platform-fit__card:nth-child(1) {
-  transform: translateY(0);
-}
-
-.section--platform-fit .platform-fit__card:nth-child(2) {
-  transform: translateY(0.85rem);
-}
-
-.section--platform-fit .platform-fit__card:nth-child(3) {
-  transform: translateY(-0.35rem);
-}
-
-.section--platform-fit .platform-fit__card:nth-child(4) {
-  transform: translateY(0.55rem);
-}
-
 .section--platform-fit .platform-fit__card--wide {
-  grid-column: 1 / -1;
-  transform: translateX(0.65rem) translateY(0.25rem);
   padding: 1.25rem 1.35rem;
 }
 
@@ -798,24 +800,33 @@ a:hover {
 }
 
 @media (min-width: 901px) {
-  .section--platform-fit .platform-fit__card:nth-child(1):hover {
+  .section--platform-fit .platform-fit__cards.cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 920px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  .section--platform-fit .platform-fit__anim.wide-card,
+  .section--platform-fit .platform-fit__anim--wide {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .section--platform-fit .platform-fit__anim--wide .platform-fit__perks-bar {
+    margin-top: 0;
+  }
+
+  .section--platform-fit .platform-fit__anim .platform-fit__card {
+    transform: none;
+  }
+
+  .section--platform-fit .platform-fit__anim .platform-fit__card:hover {
     transform: translateY(-3px);
-  }
-
-  .section--platform-fit .platform-fit__card:nth-child(2):hover {
-    transform: translateY(calc(0.85rem - 3px));
-  }
-
-  .section--platform-fit .platform-fit__card:nth-child(3):hover {
-    transform: translateY(calc(-0.35rem - 3px));
-  }
-
-  .section--platform-fit .platform-fit__card:nth-child(4):hover {
-    transform: translateY(calc(0.55rem - 3px));
-  }
-
-  .section--platform-fit .platform-fit__card--wide:hover {
-    transform: translateX(0.65rem) translateY(calc(0.25rem - 3px));
   }
 }
 
@@ -834,19 +845,15 @@ a:hover {
     gap: 0.85rem;
   }
 
-  .section--platform-fit .platform-fit__card:nth-child(1),
-  .section--platform-fit .platform-fit__card:nth-child(2),
-  .section--platform-fit .platform-fit__card:nth-child(3),
-  .section--platform-fit .platform-fit__card:nth-child(4),
-  .section--platform-fit .platform-fit__card--wide {
+  .section--platform-fit .platform-fit__anim .platform-fit__card {
     transform: none;
   }
 
-  .section--platform-fit .platform-fit__card:nth-child(even) {
+  .section--platform-fit .platform-fit__anim:nth-child(even) .platform-fit__card {
     transform: translateX(0.35rem);
   }
 
-  .section--platform-fit .platform-fit__card--wide {
+  .section--platform-fit .platform-fit__anim--wide .platform-fit__card {
     transform: none;
   }
 
@@ -865,8 +872,12 @@ a:hover {
       inset 0 1px 0 rgba(255, 255, 255, 0.95);
   }
 
-  .section--platform-fit .platform-fit__card:nth-child(even):hover {
+  .section--platform-fit .platform-fit__anim:nth-child(even) .platform-fit__card:hover {
     transform: translateX(0.35rem) translateY(-3px);
+  }
+
+  .section--platform-fit .platform-fit__anim--wide .platform-fit__card:hover {
+    transform: translateY(-3px);
   }
 
   .section--platform-fit .platform-fit__perks-bar {
@@ -888,28 +899,24 @@ a:hover {
     gap: 0.85rem 1rem;
   }
 
-  .section--platform-fit .platform-fit__card--wide {
+  .section--platform-fit .platform-fit__anim--wide {
     grid-column: 1 / -1;
   }
 
-  .section--platform-fit .platform-fit__card:nth-child(1) {
+  .section--platform-fit .platform-fit__anim:nth-child(1) .platform-fit__card {
     transform: translateY(0);
   }
 
-  .section--platform-fit .platform-fit__card:nth-child(2) {
+  .section--platform-fit .platform-fit__anim:nth-child(2) .platform-fit__card {
     transform: translateY(0.65rem);
   }
 
-  .section--platform-fit .platform-fit__card:nth-child(3) {
+  .section--platform-fit .platform-fit__anim:nth-child(3) .platform-fit__card {
     transform: translateY(-0.25rem);
   }
 
-  .section--platform-fit .platform-fit__card:nth-child(4) {
+  .section--platform-fit .platform-fit__anim:nth-child(4) .platform-fit__card {
     transform: translateY(0.45rem);
-  }
-
-  .section--platform-fit .platform-fit__card--wide {
-    transform: translateY(0.15rem);
   }
 }
 
