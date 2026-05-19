@@ -1,17 +1,17 @@
 /**
- * Hero — cinematic media layer, zoned overlays, hero-only typography
- * Layout / spacing / animations не трогаем.
+ * Hero — единая cinematic сцена (full-bleed media + blend)
+ * Только hero: фото, overlay, H1, body. Layout/spacing/анимации не трогаем.
  */
 
 :root {
   --hero-bg: #070707;
-  --hero-font-h1: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --hero-font-h1: "Playfair Display", Georgia, "Times New Roman", serif;
   --hero-text: rgba(245, 242, 236, 0.96);
   --hero-accent: #d58a42;
-  --hero-body: rgba(245, 242, 236, 0.9);
+  --hero-body: rgba(245, 242, 236, 0.89);
 }
 
-/* === Scene & media layer (img, not background-image) === */
+/* === Единая сцена === */
 .hero {
   background: var(--hero-bg);
 }
@@ -24,44 +24,58 @@
 .hero__picture {
   position: absolute;
   inset: 0;
-  z-index: 0;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  box-sizing: border-box;
-  padding-left: min(46%, 520px);
-  padding-right: clamp(0.25rem, 1.5vw, 1.25rem);
-  pointer-events: none;
-}
-
-.hero__scene-img {
-  position: relative;
-  inset: auto;
+  display: block;
   width: 100%;
   height: 100%;
-  max-width: 100%;
-  max-height: min(88vh, 800px);
-  object-fit: contain;
-  object-position: right center;
-  opacity: 1;
-  transform: none;
-  filter: brightness(0.94) contrast(1.04) saturate(0.92);
 }
 
-/* Zone 1 — left text readability */
-.hero__scene-overlay {
-  z-index: 1;
-  background: linear-gradient(
-    102deg,
-    rgba(7, 7, 7, 0.94) 0%,
-    rgba(7, 7, 7, 0.88) 18%,
-    rgba(7, 7, 7, 0.62) 34%,
-    rgba(7, 7, 7, 0.22) 46%,
-    transparent 54%
+/* Full-bleed: фото = фон сцены, без отдельного блока */
+.hero__scene-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 76% 44%;
+  transform: scale(0.94);
+  transform-origin: 72% 44%;
+  opacity: 1;
+  filter: brightness(0.58) contrast(1.06) saturate(0.9);
+  /* Левый край растворяется в тьму hero — нет видимой границы картинки */
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.35) 10%,
+    rgba(0, 0, 0, 0.85) 22%,
+    #000 34%,
+    #000 100%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.35) 10%,
+    rgba(0, 0, 0, 0.85) 22%,
+    #000 34%,
+    #000 100%
   );
 }
 
-/* Zone 2 — laptop: минимальное затемнение, объект читаем */
+/* Zone 1 — под текстом сильнее; фото заходит под текстовую зону */
+.hero__scene-overlay {
+  z-index: 1;
+  background: linear-gradient(
+    100deg,
+    rgba(7, 7, 7, 0.97) 0%,
+    rgba(7, 7, 7, 0.92) 14%,
+    rgba(7, 7, 7, 0.72) 26%,
+    rgba(7, 7, 7, 0.38) 38%,
+    rgba(7, 7, 7, 0.12) 48%,
+    transparent 58%
+  );
+}
+
+/* Zone 2 — зона ноутбука: мягче */
 .hero__scene::before {
   content: "";
   position: absolute;
@@ -69,14 +83,14 @@
   z-index: 2;
   pointer-events: none;
   background: radial-gradient(
-    ellipse 48% 58% at 82% 50%,
-    transparent 42%,
-    rgba(7, 7, 7, 0.06) 78%,
-    rgba(7, 7, 7, 0.12) 100%
+    ellipse 55% 58% at 80% 46%,
+    transparent 38%,
+    rgba(7, 7, 7, 0.05) 72%,
+    rgba(7, 7, 7, 0.1) 100%
   );
 }
 
-/* Zone 3 — edge vignette → #070707 */
+/* Zone 3 — vignette краёв */
 .hero__scene::after {
   content: "";
   position: absolute;
@@ -85,24 +99,21 @@
   pointer-events: none;
   background:
     radial-gradient(
-      ellipse 115% 105% at 50% 50%,
-      transparent 42%,
-      rgba(7, 7, 7, 0.35) 100%
+      ellipse 110% 100% at 50% 50%,
+      transparent 40%,
+      rgba(7, 7, 7, 0.3) 100%
     ),
-    linear-gradient(90deg, transparent 62%, rgba(7, 7, 7, 0.28) 100%),
-    linear-gradient(180deg, rgba(7, 7, 7, 0.32) 0%, transparent 18%, transparent 78%, rgba(7, 7, 7, 0.42) 100%);
+    linear-gradient(90deg, transparent 55%, rgba(7, 7, 7, 0.2) 100%),
+    linear-gradient(180deg, rgba(7, 7, 7, 0.35) 0%, transparent 20%, transparent 75%, rgba(7, 7, 7, 0.45) 100%);
 }
 
+/* Без светлого glow под текстом */
 .hero__content::before {
-  background: radial-gradient(
-    ellipse 100% 90% at 0% 42%,
-    rgba(7, 7, 7, 0.5) 0%,
-    rgba(7, 7, 7, 0.18) 48%,
-    transparent 72%
-  );
+  background: transparent;
+  opacity: 0;
 }
 
-/* === Hero H1 — DM Serif Display (только hero) === */
+/* === Hero H1 — Playfair Display (только hero) === */
 .hero h1,
 .hero h1 *,
 .hero .hero__title,
@@ -113,7 +124,7 @@
 .hero .hero__title span,
 .hero .hero__title em {
   font-family: var(--hero-font-h1);
-  font-weight: 400;
+  font-weight: 700;
   font-synthesis: none;
   font-style: normal;
   letter-spacing: -0.03em;
@@ -133,7 +144,7 @@
   background-clip: border-box;
   -webkit-text-fill-color: currentColor;
   filter: none;
-  text-shadow: 0 2px 32px rgba(0, 0, 0, 0.58);
+  text-shadow: none;
 }
 
 .hero .hero__title em,
@@ -142,140 +153,148 @@
 .hero .hero__title .word,
 .hero__title em {
   font-family: inherit;
-  font-weight: 400;
+  font-weight: 700;
   font-style: normal;
   color: var(--hero-accent);
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
 }
 
-/* === Hero body (только hero) === */
+/* === Hero body & UI text — чисто, без эффектов === */
 .hero .hero__lead {
   font-family: "Inter", sans-serif;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--hero-body);
+  text-shadow: none;
+  filter: none;
+  -webkit-text-fill-color: currentColor;
+  background: none;
 }
 
 .hero .eyebrow,
 .hero .link-arrow {
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);
+  text-shadow: none;
+  filter: none;
+  -webkit-text-fill-color: currentColor;
+  background: none;
 }
 
-/* === Desktop — ноутбук справа, contain, 100% visible === */
+/* === Desktop — ноутбук справа, целиком, сцена без разрыва === */
 @media (min-width: 901px) {
-  .hero__picture {
-    padding-left: min(50%, 560px);
-    padding-right: clamp(0.5rem, 2vw, 2rem);
-  }
-
   .hero__scene-img {
-    max-height: min(86vh, 780px);
-    object-position: right center;
-    filter: brightness(0.96) contrast(1.05) saturate(0.94);
+    object-position: 80% 42%;
+    transform: scale(0.92);
+    transform-origin: 78% 42%;
+    filter: brightness(0.6) contrast(1.07) saturate(0.92);
+    -webkit-mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.25) 8%,
+      rgba(0, 0, 0, 0.75) 18%,
+      #000 30%,
+      #000 100%
+    );
+    mask-image: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.25) 8%,
+      rgba(0, 0, 0, 0.75) 18%,
+      #000 30%,
+      #000 100%
+    );
   }
 
   .hero__scene-overlay {
     background: linear-gradient(
-      100deg,
-      rgba(7, 7, 7, 0.96) 0%,
-      rgba(7, 7, 7, 0.9) 20%,
-      rgba(7, 7, 7, 0.58) 36%,
-      rgba(7, 7, 7, 0.18) 48%,
-      transparent 56%
+      98deg,
+      rgba(7, 7, 7, 0.98) 0%,
+      rgba(7, 7, 7, 0.93) 16%,
+      rgba(7, 7, 7, 0.68) 28%,
+      rgba(7, 7, 7, 0.32) 40%,
+      rgba(7, 7, 7, 0.08) 50%,
+      transparent 60%
     );
   }
 
   .hero__scene::before {
     background: radial-gradient(
-      ellipse 52% 62% at 84% 48%,
-      transparent 44%,
-      rgba(7, 7, 7, 0.04) 72%,
-      rgba(7, 7, 7, 0.1) 100%
+      ellipse 50% 55% at 82% 44%,
+      transparent 42%,
+      rgba(7, 7, 7, 0.03) 70%,
+      rgba(7, 7, 7, 0.08) 100%
     );
-  }
-
-  .hero__scene::after {
-    background:
-      radial-gradient(
-        ellipse 110% 100% at 50% 50%,
-        transparent 44%,
-        rgba(7, 7, 7, 0.32) 100%
-      ),
-      linear-gradient(90deg, transparent 58%, rgba(7, 7, 7, 0.22) 100%),
-      linear-gradient(180deg, rgba(7, 7, 7, 0.28) 0%, transparent 22%, transparent 100%);
   }
 }
 
-/* === Mobile — отдельная композиция, ноутбук снизу === */
+/* === Mobile — отдельная композиция === */
 @media (max-width: 900px) {
-  .hero__picture {
-    align-items: flex-end;
-    justify-content: center;
-    padding: 0;
-    padding-top: min(42%, 320px);
-    padding-bottom: clamp(6.5rem, 22vh, 9.5rem);
-  }
-
   .hero__scene-img {
-    width: min(100%, 400px);
-    height: auto;
-    max-height: min(48vh, 420px);
-    object-fit: contain;
-    object-position: center bottom;
-    filter: brightness(0.92) contrast(1.03) saturate(0.9);
+    object-position: 58% 46%;
+    transform: scale(0.9);
+    transform-origin: 55% 48%;
+    filter: brightness(0.54) contrast(1.05) saturate(0.88);
+    -webkit-mask-image: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.2) 8%,
+      #000 22%,
+      #000 88%,
+      rgba(0, 0, 0, 0.85) 96%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.2) 8%,
+      #000 22%,
+      #000 88%,
+      rgba(0, 0, 0, 0.85) 96%,
+      transparent 100%
+    );
   }
 
   .hero__scene-overlay {
-    background: linear-gradient(
-      180deg,
-      rgba(7, 7, 7, 0.95) 0%,
-      rgba(7, 7, 7, 0.86) 20%,
-      rgba(7, 7, 7, 0.48) 36%,
-      rgba(7, 7, 7, 0.12) 50%,
-      transparent 62%
-    );
-  }
-
-  .hero__scene::before {
-    background: radial-gradient(
-      ellipse 90% 50% at 50% 78%,
-      transparent 50%,
-      rgba(7, 7, 7, 0.05) 85%,
-      rgba(7, 7, 7, 0.1) 100%
-    );
-  }
-
-  .hero__scene::after {
     background:
-      radial-gradient(
-        ellipse 130% 85% at 50% 85%,
-        transparent 35%,
-        rgba(7, 7, 7, 0.38) 100%
-      ),
       linear-gradient(
         180deg,
-        transparent 55%,
-        rgba(7, 7, 7, 0.35) 88%,
-        rgba(7, 7, 7, 0.55) 100%
+        rgba(7, 7, 7, 0.96) 0%,
+        rgba(7, 7, 7, 0.88) 18%,
+        rgba(7, 7, 7, 0.52) 32%,
+        rgba(7, 7, 7, 0.14) 46%,
+        transparent 58%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(7, 7, 7, 0.5) 0%,
+        transparent 35%
       );
   }
 
-  .hero__content::before {
+  .hero__scene::before {
     background: radial-gradient(
-      ellipse 120% 65% at 50% 0%,
-      rgba(7, 7, 7, 0.45) 0%,
-      transparent 70%
+      ellipse 95% 55% at 52% 62%,
+      transparent 45%,
+      rgba(7, 7, 7, 0.06) 100%
     );
+  }
+
+  .hero__scene::after {
+    background:
+      radial-gradient(
+        ellipse 120% 80% at 50% 70%,
+        transparent 30%,
+        rgba(7, 7, 7, 0.35) 100%
+      ),
+      linear-gradient(180deg, transparent 50%, rgba(7, 7, 7, 0.4) 100%);
   }
 }
 
 @media (max-width: 480px) {
-  .hero__picture {
-    padding-top: min(44%, 280px);
-    padding-bottom: clamp(6rem, 20vh, 8.5rem);
-  }
-
   .hero__scene-img {
-    width: min(100%, 360px);
-    max-height: min(44vh, 380px);
-    object-position: center bottom;
+    object-position: 54% 44%;
+    transform: scale(0.88);
+    transform-origin: 52% 46%;
   }
 }
