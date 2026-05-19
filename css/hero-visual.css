@@ -1,6 +1,6 @@
 /**
- * Hero — atmospheric photo integration (IMG workspace)
- * Только визуал первого экрана, без рамок и отдельного блока.
+ * Hero — premium cinematic photo integration
+ * Только фон, overlay и позиционирование изображения.
  */
 
 .hero {
@@ -13,30 +13,32 @@
 
 .hero__scene-img {
   object-fit: cover;
-  object-position: 72% 48%;
-  transform: scale(1.04);
-  filter: brightness(0.52) contrast(1.1) saturate(0.82);
+  object-position: 82% 44%;
+  transform: scale(0.94);
+  transform-origin: 80% 44%;
+  filter: brightness(0.54) contrast(1.06) saturate(0.86);
 }
 
-/* Мягкое слияние фото с фоном */
+/* Плавное слияние фото с фоном сайта */
 .hero__scene-overlay {
   z-index: 1;
   background:
     linear-gradient(
-      102deg,
-      rgba(7, 7, 7, 0.94) 0%,
-      rgba(12, 11, 10, 0.88) 14%,
-      rgba(22, 20, 18, 0.62) 32%,
-      rgba(28, 25, 22, 0.28) 48%,
-      rgba(18, 16, 14, 0.08) 58%,
-      transparent 72%
+      100deg,
+      rgba(7, 7, 7, 0.97) 0%,
+      rgba(9, 8, 7, 0.92) 12%,
+      rgba(14, 12, 11, 0.78) 24%,
+      rgba(20, 18, 16, 0.48) 38%,
+      rgba(24, 21, 18, 0.2) 50%,
+      rgba(18, 16, 14, 0.06) 62%,
+      transparent 76%
     ),
     linear-gradient(
       180deg,
-      rgba(7, 7, 7, 0.42) 0%,
-      transparent 28%,
-      transparent 68%,
-      rgba(7, 7, 7, 0.55) 100%
+      rgba(7, 7, 7, 0.5) 0%,
+      transparent 22%,
+      transparent 62%,
+      rgba(7, 7, 7, 0.62) 100%
     );
 }
 
@@ -47,81 +49,148 @@
   z-index: 2;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 85% 75% at 78% 52%, transparent 35%, rgba(7, 7, 7, 0.22) 100%),
-    linear-gradient(90deg, transparent 62%, rgba(7, 7, 7, 0.18) 100%);
+    radial-gradient(
+      ellipse 70% 65% at 82% 46%,
+      rgba(213, 138, 66, 0.07) 0%,
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 95% 80% at 78% 50%,
+      transparent 28%,
+      rgba(7, 7, 7, 0.16) 100%
+    ),
+    linear-gradient(90deg, transparent 58%, rgba(7, 7, 7, 0.22) 100%);
 }
 
 .hero__content::before {
   background: radial-gradient(
-    ellipse 100% 90% at 0% 42%,
-    rgba(7, 7, 7, 0.55) 0%,
-    rgba(7, 7, 7, 0.2) 45%,
-    transparent 72%
+    ellipse 110% 95% at 0% 40%,
+    rgba(7, 7, 7, 0.62) 0%,
+    rgba(7, 7, 7, 0.28) 42%,
+    transparent 70%
   );
 }
 
+/* Читаемость текста на затемнении */
 .hero__title,
 .hero .eyebrow,
 .hero__lead,
 .hero .link-arrow {
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55);
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.62);
 }
 
-/* Desktop — текст слева, сцена справа */
+.hero .hero__title,
+.hero .hero__title .hero__title-line {
+  font-weight: 600;
+  color: rgba(252, 249, 243, 0.97);
+  text-shadow:
+    0 2px 36px rgba(0, 0, 0, 0.68),
+    0 1px 0 rgba(0, 0, 0, 0.35);
+  letter-spacing: -0.025em;
+}
+
+/* Desktop — ноутбук справа, полностью в кадре */
 @media (min-width: 901px) {
   .hero__scene-img {
-    object-position: 78% 46%;
-    transform: scale(1.05);
+    object-position: 88% 42%;
+    transform: scale(0.9);
+    transform-origin: 90% 42%;
+    filter: brightness(0.56) contrast(1.07) saturate(0.88);
   }
 
   .hero__scene-overlay {
     background:
       linear-gradient(
-        100deg,
-        rgba(7, 7, 7, 0.96) 0%,
-        rgba(10, 9, 8, 0.9) 16%,
-        rgba(20, 18, 16, 0.55) 34%,
-        rgba(26, 23, 20, 0.18) 50%,
-        transparent 66%
+        98deg,
+        rgba(7, 7, 7, 0.98) 0%,
+        rgba(8, 7, 6, 0.94) 14%,
+        rgba(16, 14, 12, 0.72) 28%,
+        rgba(22, 19, 17, 0.38) 42%,
+        rgba(20, 18, 15, 0.12) 54%,
+        transparent 68%
       ),
-      linear-gradient(180deg, rgba(7, 7, 7, 0.35) 0%, transparent 32%, transparent 100%);
+      linear-gradient(
+        180deg,
+        rgba(7, 7, 7, 0.38) 0%,
+        transparent 30%,
+        transparent 72%,
+        rgba(7, 7, 7, 0.48) 100%
+      );
+  }
+
+  .hero__scene::after {
+    background:
+      radial-gradient(
+        ellipse 55% 50% at 84% 44%,
+        rgba(255, 196, 120, 0.06) 0%,
+        transparent 58%
+      ),
+      radial-gradient(
+        ellipse 100% 85% at 80% 48%,
+        transparent 32%,
+        rgba(7, 7, 7, 0.14) 100%
+      ),
+      linear-gradient(90deg, transparent 64%, rgba(7, 7, 7, 0.2) 100%);
   }
 }
 
-/* Mobile — фото на фоне, текст читаем сверху */
+/* Mobile — ноутбук целиком, мягкий переход сверху */
 @media (max-width: 900px) {
   .hero__scene-img {
-    object-position: 58% 42%;
-    transform: scale(1.08);
-    filter: brightness(0.48) contrast(1.08) saturate(0.8);
+    object-position: 62% 48%;
+    transform: scale(0.88);
+    transform-origin: 58% 50%;
+    filter: brightness(0.5) contrast(1.05) saturate(0.84);
   }
 
   .hero__scene-overlay {
     background:
       linear-gradient(
         180deg,
-        rgba(7, 7, 7, 0.94) 0%,
-        rgba(10, 9, 8, 0.82) 18%,
-        rgba(18, 16, 14, 0.45) 38%,
-        rgba(22, 20, 18, 0.12) 52%,
-        transparent 68%
+        rgba(7, 7, 7, 0.97) 0%,
+        rgba(9, 8, 7, 0.9) 14%,
+        rgba(14, 12, 11, 0.62) 28%,
+        rgba(18, 16, 14, 0.28) 42%,
+        rgba(16, 14, 12, 0.08) 54%,
+        transparent 70%
       ),
       linear-gradient(
         90deg,
-        rgba(7, 7, 7, 0.75) 0%,
-        rgba(7, 7, 7, 0.35) 45%,
-        transparent 78%
+        rgba(7, 7, 7, 0.55) 0%,
+        rgba(7, 7, 7, 0.2) 40%,
+        transparent 72%
       );
   }
 
   .hero__scene::after {
     background:
-      radial-gradient(ellipse 120% 80% at 50% 65%, transparent 20%, rgba(7, 7, 7, 0.35) 100%);
+      radial-gradient(
+        ellipse 130% 90% at 58% 58%,
+        transparent 18%,
+        rgba(7, 7, 7, 0.32) 100%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(7, 7, 7, 0.35) 0%,
+        transparent 38%,
+        rgba(7, 7, 7, 0.45) 100%
+      );
+  }
+
+  .hero__content::before {
+    background: radial-gradient(
+      ellipse 120% 70% at 50% 0%,
+      rgba(7, 7, 7, 0.5) 0%,
+      rgba(7, 7, 7, 0.15) 50%,
+      transparent 78%
+    );
   }
 }
 
 @media (max-width: 480px) {
   .hero__scene-img {
-    object-position: 52% 38%;
+    object-position: 58% 46%;
+    transform: scale(0.86);
+    transform-origin: 55% 48%;
   }
 }
