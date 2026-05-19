@@ -1,0 +1,127 @@
+/**
+ * Hero — atmospheric photo integration (IMG workspace)
+ * Только визуал первого экрана, без рамок и отдельного блока.
+ */
+
+.hero {
+  background: #070707;
+}
+
+.hero__scene {
+  isolation: isolate;
+}
+
+.hero__scene-img {
+  object-fit: cover;
+  object-position: 72% 48%;
+  transform: scale(1.04);
+  filter: brightness(0.52) contrast(1.1) saturate(0.82);
+}
+
+/* Мягкое слияние фото с фоном */
+.hero__scene-overlay {
+  z-index: 1;
+  background:
+    linear-gradient(
+      102deg,
+      rgba(7, 7, 7, 0.94) 0%,
+      rgba(12, 11, 10, 0.88) 14%,
+      rgba(22, 20, 18, 0.62) 32%,
+      rgba(28, 25, 22, 0.28) 48%,
+      rgba(18, 16, 14, 0.08) 58%,
+      transparent 72%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(7, 7, 7, 0.42) 0%,
+      transparent 28%,
+      transparent 68%,
+      rgba(7, 7, 7, 0.55) 100%
+    );
+}
+
+.hero__scene::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 85% 75% at 78% 52%, transparent 35%, rgba(7, 7, 7, 0.22) 100%),
+    linear-gradient(90deg, transparent 62%, rgba(7, 7, 7, 0.18) 100%);
+}
+
+.hero__content::before {
+  background: radial-gradient(
+    ellipse 100% 90% at 0% 42%,
+    rgba(7, 7, 7, 0.55) 0%,
+    rgba(7, 7, 7, 0.2) 45%,
+    transparent 72%
+  );
+}
+
+.hero__title,
+.hero .eyebrow,
+.hero__lead,
+.hero .link-arrow {
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55);
+}
+
+/* Desktop — текст слева, сцена справа */
+@media (min-width: 901px) {
+  .hero__scene-img {
+    object-position: 78% 46%;
+    transform: scale(1.05);
+  }
+
+  .hero__scene-overlay {
+    background:
+      linear-gradient(
+        100deg,
+        rgba(7, 7, 7, 0.96) 0%,
+        rgba(10, 9, 8, 0.9) 16%,
+        rgba(20, 18, 16, 0.55) 34%,
+        rgba(26, 23, 20, 0.18) 50%,
+        transparent 66%
+      ),
+      linear-gradient(180deg, rgba(7, 7, 7, 0.35) 0%, transparent 32%, transparent 100%);
+  }
+}
+
+/* Mobile — фото на фоне, текст читаем сверху */
+@media (max-width: 900px) {
+  .hero__scene-img {
+    object-position: 58% 42%;
+    transform: scale(1.08);
+    filter: brightness(0.48) contrast(1.08) saturate(0.8);
+  }
+
+  .hero__scene-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(7, 7, 7, 0.94) 0%,
+        rgba(10, 9, 8, 0.82) 18%,
+        rgba(18, 16, 14, 0.45) 38%,
+        rgba(22, 20, 18, 0.12) 52%,
+        transparent 68%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(7, 7, 7, 0.75) 0%,
+        rgba(7, 7, 7, 0.35) 45%,
+        transparent 78%
+      );
+  }
+
+  .hero__scene::after {
+    background:
+      radial-gradient(ellipse 120% 80% at 50% 65%, transparent 20%, rgba(7, 7, 7, 0.35) 100%);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__scene-img {
+    object-position: 52% 38%;
+  }
+}

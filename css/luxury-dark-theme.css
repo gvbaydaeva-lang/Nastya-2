@@ -209,69 +209,7 @@ label,
   letter-spacing: 0.18em;
 }
 
-/* === Hero === */
-.hero {
-  background: #070707;
-}
-
-.hero__scene-img {
-  filter: brightness(0.42) contrast(1.12) saturate(0.75);
-}
-
-.hero__scene-overlay {
-  background: linear-gradient(
-    102deg,
-    rgba(7, 7, 7, 0.94) 0%,
-    rgba(17, 17, 17, 0.82) 22%,
-    rgba(26, 26, 26, 0.45) 42%,
-    transparent 58%
-  );
-}
-
-.hero__content::before {
-  background: radial-gradient(
-    ellipse 95% 85% at 8% 45%,
-    rgba(231, 119, 33, 0.12) 0%,
-    rgba(17, 17, 17, 0.35) 48%,
-    transparent 72%
-  );
-}
-
-/* Hero title typography — typography.css */
-
-.hero__lead,
-.hero .eyebrow,
-.hero .link-arrow {
-  color: var(--text-muted);
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
-}
-
-.hero .link-arrow:hover {
-  color: var(--accent-hover);
-}
-
-@media (max-width: 900px) {
-  .hero__scene-readability {
-    background: linear-gradient(
-      180deg,
-      rgba(7, 7, 7, 0.88) 0%,
-      rgba(17, 17, 17, 0.55) 55%,
-      transparent 100%
-    );
-  }
-
-  .hero__scene-fade {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(7, 7, 7, 0.95) 0%,
-        rgba(17, 17, 17, 0.75) 22%,
-        rgba(26, 26, 26, 0.3) 38%,
-        transparent 50%
-      ),
-      radial-gradient(ellipse 100% 70% at 50% 28%, rgba(231, 119, 33, 0.08) 0%, transparent 65%);
-  }
-}
+/* Hero atmosphere — hero-visual.css */
 
 /* === Sections base === */
 .section--dark {
