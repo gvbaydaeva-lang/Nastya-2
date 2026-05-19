@@ -77,26 +77,15 @@ a:hover {
   color: var(--text);
 }
 
-/* === Typography === */
+/* === Typography — см. typography.css === */
 h1,
 h2,
-h3,
-h4,
-h5,
-h6,
 .hero__title,
-.section__title,
-.platform-fit__card-title,
-.direction-card h3,
-.support__card h3,
-.faq__question,
-.curator__name,
-.cta-final__title,
-.tariff__name,
-.logo {
+.section__title {
   font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   color: var(--text-heading);
 }
 
@@ -256,7 +245,7 @@ label,
 
 .hero__title {
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: 400;
   background: var(--accent-gradient);
   -webkit-background-clip: text;
   background-clip: text;
@@ -271,7 +260,7 @@ label,
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .hero__lead,

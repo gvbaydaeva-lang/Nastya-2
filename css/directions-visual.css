@@ -57,18 +57,14 @@
 }
 
 /* --- Typography (только этот блок) --- */
+/* typography: .section__title / .section__subtitle — typography.css */
 .section--directions .section__title {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-weight: 500;
-  letter-spacing: -0.02em;
   color: #f4efe7;
   text-shadow: 0 2px 28px rgba(0, 0, 0, 0.45);
 }
 
 .section--directions .section__subtitle,
 .section--directions .section__subtitle--directions {
-  font-family: "Inter", system-ui, sans-serif;
-  font-weight: 400;
   color: #e5ddd1;
   opacity: 0.96;
   text-shadow: 0 1px 20px rgba(0, 0, 0, 0.5);
@@ -127,14 +123,12 @@
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
 }
 
+/* typography: .direction-card h3 / p — typography.css */
 .section--directions .direction-card h3 {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-weight: 500;
   color: #f4efe7;
 }
 
 .section--directions .direction-card p {
-  font-family: "Inter", system-ui, sans-serif;
   color: #e5ddd1;
   opacity: 0.94;
 }

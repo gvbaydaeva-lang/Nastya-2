@@ -30,11 +30,12 @@
   --about-warm-deep: #dccfc0;
 }
 
-/* === Typography (global) === */
+/* === Typography — см. typography.css === */
 body {
   font-family: var(--font-sans);
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
   color: var(--text);
   background: var(--bg);
   background-image: linear-gradient(180deg, #f7f3ec 0%, var(--bg) 40%, #efe9df 100%);
@@ -42,23 +43,12 @@ body {
 
 h1,
 h2,
-h3,
-h4,
-h5,
-h6,
 .hero__title,
-.section__title,
-.platform-fit__card-title,
-.direction-card h3,
-.support__card h3,
-.faq__question,
-.curator__name,
-.cta-final__title,
-.tariff__name,
-.logo {
+.section__title {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
 p,
@@ -110,7 +100,7 @@ select {
 .btn--primary,
 .btn--outline,
 .btn--sm {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 p,
@@ -121,7 +111,19 @@ p,
 .platform-fit__card p,
 .faq__answer {
   font-weight: 400;
-  line-height: 1.68;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+.platform-fit__card-title,
+.direction-card h3,
+.support__card h3,
+.faq__item summary,
+.tariff__name,
+.logo {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .grain {
@@ -326,10 +328,10 @@ a:hover {
 .hero__title {
   color: var(--text-heading);
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 400;
   font-size: clamp(2rem, 4.2vw, 3.2rem);
   line-height: 1.08;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   margin: 0 0 1.1rem;
   max-width: 13.5em;
   text-shadow: 0 1px 2px rgba(255, 252, 247, 0.95), 0 0 36px rgba(252, 248, 242, 0.85);
@@ -346,7 +348,7 @@ a:hover {
 .hero__title em {
   color: var(--accent);
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .hero__lead {
