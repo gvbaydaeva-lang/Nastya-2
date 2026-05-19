@@ -17,8 +17,7 @@
     <div class="container header__inner">
       <a href="#" class="logo">Анастасия <span class="logo__muted">· куратор</span></a>
       <nav class="nav" id="nav">
-        <a href="#audience">Для кого</a>
-        <a href="#about">О платформе</a>
+        <a href="#platform">Кому подойдёт</a>
         <a href="#directions">Направления</a>
         <a href="#tariffs">Тарифы</a>
         <a href="#faq">FAQ</a>
@@ -69,193 +68,49 @@
       </div>
     </section>
 
-    <!-- 2. Для кого -->
-    <section class="section section--tight" id="audience">
-      <div class="container">
-        <header class="section__head reveal">
-          <h2 class="section__title">Для кого платформа</h2>
-          <p class="section__subtitle">Если узнаёте себя — вы уже на полпути</p>
+    <!-- 2. Кому подойдёт платформа -->
+    <section class="section section--platform-fit" id="platform">
+      <div class="container platform-fit">
+        <header class="platform-fit__head reveal">
+          <h2 class="section__title">Кому подойдёт платформа</h2>
         </header>
-        <ul class="audience">
-          <li class="audience__item reveal">
-            <span class="audience__icon" aria-hidden="true">◆</span>
-            <h3>Девушки и женщины</h3>
-            <p>Хотите больше свободы, не зависеть от мужчины. Зарабатывать онлайн на свои хотелки / путешествия и ни в чем отказывать своим детям
-
-            </p>
-          </li>
-          <li class="audience__item reveal">
-            <span class="audience__icon" aria-hidden="true">◆</span>
-            <h3>Мамы в декрете</h3>
-            <p>Ищете возможность зарабатывать рядом с ребёнком. Никого не просить посидеть с детьми и ни у кого не отпрашиваться
-            </p>
-          </li>
-          <li class="audience__item reveal">
-            <span class="audience__icon" aria-hidden="true">◆</span>
-            <h3>Новички</h3>
-            <p>Давно хотите попробовать себя в онлайне, но не знаете, с чего начать</p>
-          </li>
-          <li class="audience__item reveal">
-            <span class="audience__icon" aria-hidden="true">◆</span>
-            <h3>Те, кто устал от офиса</h3>
-            <p>Хотите перейти на удалённую работу, фриланс или найти дополнительный онлайн-доход</p>
-          </li>
-          <li class="audience__item reveal">
-            <span class="audience__icon" aria-hidden="true">◆</span>
-            <h3>Студенты, школьники от 14 лет</h3>
-            <p>Зарабатывайте на свои мечты и помогайте родителям</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- 3. О платформе -->
-    <section class="section section--about" id="about">
-      <div class="about__atmosphere" aria-hidden="true">
-        <img
-          class="about__atmosphere-img"
-          src="assets/hero-evening-workspace.png"
-          alt=""
-          width="1600"
-          height="1067"
-          loading="lazy"
-          decoding="async"
-        />
-        <div class="about__atmosphere-wash"></div>
-        <div class="about__atmosphere-scrim"></div>
-        <div class="about__atmosphere-vignette"></div>
-      </div>
-      <div class="container about">
-        <div class="about__visual reveal" aria-hidden="true">
-          <div class="about__eco">
-            <svg class="about__eco-svg" viewBox="0 0 480 480" xmlns="http://www.w3.org/2000/svg" focusable="false">
-              <defs>
-                <linearGradient id="about-line-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#c9a062" stop-opacity="0.15" />
-                  <stop offset="45%" stop-color="#c9a062" stop-opacity="0.55" />
-                  <stop offset="100%" stop-color="#9a7544" stop-opacity="0.2" />
-                </linearGradient>
-                <linearGradient id="about-core-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#d4ad6e" stop-opacity="0.35" />
-                  <stop offset="50%" stop-color="#c9a062" stop-opacity="0.12" />
-                  <stop offset="100%" stop-color="#6b5344" stop-opacity="0.25" />
-                </linearGradient>
-                <radialGradient id="about-vignette" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="#1e1c19" stop-opacity="0" />
-                  <stop offset="68%" stop-color="#1a1815" stop-opacity="0.28" />
-                  <stop offset="100%" stop-color="#161412" stop-opacity="0.75" />
-                </radialGradient>
-                <filter id="about-glow-soft" x="-40%" y="-40%" width="180%" height="180%">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="b" />
-                  <feMerge>
-                    <feMergeNode in="b" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-                <filter id="about-glow-line" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur in="SourceGraphic" stdDeviation="2.2" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-              </defs>
-              <!-- фон SVG — мягко вписан в секцию -->
-              <rect width="480" height="480" fill="transparent" />
-              <rect width="480" height="480" fill="url(#about-vignette)" />
-              <circle cx="240" cy="240" r="200" fill="rgba(201,160,98,0.03)" />
-              <circle cx="240" cy="240" r="120" fill="rgba(201,160,98,0.04)" />
-
-              <!-- связи к ядру -->
-              <g class="about__eco-links" filter="url(#about-glow-line)" stroke="url(#about-line-grad)" stroke-width="1.15" fill="none" stroke-linecap="round" opacity="0.85">
-                <path class="about__eco-link" d="M240 240 L240 88" />
-                <path class="about__eco-link" d="M240 240 L378 152" />
-                <path class="about__eco-link" d="M240 240 L378 328" />
-                <path class="about__eco-link" d="M240 240 L240 392" />
-                <path class="about__eco-link" d="M240 240 L102 328" />
-                <path class="about__eco-link" d="M240 240 L102 152" />
-              </g>
-
-              <!-- ядро: кольца + ∞ -->
-              <g class="about__eco-core" transform="translate(240,240)">
-                <circle r="108" fill="none" stroke="rgba(201,160,98,0.08)" stroke-width="1" />
-                <circle r="88" fill="rgba(255,255,255,0.02)" stroke="rgba(201,160,98,0.18)" stroke-width="1" />
-                <circle class="about__eco-core-disc" r="72" fill="url(#about-core-grad)" stroke="rgba(201,160,98,0.25)" stroke-width="1.2" opacity="0.9" />
-                <g filter="url(#about-glow-soft)" class="about__eco-infinity-wrap">
-                  <circle class="about__eco-infinity" cx="-36" cy="0" r="56" fill="none" stroke="#c9a062" stroke-width="2.1" stroke-linecap="round" opacity="0.88" />
-                  <circle class="about__eco-infinity" cx="36" cy="0" r="56" fill="none" stroke="#c9a062" stroke-width="2.1" stroke-linecap="round" opacity="0.88" />
-                </g>
-                <circle r="6" fill="rgba(201,160,98,0.35)" stroke="rgba(212,173,110,0.5)" stroke-width="0.75" />
-              </g>
-
-              <g class="about__eco-node-wrap about__eco-node-wrap--d0" transform="translate(240,88)">
-                <g class="about__eco-node about__eco-node--1">
-                  <rect x="-28" y="-28" width="56" height="56" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(201,160,98,0.28)" stroke-width="1" />
-                  <path d="M-10,8 L0,-6 L10,8" fill="none" stroke="#c9a062" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.75" />
-                </g>
-              </g>
-              <g class="about__eco-node-wrap about__eco-node-wrap--d1" transform="translate(378,152)">
-                <g class="about__eco-node about__eco-node--2">
-                  <rect x="-28" y="-28" width="56" height="56" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(201,160,98,0.28)" stroke-width="1" />
-                  <path d="M-12,-4 h24 M-12,4 h18 M-12,12 h22" stroke="#c9a062" stroke-width="1.35" stroke-linecap="round" opacity="0.7" />
-                </g>
-              </g>
-              <g class="about__eco-node-wrap about__eco-node-wrap--d2" transform="translate(378,328)">
-                <g class="about__eco-node about__eco-node--3">
-                  <rect x="-28" y="-28" width="56" height="56" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(201,160,98,0.28)" stroke-width="1" />
-                  <path d="M-8,-6 L8,0 L-8,6 Z" fill="none" stroke="#c9a062" stroke-width="1.35" stroke-linejoin="round" opacity="0.75" />
-                </g>
-              </g>
-              <g class="about__eco-node-wrap about__eco-node-wrap--d3" transform="translate(240,392)">
-                <g class="about__eco-node about__eco-node--4">
-                  <rect x="-28" y="-28" width="56" height="56" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(201,160,98,0.28)" stroke-width="1" />
-                  <circle cx="-6" cy="-6" r="3" fill="#c9a062" opacity="0.45" />
-                  <circle cx="6" cy="-6" r="3" fill="#c9a062" opacity="0.45" />
-                  <circle cx="-6" cy="6" r="3" fill="#c9a062" opacity="0.45" />
-                  <circle cx="6" cy="6" r="3" fill="#c9a062" opacity="0.45" />
-                </g>
-              </g>
-              <g class="about__eco-node-wrap about__eco-node-wrap--d4" transform="translate(102,328)">
-                <g class="about__eco-node about__eco-node--5">
-                  <rect x="-28" y="-28" width="56" height="56" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(201,160,98,0.28)" stroke-width="1" />
-                  <path d="M-10,-6 Q0,2 10,-6 Q0,8 -10,-6" fill="none" stroke="#c9a062" stroke-width="1.25" stroke-linecap="round" opacity="0.68" />
-                </g>
-              </g>
-              <g class="about__eco-node-wrap about__eco-node-wrap--d5" transform="translate(102,152)">
-                <g class="about__eco-node about__eco-node--6">
-                  <rect x="-28" y="-28" width="56" height="56" rx="14" fill="rgba(255,255,255,0.04)" stroke="rgba(201,160,98,0.28)" stroke-width="1" />
-                  <path d="M-10,10 L-2,2 L6,10 M-2,2 V-8" fill="none" stroke="#c9a062" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" opacity="0.72" />
-                </g>
-              </g>
-
-              <!-- частицы -->
-              <g class="about__eco-dust" fill="#c9a062" opacity="0.35">
-                <circle class="about__dust" cx="120" cy="120" r="1.2" />
-                <circle class="about__dust" cx="360" cy="100" r="0.9" />
-                <circle class="about__dust" cx="400" cy="260" r="1.1" />
-                <circle class="about__dust" cx="80" cy="300" r="1" />
-                <circle class="about__dust" cx="320" cy="400" r="0.85" />
-                <circle class="about__dust" cx="180" cy="420" r="1" />
-                <circle class="about__dust" cx="420" cy="180" r="0.75" />
-                <circle class="about__dust" cx="60" cy="200" r="0.9" />
-              </g>
-            </svg>
+        <div class="platform-fit__main">
+          <div class="platform-fit__intro reveal">
+            <p class="platform-fit__lead">Образовательная платформа Instart объединяет в одном месте самые востребованные онлайн-направления для тех, кто хочет освоить удалённую работу и начать зарабатывать онлайн.</p>
+          </div>
+          <div class="platform-fit__audience reveal reveal--delay">
+            <p class="platform-fit__audience-label">Подойдёт, если узнаёте себя:</p>
+            <ul class="platform-fit__cards">
+              <li class="platform-fit__card">
+                <h3 class="platform-fit__card-title">Девушки и женщины</h3>
+                <p>Хотите больше свободы, свои деньги и возможность не зависеть от обстоятельств.</p>
+              </li>
+              <li class="platform-fit__card">
+                <h3 class="platform-fit__card-title">Мамы в декрете</h3>
+                <p>Хотите зарабатывать рядом с ребёнком и самостоятельно выстраивать свой график.</p>
+              </li>
+              <li class="platform-fit__card">
+                <h3 class="platform-fit__card-title">Новички</h3>
+                <p>Давно смотрите в сторону онлайна, но пока не понимаете, с чего начать и какое направление выбрать.</p>
+              </li>
+              <li class="platform-fit__card">
+                <h3 class="platform-fit__card-title">Те, кто устал от офиса</h3>
+                <p>Хотите перейти на удалённую работу, фриланс или найти дополнительный доход.</p>
+              </li>
+              <li class="platform-fit__card platform-fit__card--wide">
+                <h3 class="platform-fit__card-title">Студенты и подростки от 14 лет</h3>
+                <p>Хотите зарабатывать на свои цели и получать первый опыт онлайн-работы.</p>
+              </li>
+            </ul>
           </div>
         </div>
-        <div class="about__text reveal">
-          <h2 class="section__title section__title--left">О платформе</h2>
-          <p class="about__lead">
-            Образовательная платформа Instart объединяет несколько популярных направлений для онлайн-заработка в одном месте. Это не один курс, а целая экосистема самых востребованных онлайн профессий
-
-Подойдёт тем, кто хочет зарабатывать онлайн, но пока не знает, какое направление выбрать.
-          </p>
-          <ul class="about__list">
-            <li><strong>Доступ навсегда</strong> — возвращайтесь к урокам, когда удобно</li>
-            <li><strong>Обновления бесплатно</strong> — материалы дополняются БЕСПЛАТНО</li>
-            <li><strong>Чат поддержки и комьюнити</strong> — можно задавать вопросы и общаться с участниками</li>
-          </ul>
-          <a href="#contacts" class="btn btn--primary">Записаться на консультацию</a>
-        </div>
+        <ul class="platform-fit__perks reveal">
+          <li>Несколько востребованных направлений на одной платформе</li>
+          <li>Доступ к урокам остаётся навсегда</li>
+          <li>Обновления добавляются бесплатно</li>
+          <li>Есть чат поддержки и комьюнити</li>
+          <li>Можно изучать материалы в своём темпе</li>
+        </ul>
       </div>
     </section>
 
