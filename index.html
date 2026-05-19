@@ -136,8 +136,13 @@
     </section>
 
     <!-- 4. Направления -->
-    <section class="section section--dark" id="directions">
-      <div class="container">
+    <section class="section section--directions" id="directions">
+      <div class="directions__mesh-wrap" id="directions-mesh-wrap" aria-hidden="true">
+        <canvas class="directions__mesh-canvas" id="directions-mesh-canvas"></canvas>
+        <div class="directions__mesh-fallback" aria-hidden="true"></div>
+        <div class="directions__mesh-veil"></div>
+      </div>
+      <div class="container directions__inner">
         <header class="section__head reveal">
           <h2 class="section__title">Направления обучения</h2>
           <p class="section__subtitle section__subtitle--directions">На платформе представлено более 25 онлайн-направлений. Вы сможете выбрать то, что подходит именно вам.<span class="subtitle-m-br" aria-hidden="true"></span> И постепенно осваивать новые навыки внутри&nbsp;платформы.</p>
@@ -446,6 +451,7 @@
     </div>
   </footer>
 
+  <script src="js/directions-mesh.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
