@@ -1,8 +1,8 @@
-/* Premium editorial — светлая тёплая тема */
+/* Premium editorial — layout & effects (visual tokens in luxury-dark-theme.css) */
 
 :root {
-  --font-sans: "Manrope", sans-serif;
-  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
   --bg: #f3efe8;
   --bg-elevated: #eee7dd;
   --bg-muted: #e5ddd2;
@@ -32,7 +32,7 @@
 
 /* === Typography (global) === */
 body {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-sans);
   font-weight: 400;
   line-height: 1.7;
   color: var(--text);
@@ -56,7 +56,7 @@ h6,
 .cta-final__title,
 .tariff__name,
 .logo {
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-display);
   font-weight: 500;
   letter-spacing: -0.02em;
 }
@@ -96,7 +96,7 @@ label,
 .btn,
 .btn--primary,
 .btn--outline {
-  font-family: "Manrope", sans-serif;
+  font-family: var(--font-sans);
 }
 
 button,
@@ -325,7 +325,7 @@ a:hover {
 
 .hero__title {
   color: var(--text-heading);
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-display);
   font-weight: 500;
   font-size: clamp(2rem, 4.2vw, 3.2rem);
   line-height: 1.08;
