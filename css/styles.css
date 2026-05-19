@@ -19,8 +19,8 @@
   --about-warm-deep: #070707;
   --about-warm-text-panel: rgba(255, 255, 255, 0.08);
   --about-warm-text-border: rgba(255, 255, 255, 0.12);
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Cormorant Garamond", serif;
   --glass-bg: rgba(255, 255, 255, 0.08);
   --glass-border: rgba(255, 255, 255, 0.12);
   --glass-blur: 26px;

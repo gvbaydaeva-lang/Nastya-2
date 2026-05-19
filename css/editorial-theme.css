@@ -2,7 +2,7 @@
 
 :root {
   --font-sans: "Inter", sans-serif;
-  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-display: "Cormorant Garamond", serif;
   --bg: #f3efe8;
   --bg-elevated: #eee7dd;
   --bg-muted: #e5ddd2;
@@ -41,15 +41,7 @@ body {
   background-image: linear-gradient(180deg, #f7f3ec 0%, var(--bg) 40%, #efe9df 100%);
 }
 
-h1,
-h2,
-.hero__title,
-.section__title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
+/* Секционные заголовки — typography.css */
 
 p,
 a,
@@ -328,8 +320,6 @@ a:hover {
 
 .hero__title {
   color: var(--text-heading);
-  font-family: var(--font-display);
-  font-weight: 400;
   font-size: clamp(2rem, 4.2vw, 3.2rem);
   line-height: 1.08;
   letter-spacing: -0.02em;
@@ -347,9 +337,7 @@ a:hover {
 }
 
 .hero__title em {
-  color: var(--accent);
   font-style: normal;
-  font-weight: 400;
 }
 
 .hero__lead {

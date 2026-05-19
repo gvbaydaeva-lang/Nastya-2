@@ -1,14 +1,17 @@
 /**
- * Premium editorial typography — только шрифты и типографика.
- * Cormorant Garamond: секционные / hero заголовки.
- * Inter: всё остальное.
+ * Единая типографика сайта
+ * Hero H1 — Cormorant Garamond 600
+ * Секционные заголовки — Cormorant Garamond 400
+ * Всё остальное — Inter 400 / 500
  */
 
 :root {
   --font-sans: "Inter", sans-serif;
   --font-display: "Cormorant Garamond", serif;
+  --hero-accent: #d58a42;
 }
 
+/* === Base === */
 body {
   font-family: var(--font-sans);
   font-weight: 400;
@@ -16,76 +19,121 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* --- Cormorant: секционные заголовки --- */
-h1,
-h2,
-.section__title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-
-/* --- Cormorant: hero H1 (отдельно от секций) --- */
+/* === Hero H1 — Cormorant 600 (реальный вес из Google Fonts) === */
+.hero h1,
+.hero h1 *,
+.hero .hero__title,
+.hero .hero__title *,
 .hero__title,
-.hero-title,
 .hero__title *,
+.hero-title,
 .hero-title *,
 .hero__title-line,
 .hero__title span,
 .hero__title em,
 .hero-title-line,
-h1.hero__title .hero__title-line,
-h1.hero__title em,
-.hero .hero__title *,
+.hero .hero__title .accent,
+.hero .hero__title .highlight,
+.hero .hero__title .word,
 .hero__title .accent,
 .hero__title .highlight,
 .hero__title .word {
-  font-family: "Cormorant Garamond", serif;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-synthesis: none;
   letter-spacing: -0.02em;
 }
 
+.hero .hero__title,
 .hero__title,
 .hero-title {
   line-height: 1.08;
 }
 
+.hero .hero__title em,
+.hero .hero__title .accent,
+.hero .hero__title .highlight,
+.hero .hero__title .word,
 .hero__title em,
 .hero__title .accent,
-.hero__title .highlight {
+.hero__title .highlight,
+.hero__title .word {
   font-family: inherit;
-  font-weight: 500;
+  font-weight: inherit;
   font-style: normal;
 }
 
-/* --- Inter: body --- */
+/* Hero: цвета (типографика / читаемость) */
+.hero .hero__title,
+.hero .hero__title .hero__title-line,
+.hero .hero__title span.hero__title-line {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+  color: rgba(245, 242, 236, 0.94);
+  filter: none;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.38);
+}
+
+.hero .hero__title em,
+.hero .hero__title .accent,
+.hero .hero__title .highlight,
+.hero .hero__title .word {
+  color: var(--hero-accent);
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+}
+
+.hero .hero__lead {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  color: rgba(245, 242, 236, 0.9);
+}
+
+/* === Секционные заголовки — Cormorant 400 === */
+.section__title,
+h2.section__title,
+.section--support .section__title,
+.section--support h2.section__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-synthesis: none;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+/* h1 вне hero не стилизуем глобально; h2/h3 секций — только .section__title */
+
+/* === Inter 400: body text === */
 p,
 li,
-.hero__lead,
 .section__subtitle,
 .platform-fit__lead,
 .platform-fit__card p,
 .platform-fit__perks li,
 .direction-card p,
 .support__card p,
+.support__intro p,
 .curator__lead,
 .curator__body,
 .faq__item p,
-.faq__answer,
 .cta-final__lead,
 .cta-final__outro,
 .cta-final__list li,
 .cta-final__note,
 .tariff__desc,
-.tariff__list li {
+.tariff__list li,
+.footer__copy {
   font-family: var(--font-sans);
   font-weight: 400;
   line-height: 1.6;
   letter-spacing: -0.01em;
 }
 
-/* --- Inter: UI / nav / buttons / card titles / FAQ --- */
+/* === Inter 500: UI, nav, buttons, card titles, FAQ === */
 a,
 button,
 input,
@@ -105,10 +153,10 @@ label,
 .link-arrow,
 .eyebrow,
 .footer,
-.footer__copy,
 .footer__cta,
 .platform-fit__audience-label,
 .platform-fit__card-title,
+.card-title,
 .direction-card h3,
 .support__card h3,
 .faq__item summary,
@@ -117,23 +165,12 @@ label,
 .tariffs-feed__hint,
 .cta-final__eyebrow,
 .cta-channel,
-.curator__initials {
+.cta-channel__label,
+.curator__initials,
+.support__num {
   font-family: var(--font-sans);
   font-weight: 500;
   letter-spacing: -0.01em;
-}
-
-button,
-.btn,
-.btn--primary,
-.btn--outline,
-.btn--sm,
-.nav a,
-.header__cta,
-.link-arrow,
-.eyebrow,
-.cta-channel {
-  font-weight: 500;
 }
 
 .platform-fit__card-title,
@@ -144,47 +181,18 @@ button,
   line-height: 1.35;
 }
 
-/* Сброс display-шрифта у элементов, ошибочно попавших в heading-стек */
+/* Явный сброс: карточки и UI не Cormorant */
 .platform-fit__card-title,
 .direction-card h3,
 .support__card h3,
 .faq__item summary,
 .tariff__name,
 .logo,
-.curator__name,
-.cta-final__title {
+.logo__muted,
+.nav a,
+.btn,
+.cta-final__eyebrow,
+.curator__name {
   font-family: var(--font-sans);
   font-weight: 500;
-  letter-spacing: -0.01em;
-}
-
-/* === Hero: финальная полировка (только типографика) === */
-.hero .hero__title,
-.hero .hero__title .hero__title-line,
-.hero .hero__title span.hero__title-line {
-  background: none;
-  -webkit-background-clip: border-box;
-  background-clip: border-box;
-  -webkit-text-fill-color: currentColor;
-  color: rgba(245, 242, 236, 0.94);
-  filter: none;
-  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.38);
-}
-
-.hero .hero__title em,
-.hero .hero__title .accent,
-.hero .hero__title .highlight,
-.hero .hero__title .word {
-  color: #d58a42;
-  background: none;
-  -webkit-background-clip: border-box;
-  background-clip: border-box;
-  -webkit-text-fill-color: currentColor;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.32);
-}
-
-.hero .hero__lead {
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
-  color: rgba(245, 242, 236, 0.9);
 }

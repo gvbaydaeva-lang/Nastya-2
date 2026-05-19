@@ -2,7 +2,7 @@
 
 :root {
   --font-sans: "Inter", system-ui, sans-serif;
-  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-display: "Cormorant Garamond", serif;
   --bg: #070707;
   --bg-elevated: #111111;
   --bg-muted: #1a1a1a;
@@ -78,14 +78,7 @@ a:hover {
 }
 
 /* === Typography — см. typography.css === */
-h1,
-h2,
-.hero__title,
 .section__title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
   color: var(--text-heading);
 }
 
@@ -244,27 +237,7 @@ label,
   );
 }
 
-.hero__title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  background: var(--accent-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  text-shadow: none;
-  filter: drop-shadow(0 2px 24px rgba(231, 119, 33, 0.25));
-}
-
-.hero__title em {
-  font-family: inherit;
-  background: linear-gradient(135deg, #ff9a3d 0%, #f4efe7 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 400;
-  font-style: normal;
-}
+/* Hero title typography — typography.css */
 
 .hero__lead,
 .hero .eyebrow,
