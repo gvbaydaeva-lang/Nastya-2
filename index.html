@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/editorial-theme.css">
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -33,37 +34,30 @@
   <main>
     <!-- 1. Hero -->
     <section class="hero">
+      <div class="hero__scene" aria-hidden="true">
+        <img
+          class="hero__scene-img"
+          src="assets/hero-garden-workspace.jpg"
+          alt=""
+          width="736"
+          height="1104"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        >
+        <div class="hero__scene-fade"></div>
+      </div>
       <div class="container hero__grid">
         <div class="hero__content reveal">
           <p class="eyebrow">Платформа удалённых профессий</p>
           <h1 class="hero__title">Работайте из&nbsp;дома<span class="hero-title-m-br" aria-hidden="true"></span> <em>Свой график,</em> доход,<span class="hero-title-m-br" aria-hidden="true"></span> о котором мечтали</h1>
           <p class="hero__lead">
             Здесь не просто курсы. А понятный путь в онлайн-профессию. Вы освоите востребованные навыки, поймёте, как находить первых клиентов и сможете начать зарабатывать удалённо без привязки к офису.
-
           </p>
           <div class="hero__actions">
             <a href="#contacts" class="btn btn--primary">Получить консультацию</a>
             <a href="#directions" class="link-arrow">Смотреть направления</a>
           </div>
-        </div>
-        <div class="hero__visual reveal reveal--delay" aria-hidden="true">
-          <div class="hero__visual-bloom"></div>
-          <div class="hero__visual-depth"></div>
-          <figure class="hero__figure">
-            <img
-              class="hero__photo"
-              src="assets/hero-evening-workspace.png"
-              alt=""
-              width="1600"
-              height="1067"
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-            >
-            <div class="hero__photo-shade hero__photo-shade--vignette"></div>
-            <div class="hero__photo-shade hero__photo-shade--edges"></div>
-            <div class="hero__photo-shade hero__photo-shade--badge"></div>
-          </figure>
         </div>
       </div>
     </section>
@@ -140,7 +134,11 @@
     </section>
 
     <!-- 5. Поддержка -->
-    <section class="section" id="support">
+    <section class="section section--support" id="support">
+      <div class="support__bg" aria-hidden="true">
+        <div class="support__orb support__orb--1"></div>
+        <div class="support__orb support__orb--2"></div>
+      </div>
       <div class="container support">
         <div class="support__intro reveal">
           <h2 class="section__title section__title--left">Поддержка и сопровождение</h2>
@@ -155,8 +153,7 @@
           <div class="support__card reveal">
             <span class="support__num">02</span>
             <h3>Общий чат</h3>
-            <p>Чат с действующими специалистами и новичками. Мы все помогаем друг другу, делимся опытом, поддерживаем, общаемся.
-              Мы созваниваемся 1 раз в месяц все, для того, чтобы разбирать рабочие моменты и просто поддерживать общение.
+            <p>Чат с действующими специалистами и новичками. Мы все помогаем друг другу, делимся опытом, поддерживаем, общаемся. Мы созваниваемся 1 раз в месяц все, для того, чтобы разбирать рабочие моменты и просто поддерживать общение.</p>
           </div>
           <div class="support__card reveal">
             <span class="support__num">03</span>
