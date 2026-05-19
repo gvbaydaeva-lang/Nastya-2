@@ -1,6 +1,6 @@
 /**
- * «Направления обучения» — только visual layer.
- * Анимации, mesh JS, layout — без изменений.
+ * «Направления обучения» — фон + editorial props.
+ * Карточки, mesh JS, layout, анимации — без изменений.
  */
 
 /* --- Скрыть abstract mesh / fallback (JS продолжает работать) --- */
@@ -10,7 +10,7 @@
   visibility: hidden !important;
 }
 
-/* --- Cinematic blurred photo background --- */
+/* --- Dark luxury background (без full-photo wallpaper) --- */
 .section--directions {
   position: relative;
   overflow: hidden;
@@ -19,35 +19,96 @@
 }
 
 .section--directions .directions__mesh-wrap::before {
-  content: "";
-  position: absolute;
-  inset: -10%;
-  z-index: 0;
-  background-image: url("../assets/directions-workspace.jpg");
-  background-size: cover;
-  background-position: center right;
-  background-repeat: no-repeat;
-  filter: blur(16px) saturate(0.9);
-  transform: scale(1.05);
-  will-change: transform;
+  content: none;
+  display: none;
 }
 
-/* --- Readability overlay (единый слой, без рамок) --- */
+/* --- Layer 1: atmospheric glow --- */
+.section--directions .directions__scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.section--directions .directions__scene-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 52% 48% at 82% 38%, rgba(196, 142, 78, 0.14) 0%, transparent 62%),
+    radial-gradient(ellipse 38% 42% at 18% 88%, rgba(110, 92, 72, 0.08) 0%, transparent 68%),
+    radial-gradient(ellipse 120% 100% at 50% 50%, rgba(22, 20, 18, 0) 42%, rgba(10, 9, 8, 0.55) 100%);
+}
+
+/* --- Layer 2: editorial object composition --- */
+.section--directions .directions__prop {
+  position: absolute;
+  display: block;
+  height: auto;
+  max-width: none;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  border: none;
+  box-shadow: none;
+  background: none;
+}
+
+.section--directions .directions__prop--laptop {
+  right: -6%;
+  top: 6%;
+  width: min(56vw, 640px);
+  z-index: 3;
+  opacity: 0.86;
+  transform: rotate(-7deg);
+  transform-origin: 72% 40%;
+  filter: brightness(0.78) contrast(1.04) saturate(0.88)
+    drop-shadow(0 28px 56px rgba(0, 0, 0, 0.42));
+  -webkit-mask-image: radial-gradient(ellipse 88% 82% at 58% 48%, #000 52%, transparent 100%);
+  mask-image: radial-gradient(ellipse 88% 82% at 58% 48%, #000 52%, transparent 100%);
+}
+
+.section--directions .directions__prop--notebook {
+  right: 14%;
+  bottom: -2%;
+  width: min(21vw, 228px);
+  z-index: 2;
+  opacity: 0.7;
+  transform: rotate(-4deg);
+  transform-origin: 70% 80%;
+  filter: brightness(0.72) contrast(1.02) saturate(0.92)
+    drop-shadow(0 18px 40px rgba(0, 0, 0, 0.38));
+  -webkit-mask-image: radial-gradient(ellipse 90% 88% at 50% 55%, #000 58%, transparent 100%);
+  mask-image: radial-gradient(ellipse 90% 88% at 50% 55%, #000 58%, transparent 100%);
+}
+
+.section--directions .directions__prop--pen {
+  right: 30%;
+  bottom: 14%;
+  width: clamp(18px, 2.2vw, 26px);
+  z-index: 1;
+  opacity: 0.38;
+  transform: rotate(9deg);
+  filter: brightness(0.7) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.35));
+}
+
+/* --- Ambient veil (читаемость, без image-overlay) --- */
 .section--directions .directions__mesh-veil {
   z-index: 1;
   background:
     linear-gradient(
       90deg,
-      rgba(22, 20, 18, 0.55) 0%,
-      rgba(34, 30, 26, 0.25) 52%,
-      rgba(0, 0, 0, 0.12) 100%
+      rgba(22, 20, 18, 0.42) 0%,
+      rgba(22, 20, 18, 0.18) 38%,
+      transparent 58%
     ),
     linear-gradient(
       180deg,
-      rgba(22, 20, 18, 0.38) 0%,
-      transparent 24%,
+      rgba(22, 20, 18, 0.28) 0%,
+      transparent 22%,
       transparent 76%,
-      rgba(22, 20, 18, 0.42) 100%
+      rgba(22, 20, 18, 0.34) 100%
     );
 }
 
@@ -146,28 +207,45 @@
   border-color: rgba(255, 255, 255, 0.14);
 }
 
-/* --- Mobile --- */
+/* --- Mobile: адаптация desktop scene --- */
 @media (max-width: 900px) {
-  .section--directions .directions__mesh-wrap::before {
-    background-position: 68% 40%;
-    filter: blur(18px) saturate(0.88);
-    transform: scale(1.08);
+  .section--directions .directions__prop--laptop {
+    right: -22%;
+    top: 20%;
+    width: min(78vw, 400px);
+    opacity: 0.8;
+    transform: rotate(-8deg);
+  }
+
+  .section--directions .directions__prop--notebook {
+    right: 0%;
+    bottom: 0%;
+    width: min(38vw, 168px);
+    opacity: 0.64;
+    transform: rotate(-3deg);
+  }
+
+  .section--directions .directions__prop--pen {
+    right: 22%;
+    bottom: 10%;
+    width: 20px;
+    opacity: 0.28;
   }
 
   .section--directions .directions__mesh-veil {
     background:
       linear-gradient(
         90deg,
-        rgba(22, 20, 18, 0.62) 0%,
-        rgba(34, 30, 26, 0.38) 55%,
-        rgba(0, 0, 0, 0.18) 100%
+        rgba(22, 20, 18, 0.5) 0%,
+        rgba(22, 20, 18, 0.22) 42%,
+        transparent 62%
       ),
       linear-gradient(
         180deg,
-        rgba(22, 20, 18, 0.48) 0%,
+        rgba(22, 20, 18, 0.32) 0%,
         transparent 20%,
         transparent 78%,
-        rgba(22, 20, 18, 0.5) 100%
+        rgba(22, 20, 18, 0.38) 100%
       );
   }
 
@@ -185,8 +263,22 @@
 }
 
 @media (max-width: 480px) {
-  .section--directions .directions__mesh-wrap::before {
-    background-position: 62% 35%;
-    filter: blur(20px) saturate(0.85);
+  .section--directions .directions__prop--laptop {
+    right: -26%;
+    top: 24%;
+    width: min(82vw, 340px);
+    opacity: 0.76;
+  }
+
+  .section--directions .directions__prop--notebook {
+    right: -2%;
+    bottom: 2%;
+    width: min(42vw, 150px);
+    opacity: 0.6;
+  }
+
+  .section--directions .directions__prop--pen {
+    opacity: 0.22;
+    width: 18px;
   }
 }
