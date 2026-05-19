@@ -16,10 +16,9 @@ body {
   letter-spacing: -0.01em;
 }
 
-/* --- Cormorant: hero + секционные заголовки --- */
+/* --- Cormorant: секционные заголовки --- */
 h1,
 h2,
-.hero__title,
 .section__title {
   font-family: var(--font-display);
   font-weight: 400;
@@ -27,6 +26,7 @@ h2,
   line-height: 1.1;
 }
 
+/* --- Cormorant: hero H1 (отдельно от секций) --- */
 .hero__title,
 .hero-title,
 .hero__title *,
@@ -42,7 +42,7 @@ h1.hero__title em,
 .hero__title .highlight,
 .hero__title .word {
   font-family: "Cormorant Garamond", serif;
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.02em;
 }
 
@@ -55,7 +55,7 @@ h1.hero__title em,
 .hero__title .accent,
 .hero__title .highlight {
   font-family: inherit;
-  font-weight: 400;
+  font-weight: 500;
   font-style: normal;
 }
 
@@ -156,4 +156,35 @@ button,
   font-family: var(--font-sans);
   font-weight: 500;
   letter-spacing: -0.01em;
+}
+
+/* === Hero: финальная полировка (только типографика) === */
+.hero .hero__title,
+.hero .hero__title .hero__title-line,
+.hero .hero__title span.hero__title-line {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+  color: rgba(245, 242, 236, 0.94);
+  filter: none;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.38);
+}
+
+.hero .hero__title em,
+.hero .hero__title .accent,
+.hero .hero__title .highlight,
+.hero .hero__title .word {
+  color: #d58a42;
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.32);
+}
+
+.hero .hero__lead {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  color: rgba(245, 242, 236, 0.9);
 }
