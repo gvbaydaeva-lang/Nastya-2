@@ -19,8 +19,8 @@
   --about-warm-deep: #161412;
   --about-warm-text-panel: rgba(22, 20, 18, 0.82);
   --about-warm-text-border: rgba(201, 160, 98, 0.12);
-  --font-sans: "General Sans", "Manrope", system-ui, sans-serif;
-  --font-display: "General Sans", "Satoshi", "Manrope", system-ui, sans-serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
   --radius: 14px;
   --radius-lg: 22px;
   --space: clamp(1rem, 4vw, 2rem);
@@ -57,7 +57,7 @@ body {
   margin: 0;
   font-family: var(--font-sans);
   font-size: 1rem;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--text);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
