@@ -1253,6 +1253,37 @@ img {
     0 0 0 1px rgba(201, 160, 98, 0.06);
 }
 
+.tariff-slide__buy {
+  display: block;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.28s ease, opacity 0.28s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tariff-slide__buy:hover {
+  color: var(--accent-hover);
+  opacity: 0.88;
+}
+
+.tariff-slide__buy:focus-visible {
+  outline: 2px solid var(--accent-dim);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 .tariff-slide--entrance {
   opacity: 0;
   transform: translateY(28px) scale(0.94);
