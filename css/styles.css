@@ -1342,11 +1342,11 @@ img {
   }
 }
 
-/* === Reviews: стопка карточек при скролле === */
+/* === Reviews: стопка карточек — смена по горизонтальному жесту на карточке (без scroll-trap) === */
 .reviews-stack-scroller {
   --review-step: 52vh;
-  position: relative;
-  height: calc(var(--review-step) * (var(--review-count) - 1) + 82vh);
+  height: auto;
+  min-height: calc(82vh + 2rem);
   margin-top: 0.5rem;
 }
 
@@ -1366,6 +1366,7 @@ img {
   width: min(400px, 92vw);
   height: min(62vh, 520px);
   margin: 0 auto;
+  pointer-events: none;
 }
 
 .review-card {
@@ -1383,6 +1384,16 @@ img {
   z-index: var(--card-z, 1);
   will-change: transform, opacity;
   transform-origin: center center;
+  pointer-events: auto;
+  touch-action: pan-y;
+  cursor: grab;
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease;
+}
+
+.review-card:active {
+  cursor: grabbing;
 }
 
 .review-card img {
@@ -1427,25 +1438,32 @@ img {
   transform: none !important;
   opacity: 1 !important;
   width: 100%;
+  pointer-events: auto;
+  cursor: default;
+  touch-action: auto;
+  transition: none;
 }
 
 @media (max-width: 767px) {
   .reviews-stack-scroller {
-    --review-step: 44vh;
-    height: calc(var(--review-step) * (var(--review-count) - 1) + 78vh);
+    min-height: min(78vh, 620px);
   }
 
   .reviews-stack-sticky {
     top: calc(var(--header-h) + 0.75rem);
     height: calc(100vh - var(--header-h) - 1.75rem);
-    pointer-events: auto;
+    pointer-events: none;
   }
 
   .reviews-stack {
     width: min(340px, 94vw);
     height: min(58vh, 460px);
-    pointer-events: auto;
-    touch-action: none;
+    pointer-events: none;
+    touch-action: auto;
+  }
+
+  .review-card {
+    touch-action: pan-y;
   }
 
   .review-card img {
