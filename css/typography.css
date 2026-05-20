@@ -197,8 +197,7 @@ label,
 .cta-final__eyebrow,
 .cta-channel,
 .cta-channel__label,
-.curator__initials,
-.support__num {
+.curator__initials {
   font-family: var(--font-sans);
   font-weight: 500;
   letter-spacing: -0.01em;

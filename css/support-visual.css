@@ -1,0 +1,216 @@
+/**
+ * Блок «Поддержка и сопровождение» — только декор: orbs / spheres / numbering.
+ * Фон секции, карточки, анимации, layout, glass карточек — без изменений.
+ */
+
+/* --- Единая палитра: warm matte amber / burnt copper --- */
+.section--support {
+  --support-amber: #b87a45;
+  --support-amber-soft: rgba(184, 122, 69, 0.28);
+  --support-amber-glow: rgba(184, 122, 69, 0.32);
+  --support-amber-matte: rgba(184, 122, 69, 0.18);
+  --support-num: #c88a4d;
+}
+
+/* Мягкие диффузные пятна (под контентом) */
+.section--support .support__orb {
+  filter: blur(72px);
+  opacity: 0.38 !important;
+  background: var(--support-amber-soft) !important;
+  mix-blend-mode: normal;
+}
+
+.section--support .support__orb--1 {
+  background: rgba(184, 122, 69, 0.35) !important;
+  left: -12%;
+  top: -18%;
+}
+
+.section--support .support__orb--2 {
+  background: rgba(184, 122, 69, 0.28) !important;
+  right: -8%;
+  top: 0%;
+}
+
+.section--support .support__orb--3 {
+  background: rgba(184, 122, 69, 0.26) !important;
+  left: 52%;
+  bottom: -28%;
+}
+
+.section--support .support__orb--4 {
+  background: rgba(184, 122, 69, 0.24) !important;
+  opacity: 0.42 !important;
+  left: 2%;
+  top: 48%;
+}
+
+.section--support .support__orb--5 {
+  background: rgba(184, 122, 69, 0.22) !important;
+  opacity: 0.4 !important;
+  right: 18%;
+  bottom: 4%;
+}
+
+/* Matte glass spheres — без пластика и неона */
+.section--support .support__sphere--sharp {
+  z-index: 0;
+  background:
+    radial-gradient(
+      circle at 32% 28%,
+      rgba(200, 148, 100, 0.38) 0%,
+      rgba(184, 122, 69, 0.28) 38%,
+      rgba(120, 72, 42, 0.45) 72%,
+      rgba(45, 28, 18, 0.55) 100%
+    ) !important;
+  box-shadow:
+    inset 0 1px 2px rgba(255, 245, 230, 0.12),
+    inset 0 -8px 24px rgba(18, 12, 8, 0.35),
+    0 20px 48px rgba(184, 122, 69, 0.12) !important;
+  filter: blur(0.5px);
+}
+
+.section--support .support__sphere--blur {
+  z-index: 0;
+  filter: blur(56px) !important;
+  opacity: 0.52 !important;
+  background: radial-gradient(
+    circle,
+    rgba(184, 122, 69, 0.32) 0%,
+    rgba(184, 122, 69, 0.08) 55%,
+    transparent 78%
+  ) !important;
+}
+
+.section--support .support__sphere--glass {
+  z-index: 0;
+  background: rgba(184, 122, 69, 0.1) !important;
+  border: 1px solid rgba(184, 122, 69, 0.22) !important;
+  backdrop-filter: blur(18px) saturate(1.05);
+  -webkit-backdrop-filter: blur(18px) saturate(1.05);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 250, 242, 0.1),
+    0 16px 40px rgba(0, 0, 0, 0.18) !important;
+}
+
+/* Касание зон карточек (остаются под .container) */
+.section--support .support__sphere--s1 {
+  left: -2%;
+  bottom: 18%;
+  opacity: 0.72 !important;
+}
+
+.section--support .support__sphere--s2 {
+  right: 8%;
+  top: 22%;
+  opacity: 0.68 !important;
+}
+
+.section--support .support__sphere--s3 {
+  right: 2%;
+  bottom: 34%;
+  opacity: 0.65 !important;
+}
+
+.section--support .support__sphere--s4 {
+  left: 48%;
+  top: 38%;
+  opacity: 0.58 !important;
+}
+
+.section--support .support__sphere--s5 {
+  left: 22%;
+  top: 58%;
+  opacity: 0.55 !important;
+}
+
+.section--support .support__sphere--s6 {
+  right: 34%;
+  bottom: 22%;
+  opacity: 0.52 !important;
+}
+
+.section--support .support__sphere--b1 {
+  right: 6%;
+  top: 42%;
+}
+
+.section--support .support__sphere--b2 {
+  left: 28%;
+  bottom: 8%;
+}
+
+.section--support .support__sphere--b4 {
+  left: 58%;
+  top: 52%;
+}
+
+.section--support .support__sphere--b5 {
+  left: 4%;
+  top: 62%;
+}
+
+.section--support .support__sphere--g1 {
+  left: 32%;
+  top: 12%;
+  opacity: 0.62 !important;
+}
+
+.section--support .support__sphere--g2 {
+  right: 20%;
+  top: 58%;
+  opacity: 0.52 !important;
+}
+
+/* Numbering: только glass-круг + цифры */
+.section--support .support__card-head {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 1rem;
+}
+
+.section--support .support__num-ring {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(184, 122, 69, 0.28);
+  backdrop-filter: blur(12px) saturate(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 252, 248, 0.12),
+    0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.section--support .support__num-ring .support__num,
+.section--support .support__num {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: var(--support-num) !important;
+  text-shadow: none;
+  font-synthesis: none;
+}
+
+@media (max-width: 900px) {
+  .section--support .support__orb {
+    opacity: 0.34 !important;
+  }
+
+  .section--support .support__sphere--sharp {
+    opacity: 0.62 !important;
+  }
+
+  .section--support .support__sphere--blur {
+    opacity: 0.48 !important;
+  }
+}
