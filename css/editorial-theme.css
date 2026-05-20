@@ -1717,12 +1717,9 @@ a:hover {
 
 /* Curator */
 .curator__photo-inner {
-  background: linear-gradient(165deg, var(--taupe) 0%, var(--bg-elevated) 55%, rgba(86, 96, 67, 0.12) 100%);
-  border-color: var(--border-strong);
-}
-
-.curator__initials {
-  color: var(--accent-dim);
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .curator__lead,

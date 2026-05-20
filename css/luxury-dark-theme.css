@@ -533,13 +533,11 @@ label,
 }
 
 .curator__photo-inner {
-  background: linear-gradient(165deg, #1a1a1a 0%, #111111 55%, rgba(231, 119, 33, 0.15) 100%);
-  border-color: var(--glass-border);
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
-.curator__initials {
-  color: var(--accent-hover);
-}
 
 /* === FAQ === */
 .faq__item {
