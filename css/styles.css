@@ -1543,7 +1543,7 @@ img {
   }
 }
 
-/* Фото куратора: чистое изображение, лёгкая растушёвка только по внешнему контуру */
+/* Фото куратора: оригинал без масок, фильтров и обработки */
 .curator__photo {
   overflow: visible;
   position: relative;
@@ -1551,14 +1551,6 @@ img {
 }
 
 .curator__photo-inner {
-  --curator-feather-mask: radial-gradient(
-    ellipse 122% 118% at 50% 42%,
-    #000 0%,
-    #000 90%,
-    rgba(0, 0, 0, 0.75) 94%,
-    rgba(0, 0, 0, 0.35) 97.5%,
-    transparent 100%
-  );
   position: relative;
   margin: 0;
   width: 100%;
@@ -1568,12 +1560,6 @@ img {
   background: transparent;
   box-shadow: none;
   overflow: visible;
-  -webkit-mask-image: var(--curator-feather-mask);
-  mask-image: var(--curator-feather-mask);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
 }
 
 .curator__photo-img {
@@ -1605,17 +1591,6 @@ img {
   .curator__photo {
     width: min(360px, 92vw);
     margin-inline: auto;
-  }
-
-  .curator__photo-inner {
-    --curator-feather-mask: radial-gradient(
-      ellipse 124% 120% at 50% 42%,
-      #000 0%,
-      #000 88%,
-      rgba(0, 0, 0, 0.72) 93%,
-      rgba(0, 0, 0, 0.32) 97%,
-      transparent 100%
-    );
   }
 
   .curator__photo-img {
