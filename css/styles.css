@@ -1543,7 +1543,7 @@ img {
   }
 }
 
-/* Фото куратора: PNG без фона, без затемнения лица, только мягкие края */
+/* Фото куратора: PNG без фона, ультра-мягкая растушёвка только по периферии */
 .curator__photo {
   overflow: visible;
   position: relative;
@@ -1551,6 +1551,19 @@ img {
 }
 
 .curator__photo-inner {
+  --curator-feather-mask: radial-gradient(
+    ellipse 112% 108% at 50% 46%,
+    #000 0%,
+    #000 54%,
+    rgba(0, 0, 0, 0.98) 60%,
+    rgba(0, 0, 0, 0.94) 66%,
+    rgba(0, 0, 0, 0.86) 72%,
+    rgba(0, 0, 0, 0.72) 78%,
+    rgba(0, 0, 0, 0.52) 84%,
+    rgba(0, 0, 0, 0.3) 90%,
+    rgba(0, 0, 0, 0.12) 96%,
+    transparent 100%
+  );
   position: relative;
   margin: 0;
   width: 100%;
@@ -1561,18 +1574,43 @@ img {
   box-shadow: none;
   overflow: visible;
   isolation: isolate;
-  /* Растворение только по внешнему контуру — центр и лицо не трогаем */
+  -webkit-mask-image: var(--curator-feather-mask);
+  mask-image: var(--curator-feather-mask);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
+}
+
+/* Растворение в фон секции — только внешний пояс, лицо не затрагивается */
+.curator__photo-inner::after {
+  content: "";
+  position: absolute;
+  inset: -1%;
+  pointer-events: none;
+  z-index: 1;
+  background: var(--bg);
   -webkit-mask-image: radial-gradient(
-    ellipse 92% 88% at 50% 44%,
-    #000 0%,
-    #000 78%,
-    transparent 100%
+    ellipse 112% 108% at 50% 46%,
+    transparent 0%,
+    transparent 58%,
+    rgba(0, 0, 0, 0.18) 68%,
+    rgba(0, 0, 0, 0.42) 76%,
+    rgba(0, 0, 0, 0.68) 84%,
+    rgba(0, 0, 0, 0.88) 92%,
+    #000 100%
   );
   mask-image: radial-gradient(
-    ellipse 92% 88% at 50% 44%,
-    #000 0%,
-    #000 78%,
-    transparent 100%
+    ellipse 112% 108% at 50% 46%,
+    transparent 0%,
+    transparent 58%,
+    rgba(0, 0, 0, 0.18) 68%,
+    rgba(0, 0, 0, 0.42) 76%,
+    rgba(0, 0, 0, 0.68) 84%,
+    rgba(0, 0, 0, 0.88) 92%,
+    #000 100%
   );
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
@@ -1613,17 +1651,41 @@ img {
   }
 
   .curator__photo-inner {
-    -webkit-mask-image: radial-gradient(
-      ellipse 94% 90% at 50% 44%,
+    --curator-feather-mask: radial-gradient(
+      ellipse 114% 110% at 50% 46%,
       #000 0%,
-      #000 76%,
+      #000 52%,
+      rgba(0, 0, 0, 0.98) 58%,
+      rgba(0, 0, 0, 0.93) 64%,
+      rgba(0, 0, 0, 0.84) 70%,
+      rgba(0, 0, 0, 0.68) 76%,
+      rgba(0, 0, 0, 0.48) 82%,
+      rgba(0, 0, 0, 0.28) 88%,
+      rgba(0, 0, 0, 0.1) 94%,
       transparent 100%
     );
+  }
+
+  .curator__photo-inner::after {
+    -webkit-mask-image: radial-gradient(
+      ellipse 114% 110% at 50% 46%,
+      transparent 0%,
+      transparent 56%,
+      rgba(0, 0, 0, 0.2) 66%,
+      rgba(0, 0, 0, 0.45) 74%,
+      rgba(0, 0, 0, 0.7) 82%,
+      rgba(0, 0, 0, 0.9) 90%,
+      #000 100%
+    );
     mask-image: radial-gradient(
-      ellipse 94% 90% at 50% 44%,
-      #000 0%,
-      #000 76%,
-      transparent 100%
+      ellipse 114% 110% at 50% 46%,
+      transparent 0%,
+      transparent 56%,
+      rgba(0, 0, 0, 0.2) 66%,
+      rgba(0, 0, 0, 0.45) 74%,
+      rgba(0, 0, 0, 0.7) 82%,
+      rgba(0, 0, 0, 0.9) 90%,
+      #000 100%
     );
   }
 
