@@ -1543,34 +1543,35 @@ img {
   }
 }
 
+/* Фото куратора: PNG без фона, без затемнения лица, только мягкие края */
 .curator__photo {
   overflow: visible;
   position: relative;
+  align-self: center;
 }
 
 .curator__photo-inner {
   position: relative;
   margin: 0;
   width: 100%;
-  aspect-ratio: 3 / 4;
-  max-height: min(72vh, 520px);
-  overflow: hidden;
   border: none;
   outline: none;
   border-radius: 0;
   background: transparent;
   box-shadow: none;
+  overflow: visible;
   isolation: isolate;
+  /* Растворение только по внешнему контуру — центр и лицо не трогаем */
   -webkit-mask-image: radial-gradient(
-    ellipse 96% 94% at 50% 36%,
+    ellipse 92% 88% at 50% 44%,
     #000 0%,
-    #000 56%,
+    #000 78%,
     transparent 100%
   );
   mask-image: radial-gradient(
-    ellipse 96% 94% at 50% 36%,
+    ellipse 92% 88% at 50% 44%,
     #000 0%,
-    #000 56%,
+    #000 78%,
     transparent 100%
   );
   -webkit-mask-repeat: no-repeat;
@@ -1582,74 +1583,53 @@ img {
 .curator__photo-img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 18%;
-  filter: saturate(0.96) contrast(1.03) brightness(0.98);
+  height: auto;
+  max-height: min(82vh, 600px);
+  object-fit: contain;
+  object-position: center bottom;
+  filter: saturate(1.04) contrast(1.05) brightness(1.08);
 }
 
-.curator__photo-shade {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-}
+@media (min-width: 701px) {
+  .curator__photo {
+    width: clamp(300px, 38vw, 420px);
+  }
 
-.curator__photo-shade--vignette {
-  background: radial-gradient(
-    ellipse 78% 72% at 50% 34%,
-    transparent 0%,
-    transparent 48%,
-    var(--bg) 100%
-  );
-}
+  .curator__photo-inner {
+    width: 100%;
+    transform: scale(1.06);
+    transform-origin: center center;
+  }
 
-.curator__photo-shade--edges {
-  background:
-    linear-gradient(to left, var(--bg) 0%, transparent 16%),
-    linear-gradient(to right, var(--bg) 0%, transparent 22%),
-    linear-gradient(to top, var(--bg) 0%, transparent 14%),
-    linear-gradient(to bottom, var(--bg) 0%, transparent 20%);
+  .curator__photo-img {
+    max-height: min(84vh, 640px);
+  }
 }
 
 @media (max-width: 700px) {
-  .curator__photo-inner {
-    max-width: min(300px, 86vw);
+  .curator__photo {
+    width: min(360px, 92vw);
     margin-inline: auto;
-    max-height: min(62vh, 440px);
+  }
+
+  .curator__photo-inner {
     -webkit-mask-image: radial-gradient(
-      ellipse 108% 96% at 50% 38%,
+      ellipse 94% 90% at 50% 44%,
       #000 0%,
-      #000 52%,
+      #000 76%,
       transparent 100%
     );
     mask-image: radial-gradient(
-      ellipse 108% 96% at 50% 38%,
+      ellipse 94% 90% at 50% 44%,
       #000 0%,
-      #000 52%,
+      #000 76%,
       transparent 100%
     );
   }
 
   .curator__photo-img {
-    object-position: 50% 20%;
-  }
-
-  .curator__photo-shade--vignette {
-    background: radial-gradient(
-      ellipse 88% 80% at 50% 36%,
-      transparent 0%,
-      transparent 46%,
-      var(--bg) 100%
-    );
-  }
-
-  .curator__photo-shade--edges {
-    background:
-      linear-gradient(to left, var(--bg) 0%, transparent 12%),
-      linear-gradient(to right, var(--bg) 0%, transparent 12%),
-      linear-gradient(to top, var(--bg) 0%, transparent 12%),
-      linear-gradient(to bottom, var(--bg) 0%, transparent 18%);
+    max-height: min(70vh, 520px);
+    object-position: center bottom;
   }
 }
 
