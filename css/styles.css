@@ -1342,6 +1342,22 @@ img {
   }
 }
 
+/* Подзаголовок отзывов: мобильные <br> скрыты на desktop */
+@media (min-width: 768px) {
+  #reviews br.reviews-subtitle-br--m {
+    display: none;
+  }
+}
+
+/* Подсказка «свайп» — стиль как .tariffs-feed__hint, одна строка на всех ширинах */
+#reviews .tariffs-feed__hint.reviews-swipe-hint {
+  white-space: nowrap;
+  max-width: min(100%, 22rem);
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
 /* === Reviews: стопка карточек — смена по горизонтальному жесту на карточке (без scroll-trap) === */
 .reviews-stack-scroller {
   --review-step: 52vh;
@@ -1828,8 +1844,15 @@ img {
     text-wrap: balance;
   }
 
-  #reviews .section__subtitle--reviews .reviews-subtitle-tail {
-    display: block;
-    margin-top: 0.4em;
+  #reviews .section__subtitle--reviews {
+    font-size: clamp(0.9rem, 3.85vw, 0.98rem);
+    line-height: 1.52;
+    max-width: 21.75rem;
+    margin-inline: auto;
+    text-wrap: balance;
+  }
+
+  #reviews .tariffs-feed__hint.reviews-swipe-hint {
+    font-size: clamp(0.5625rem, 3.15vw, 0.75rem);
   }
 }

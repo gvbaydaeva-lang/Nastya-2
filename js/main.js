@@ -289,7 +289,8 @@
     var isAnimating = false;
     var animLockMs = 520;
     var swipeThresholdPx = 48;
-    var axisRatio = 1.3;
+    var axisRatioTouch = 1.3;
+    var axisRatioMouse = 1.12;
 
     function isMobileStack() {
       return window.matchMedia && window.matchMedia("(max-width: 767px)").matches;
@@ -369,12 +370,18 @@
       var gestureHorizontal = false;
       var decided = false;
       var activePointerId = null;
+      var activePointerType = "";
 
       function reset() {
         tracking = false;
         decided = false;
         gestureHorizontal = false;
         activePointerId = null;
+        activePointerType = "";
+      }
+
+      function axisRatioFor(type) {
+        return type === "touch" ? axisRatioTouch : axisRatioMouse;
       }
 
       card.addEventListener(
@@ -385,6 +392,7 @@
           decided = false;
           gestureHorizontal = false;
           activePointerId = e.pointerId;
+          activePointerType = e.pointerType || "";
           startX = e.clientX;
           startY = e.clientY;
           try {
@@ -407,7 +415,8 @@
           var dy = e.clientY - startY;
           if (!decided && (Math.abs(dx) > 10 || Math.abs(dy) > 10)) {
             decided = true;
-            gestureHorizontal = Math.abs(dx) > Math.abs(dy) * axisRatio;
+            var ratio = axisRatioFor(activePointerType);
+            gestureHorizontal = Math.abs(dx) > Math.abs(dy) * ratio;
             if (!gestureHorizontal) {
               try {
                 card.releasePointerCapture(activePointerId);
@@ -454,6 +463,15 @@
           try {
             card.releasePointerCapture(e.pointerId);
           } catch (err4) {}
+          reset();
+        },
+        { passive: true }
+      );
+
+      card.addEventListener(
+        "lostpointercapture",
+        function (e) {
+          if (e.pointerId !== activePointerId) return;
           reset();
         },
         { passive: true }

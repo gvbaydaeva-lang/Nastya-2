@@ -124,8 +124,7 @@ li,
 .cta-final__note,
 .tariff__desc,
 .tariff__list li,
-.footer__copy,
-.reviews-subtitle-tail {
+.footer__copy {
   font-family: var(--font-sans);
   font-weight: 400;
   font-size: clamp(1rem, 2.5vw, 1.125rem);
