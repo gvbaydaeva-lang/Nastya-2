@@ -304,15 +304,17 @@
 
     function applyStackState(currentTop, dismissT) {
       var mobile = isMobileStack();
-      var stackYOffset = mobile ? 10 : 12;
-      var stackRot = mobile ? 2.2 : 2.8;
-      var stackScaleStep = mobile ? 0.024 : 0.028;
+      var stackYOffset = mobile ? 12 : 12;
+      var stackRot = mobile ? 3.6 : 2.8;
+      var stackScaleStep = mobile ? 0.03 : 0.028;
+      var stackXStep = mobile ? 14 : 0;
 
       cards.forEach(function (card, i) {
         if (i < currentTop) {
           setCardVars(card, {
             "--dismiss-y": "-125%",
             "--dismiss-rot": "-9deg",
+            "--stack-x": "0px",
             "--stack-y": "0px",
             "--stack-rot": "0deg",
             "--card-scale": "0.96",
@@ -326,6 +328,7 @@
           setCardVars(card, {
             "--dismiss-y": -dismissT * 118 + "%",
             "--dismiss-rot": -dismissT * 7 + "deg",
+            "--stack-x": "0px",
             "--stack-y": "0px",
             "--stack-rot": "0deg",
             "--card-scale": String(1 - dismissT * 0.045),
@@ -339,10 +342,13 @@
         setCardVars(card, {
           "--dismiss-y": "0%",
           "--dismiss-rot": "0deg",
+          "--stack-x": stackXStep ? sp * stackXStep + "px" : "0px",
           "--stack-y": sp * stackYOffset + "px",
           "--stack-rot": sp * stackRot + "deg",
           "--card-scale": String(1 - sp * stackScaleStep),
-          "--card-opacity": String(Math.max(0.4, 1 - sp * 0.07)),
+          "--card-opacity": String(
+            mobile ? Math.max(0.52, 1 - sp * 0.06) : Math.max(0.4, 1 - sp * 0.07)
+          ),
           "--card-z": String(100 - sp)
         });
       });

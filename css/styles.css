@@ -1399,11 +1399,6 @@ img {
   margin-top: 0;
 }
 
-#reviews .reviews-stack-sticky {
-  align-items: flex-start;
-  padding-top: 0;
-}
-
 /* === Reviews: стопка карточек — смена по горизонтальному жесту на карточке (без scroll-trap) === */
 .reviews-stack-scroller {
   --review-step: 52vh;
@@ -1438,6 +1433,7 @@ img {
   width: 100%;
   margin: 0;
   transform: translate(-50%, -50%)
+    translateX(var(--stack-x, 0px))
     translateY(var(--stack-y, 0px))
     translateY(var(--dismiss-y, 0%))
     rotate(calc(var(--stack-rot, 0deg) + var(--dismiss-rot, 0deg)))
@@ -1533,21 +1529,29 @@ img {
     border-radius: 12px;
   }
 
-  /* Плотнее переход «Отзывы» → «Обо мне» (только mobile) */
+  /* Mobile: веер / layered stack + небольшой отступ до «Обо мне» */
   #reviews.section--dark {
-    padding-bottom: clamp(1.25rem, 3.5vw, 1.75rem);
+    padding-bottom: clamp(1.75rem, 4.5vw, 2.5rem);
   }
 
   #curator.section {
-    padding-top: clamp(1.25rem, 3.5vw, 1.75rem);
+    padding-top: clamp(1.75rem, 4.5vw, 2.5rem);
   }
 
   #reviews .reviews-stack-scroller {
-    min-height: 0;
+    min-height: min(66vh, 520px);
+    overflow: visible;
   }
 
   #reviews .reviews-stack-sticky {
-    height: auto;
+    height: min(64vh, 500px);
+    align-items: center;
+    overflow: visible;
+  }
+
+  #reviews .reviews-stack {
+    overflow: visible;
+    width: min(300px, 86vw);
   }
 }
 
