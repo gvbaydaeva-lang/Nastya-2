@@ -1532,6 +1532,23 @@ img {
     max-height: min(58vh, 460px);
     border-radius: 12px;
   }
+
+  /* Плотнее переход «Отзывы» → «Обо мне» (только mobile) */
+  #reviews.section--dark {
+    padding-bottom: clamp(1.25rem, 3.5vw, 1.75rem);
+  }
+
+  #curator.section {
+    padding-top: clamp(1.25rem, 3.5vw, 1.75rem);
+  }
+
+  #reviews .reviews-stack-scroller {
+    min-height: 0;
+  }
+
+  #reviews .reviews-stack-sticky {
+    height: auto;
+  }
 }
 
 /* === Curator === */

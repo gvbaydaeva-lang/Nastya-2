@@ -203,3 +203,39 @@ label,
   text-shadow: none;
   filter: none;
 }
+
+/* CTA «Познакомиться с платформой» — как «Обо мне» / подзаголовки секций */
+.cta-final .cta-final__lead,
+.cta-final .cta-final__note,
+.cta-final .cta-final__outro,
+.cta-final .cta-final__list li {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(1rem, 2.5vw, 1.0625rem);
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  color: var(--type-body);
+  -webkit-text-fill-color: currentColor;
+  text-shadow: none;
+  filter: none;
+  background: none;
+}
+
+.cta-final .cta-final__eyebrow {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-dim);
+}
+
+@media (min-width: 901px) {
+  .cta-final .cta-final__lead,
+  .cta-final .cta-final__note,
+  .cta-final .cta-final__outro,
+  .cta-final .cta-final__list li {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+}
