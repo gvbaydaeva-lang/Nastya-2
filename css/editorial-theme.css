@@ -1761,10 +1761,7 @@ a:hover {
 }
 
 .cta-final__lead,
-.cta-final__outro {
-  color: var(--text);
-}
-
+.cta-final__outro,
 .cta-final__note {
   color: var(--text-muted);
 }

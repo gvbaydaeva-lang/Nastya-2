@@ -1386,7 +1386,22 @@ img {
   max-width: min(100%, 22rem);
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 0.35rem;
   box-sizing: border-box;
+}
+
+/* Отступ intro → карусель (только вертикальный gap) */
+#reviews .section__head {
+  margin-bottom: clamp(1rem, 2.5vw, 1.35rem);
+}
+
+#reviews .reviews-stack-scroller {
+  margin-top: 0;
+}
+
+#reviews .reviews-stack-sticky {
+  align-items: flex-start;
+  padding-top: 0;
 }
 
 /* === Reviews: стопка карточек — смена по горизонтальному жесту на карточке (без scroll-trap) === */
@@ -1726,25 +1741,32 @@ img {
 
 .cta-final__eyebrow {
   margin: 0 0 1.25rem;
-  font-size: 0.6875rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent-dim);
 }
 
 .cta-final__lead {
-  margin: 0 0 1.25rem;
-  font-size: clamp(1.05rem, 2.2vw, 1.15rem);
-  line-height: 1.68;
-  color: rgba(232, 230, 225, 0.92);
+  margin: 0 0 1rem;
+  font-family: var(--font-sans);
+  font-size: clamp(0.9375rem, 2.1vw, 1.0625rem);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  color: var(--text-muted);
 }
 
 .cta-final__note {
   margin: 0 0 0.65rem;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  color: rgba(200, 195, 186, 0.88);
+  font-family: var(--font-sans);
+  font-size: clamp(0.875rem, 1.9vw, 0.9375rem);
+  font-weight: 400;
+  line-height: 1.62;
+  letter-spacing: -0.01em;
+  color: var(--text-muted);
 }
 
 .cta-final__list {
@@ -1759,9 +1781,12 @@ img {
   position: relative;
   padding-left: 1.15rem;
   margin-bottom: 0.45rem;
-  font-size: 0.9375rem;
-  line-height: 1.55;
-  color: rgba(190, 186, 178, 0.9);
+  font-family: var(--font-sans);
+  font-size: clamp(0.875rem, 1.9vw, 0.9375rem);
+  font-weight: 400;
+  line-height: 1.62;
+  letter-spacing: -0.01em;
+  color: var(--text-muted);
 }
 
 .cta-final__list li::before {
@@ -1774,9 +1799,12 @@ img {
 
 .cta-final__outro {
   margin: 0 0 2.25rem;
-  font-size: clamp(1.02rem, 2vw, 1.1rem);
-  line-height: 1.68;
-  color: rgba(228, 225, 218, 0.93);
+  font-family: var(--font-sans);
+  font-size: clamp(0.9375rem, 2.1vw, 1.0625rem);
+  font-weight: 400;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  color: var(--text-muted);
 }
 
 .cta-final__channels {
