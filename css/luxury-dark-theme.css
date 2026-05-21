@@ -577,20 +577,6 @@ label,
   background: rgba(255, 154, 61, 0.12);
 }
 
-.cta-final__lead,
-.cta-final__note,
-.cta-final__outro,
-.cta-final__list li {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  color: var(--text-muted);
-}
-
-.cta-final__eyebrow {
-  font-family: var(--font-sans);
-  letter-spacing: 0.1em;
-}
-
 .cta-channel {
   color: var(--text-heading);
   background: var(--glass-bg);

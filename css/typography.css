@@ -118,10 +118,6 @@ li,
 .curator__body,
 .faq__item p,
 .faq__answer,
-.cta-final__lead,
-.cta-final__outro,
-.cta-final__list li,
-.cta-final__note,
 .tariff__desc,
 .tariff__list li,
 .footer__copy {
@@ -158,10 +154,7 @@ li,
   .curator__body,
   .faq__item p,
   .tariff__desc,
-  .tariff__list li,
-  .cta-final__lead,
-  .cta-final__outro,
-  .cta-final__list li {
+  .tariff__list li {
     font-size: clamp(1.0625rem, 0.8vw, 1.25rem);
     line-height: 1.72;
   }
@@ -193,7 +186,6 @@ label,
 .platform-fit__audience-label,
 .tariff__badge,
 .tariffs-feed__hint,
-.cta-final__eyebrow,
 .cta-channel,
 .cta-channel__label,
 .curator__initials {
@@ -202,40 +194,4 @@ label,
   letter-spacing: -0.01em;
   text-shadow: none;
   filter: none;
-}
-
-/* CTA «Познакомиться с платформой» — как «Обо мне» / подзаголовки секций */
-.cta-final .cta-final__lead,
-.cta-final .cta-final__note,
-.cta-final .cta-final__outro,
-.cta-final .cta-final__list li {
-  font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: clamp(1rem, 2.5vw, 1.0625rem);
-  line-height: 1.65;
-  letter-spacing: -0.01em;
-  color: var(--type-body);
-  -webkit-text-fill-color: currentColor;
-  text-shadow: none;
-  filter: none;
-  background: none;
-}
-
-.cta-final .cta-final__eyebrow {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent-dim);
-}
-
-@media (min-width: 901px) {
-  .cta-final .cta-final__lead,
-  .cta-final .cta-final__note,
-  .cta-final .cta-final__outro,
-  .cta-final .cta-final__list li {
-    font-size: 1.0625rem;
-    line-height: 1.65;
-  }
 }

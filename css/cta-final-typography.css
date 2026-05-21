@@ -1,0 +1,55 @@
+/**
+ * CTA «Познакомиться с платформой» — типографика как у секций сайта.
+ * Подключается последним; только .cta-final / #contacts.
+ */
+
+/* Заголовок блока — как .section__title (Cormorant Garamond) */
+.cta-final .cta-final__eyebrow {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-synthesis: none;
+  font-style: normal;
+  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: var(--text-heading);
+  text-shadow: none;
+  filter: none;
+  -webkit-text-fill-color: currentColor;
+  background: none;
+}
+
+@media (min-width: 901px) {
+  .cta-final .cta-final__eyebrow {
+    font-size: clamp(2.25rem, 4vw, 2.75rem);
+    line-height: 1.04;
+  }
+}
+
+/* Основной текст — Inter, цвет body сайта */
+.cta-final .cta-final__lead,
+.cta-final .cta-final__note,
+.cta-final .cta-final__outro,
+.cta-final .cta-final__list li {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(0.9375rem, 2.1vw, 1.0625rem);
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  color: rgba(245, 242, 236, 0.9);
+  text-shadow: none;
+  filter: none;
+  -webkit-text-fill-color: currentColor;
+  background: none;
+}
+
+@media (min-width: 901px) {
+  .cta-final .cta-final__lead,
+  .cta-final .cta-final__note,
+  .cta-final .cta-final__outro,
+  .cta-final .cta-final__list li {
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+}

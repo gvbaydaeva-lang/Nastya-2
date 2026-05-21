@@ -1756,20 +1756,6 @@ a:hover {
   background: rgba(220, 207, 192, 0.35);
 }
 
-.cta-final__eyebrow {
-  color: var(--accent-dim);
-}
-
-.cta-final__lead,
-.cta-final__outro,
-.cta-final__note {
-  color: var(--text-muted);
-}
-
-.cta-final__list li {
-  color: var(--text-muted);
-}
-
 .cta-final__list li::before {
   color: var(--accent-dim);
 }
