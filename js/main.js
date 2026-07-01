@@ -273,6 +273,64 @@
 
   initTariffsFeed();
 
+  /* Попапы выбора способа оплаты — тарифы */
+  function initPaymentModals() {
+    var openBtns = document.querySelectorAll("[data-payment-modal]");
+    if (!openBtns.length) return;
+
+    var activeBtn = null;
+
+    function openModal(btn) {
+      var modalId = btn.getAttribute("data-payment-modal");
+      var modal = document.getElementById(modalId);
+      if (!modal) return;
+
+      activeBtn = btn;
+      modal.removeAttribute("hidden");
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("payment-modal-open");
+
+      var closeBtn = modal.querySelector(".payment-modal__close");
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeModal(modal) {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("payment-modal-open");
+      modal.setAttribute("hidden", "");
+
+      if (activeBtn) {
+        activeBtn.focus();
+        activeBtn = null;
+      }
+    }
+
+    openBtns.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        openModal(btn);
+      });
+    });
+
+    document.querySelectorAll(".payment-modal").forEach(function (modal) {
+      modal.querySelectorAll("[data-close-modal]").forEach(function (el) {
+        el.addEventListener("click", function () {
+          closeModal(modal);
+        });
+      });
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape") return;
+      var opened = document.querySelector(".payment-modal.is-open");
+      if (opened) closeModal(opened);
+    });
+  }
+
+  initPaymentModals();
+
   /* Отзывы: стопка карточек; смена только горизонтальным жестом по карточке (без scroll-trap) */
   function initReviewsStack() {
     var section = document.getElementById("reviews");
