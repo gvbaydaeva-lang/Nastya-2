@@ -273,6 +273,71 @@
 
   initTariffsFeed();
 
+  /* Тарифы: полноэкранный просмотр изображения карточки */
+  function initTariffPreviews() {
+    var modal = document.getElementById("tariff-preview-modal");
+    var previewBtns = document.querySelectorAll("[data-tariff-preview]");
+    var pageRegions = document.querySelectorAll("body > header, body > main, body > footer");
+    if (!modal || !previewBtns.length) return;
+
+    var activeBtn = null;
+
+    function setPageInert(inert) {
+      pageRegions.forEach(function (region) {
+        region.inert = inert;
+      });
+    }
+
+    function openPreview(btn) {
+      var image = modal.querySelector(".tariff-preview-modal__image");
+      if (!image) return;
+
+      image.setAttribute("src", btn.getAttribute("data-preview-src") || "");
+      image.setAttribute("alt", btn.getAttribute("data-preview-alt") || "Тариф");
+      activeBtn = btn;
+      modal.removeAttribute("hidden");
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("tariff-preview-open");
+      setPageInert(true);
+
+      var closeBtn = modal.querySelector(".tariff-preview-modal__close");
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closePreview() {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      modal.setAttribute("hidden", "");
+      document.body.classList.remove("tariff-preview-open");
+      setPageInert(false);
+
+      if (activeBtn) {
+        activeBtn.focus();
+        activeBtn = null;
+      }
+    }
+
+    previewBtns.forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        openPreview(btn);
+      });
+    });
+
+    modal.querySelectorAll("[data-close-tariff-preview]").forEach(function (el) {
+      el.addEventListener("click", closePreview);
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal.classList.contains("is-open")) {
+        closePreview();
+      }
+    });
+  }
+
+  initTariffPreviews();
+
   /* Попапы выбора способа оплаты — тарифы */
   function initPaymentModals() {
     var modal = document.getElementById("payment-modal");

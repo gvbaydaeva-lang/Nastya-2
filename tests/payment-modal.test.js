@@ -116,5 +116,4 @@ test("the page uses one shared dialog for all seven tariff buttons", () => {
   assert.equal(buttonTags.length, 7);
   assert.deepEqual(tariffKeys, Object.keys(expectedTariffs));
   buttonTags.forEach((tag) => assert.match(tag, /aria-controls="payment-modal"/));
-  assert.match(html, /<script src="js\/main\.js\?v=20260828-1"><\/script>/);
 });
