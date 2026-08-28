@@ -291,31 +291,31 @@
           <div class="tariffs-feed__track" id="tariffs-track">
             <article class="tariff-slide tariff-slide--entrance" data-tariff="1">
               <img src="assets/tariffs/tariff-01.jpg?v=20260827-2" alt="Тариф «Базовый»" width="1290" height="2293" loading="lazy" decoding="async">
-              <button type="button" class="tariff-slide__buy" data-payment-modal="modal-base" aria-haspopup="dialog" aria-controls="modal-base">КУПИТЬ ДОСТУП</button>
+              <button type="button" class="tariff-slide__buy" data-payment-tariff="base" aria-haspopup="dialog" aria-controls="payment-modal">КУПИТЬ ДОСТУП</button>
             </article>
             <article class="tariff-slide tariff-slide--entrance" data-tariff="2">
               <img src="assets/tariffs/tariff-02.jpg?v=20260827-2" alt="Тариф «Стандарт»" width="720" height="1280" loading="lazy" decoding="sync">
-              <button type="button" class="tariff-slide__buy" data-payment-modal="modal-new" aria-haspopup="dialog" aria-controls="modal-new">КУПИТЬ ДОСТУП</button>
+              <button type="button" class="tariff-slide__buy" data-payment-tariff="standard" aria-haspopup="dialog" aria-controls="payment-modal">КУПИТЬ ДОСТУП</button>
             </article>
             <article class="tariff-slide tariff-slide--entrance" data-tariff="3">
               <img src="assets/tariffs/tariff-05.jpg?v=20260827-2" alt="Тариф «Премиум»" width="720" height="1280" loading="lazy" decoding="async">
-              <button type="button" class="tariff-slide__buy" data-payment-modal="modal-premium" aria-haspopup="dialog" aria-controls="modal-premium">КУПИТЬ ДОСТУП</button>
+              <button type="button" class="tariff-slide__buy" data-payment-tariff="premium" aria-haspopup="dialog" aria-controls="payment-modal">КУПИТЬ ДОСТУП</button>
             </article>
             <article class="tariff-slide tariff-slide--entrance" data-tariff="4">
               <img src="assets/tariffs/tariff-06.jpg?v=20260827-2" alt="Тариф «VIP»" width="720" height="1280" loading="lazy" decoding="async">
-              <button type="button" class="tariff-slide__buy" data-payment-modal="modal-vip" aria-haspopup="dialog" aria-controls="modal-vip">КУПИТЬ ДОСТУП</button>
+              <button type="button" class="tariff-slide__buy" data-payment-tariff="vip" aria-haspopup="dialog" aria-controls="payment-modal">КУПИТЬ ДОСТУП</button>
             </article>
             <article class="tariff-slide tariff-slide--entrance" data-tariff="5">
               <img src="assets/tariffs/tariff-08.jpg" alt="Тариф «Нейростат»" width="600" height="1200" loading="lazy" decoding="async">
-              <button type="button" class="tariff-slide__buy" data-payment-modal="modal-neurostat" aria-haspopup="dialog" aria-controls="modal-neurostat">КУПИТЬ ДОСТУП</button>
+              <button type="button" class="tariff-slide__buy" data-payment-tariff="neurostat" aria-haspopup="dialog" aria-controls="payment-modal">КУПИТЬ ДОСТУП</button>
             </article>
             <article class="tariff-slide tariff-slide--entrance" data-tariff="6">
               <img src="assets/tariffs/tariff-07.jpg" alt="Тариф «Инфографика»" width="600" height="1200" loading="lazy" decoding="async">
-              <button type="button" class="tariff-slide__buy" data-payment-modal="modal-infographic" aria-haspopup="dialog" aria-controls="modal-infographic">КУПИТЬ ДОСТУП</button>
+              <button type="button" class="tariff-slide__buy" data-payment-tariff="infographic" aria-haspopup="dialog" aria-controls="payment-modal">КУПИТЬ ДОСТУП</button>
             </article>
             <article class="tariff-slide tariff-slide--entrance" data-tariff="7">
               <img src="assets/tariffs/tariff-04.jpg?v=20260827-2" alt="Тариф «Маркетплейсы»" width="720" height="1280" loading="lazy" decoding="async">
-              <button type="button" class="tariff-slide__buy" data-payment-modal="modal-market" aria-haspopup="dialog" aria-controls="modal-market">КУПИТЬ ДОСТУП</button>
+              <button type="button" class="tariff-slide__buy" data-payment-tariff="market" aria-haspopup="dialog" aria-controls="payment-modal">КУПИТЬ ДОСТУП</button>
             </article>
           </div>
           <div class="tariffs-feed__fade tariffs-feed__fade--right" aria-hidden="true"></div>
@@ -511,98 +511,14 @@
     </div>
   </footer>
 
-  <div class="payment-modal" id="modal-base" role="dialog" aria-modal="true" aria-labelledby="modal-base-title" aria-hidden="true" hidden>
+  <div class="payment-modal" id="payment-modal" role="dialog" aria-modal="true" aria-labelledby="payment-modal-title" aria-hidden="true" hidden>
     <div class="payment-modal__overlay" data-close-modal tabindex="-1"></div>
     <div class="payment-modal__dialog">
       <button type="button" class="payment-modal__close" aria-label="Закрыть" data-close-modal>
         <span aria-hidden="true">&times;</span>
       </button>
-      <h2 class="payment-modal__title" id="modal-base-title">Выберите способ оплаты</h2>
-      <div class="payment-modal__options">
-        <a class="payment-modal__option btn btn--primary btn--block" href="https://qr.nspk.ru/BD10007NSJ14O85F932AK2L6LF4NFV8M" target="_blank" rel="noopener noreferrer">Оплата картой / кредиткой — 2 500 ₽</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="payment-modal" id="modal-new" role="dialog" aria-modal="true" aria-labelledby="modal-new-title" aria-hidden="true" hidden>
-    <div class="payment-modal__overlay" data-close-modal tabindex="-1"></div>
-    <div class="payment-modal__dialog">
-      <button type="button" class="payment-modal__close" aria-label="Закрыть" data-close-modal>
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <h2 class="payment-modal__title" id="modal-new-title">Выберите способ оплаты</h2>
-      <div class="payment-modal__options">
-        <a class="payment-modal__option btn btn--primary btn--block" href="https://qr.nspk.ru/BD10006AUBEM8VJA9329PK5U9JDORGMA" target="_blank" rel="noopener noreferrer">Оплата картой / кредиткой — 4 000 ₽</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="payment-modal" id="modal-market" role="dialog" aria-modal="true" aria-labelledby="modal-market-title" aria-hidden="true" hidden>
-    <div class="payment-modal__overlay" data-close-modal tabindex="-1"></div>
-    <div class="payment-modal__dialog">
-      <button type="button" class="payment-modal__close" aria-label="Закрыть" data-close-modal>
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <h2 class="payment-modal__title" id="modal-market-title">Выберите способ оплаты</h2>
-      <div class="payment-modal__options">
-        <a class="payment-modal__option btn btn--primary btn--block" href="https://qr.nspk.ru/AD10002HVAKO55Q28SS9OPU2PAPPM2VS" target="_blank" rel="noopener noreferrer">Оплата картой / кредиткой</a>
-        <a class="payment-modal__option btn btn--primary btn--block" href="https://forma.tbank.ru/online/sso/d9321573-e146-40f6-a5ce-5bb0d557a859" target="_blank" rel="noopener noreferrer">Рассрочка 3–4 месяца</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="payment-modal" id="modal-premium" role="dialog" aria-modal="true" aria-labelledby="modal-premium-title" aria-hidden="true" hidden>
-    <div class="payment-modal__overlay" data-close-modal tabindex="-1"></div>
-    <div class="payment-modal__dialog">
-      <button type="button" class="payment-modal__close" aria-label="Закрыть" data-close-modal>
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <h2 class="payment-modal__title" id="modal-premium-title">Выберите способ оплаты</h2>
-      <div class="payment-modal__options">
-        <a class="payment-modal__option btn btn--primary btn--block" href="https://qr.nspk.ru/AD100026ALFJ66039KOB7VM62QII5PFM" target="_blank" rel="noopener noreferrer">Оплата картой / кредиткой</a>
-        <a class="payment-modal__option btn btn--primary btn--block" href="https://forma.tbank.ru/online/sso/218fae51-10da-465c-87fc-2011df4ebae2" target="_blank" rel="noopener noreferrer">Рассрочка 3–6 месяцев</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="payment-modal" id="modal-vip" role="dialog" aria-modal="true" aria-labelledby="modal-vip-title" aria-hidden="true" hidden>
-    <div class="payment-modal__overlay" data-close-modal tabindex="-1"></div>
-    <div class="payment-modal__dialog">
-      <button type="button" class="payment-modal__close" aria-label="Закрыть" data-close-modal>
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <h2 class="payment-modal__title" id="modal-vip-title">Выберите способ оплаты</h2>
-      <div class="payment-modal__options">
-        <a class="payment-modal__option btn btn--primary btn--block" href="https://qr.nspk.ru/BD10001P5SA7PGSV9SRA1TMVP4QJ2FON" target="_blank" rel="noopener noreferrer">Оплата картой / кредиткой</a>
-        <a class="payment-modal__option btn btn--primary btn--block" href="https://forma.tbank.ru/online/sso/c3e716dd-4c7a-4de8-8562-815a684e4fda" target="_blank" rel="noopener noreferrer">Рассрочка 3–10 месяцев</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="payment-modal" id="modal-infographic" role="dialog" aria-modal="true" aria-labelledby="modal-infographic-title" aria-hidden="true" hidden>
-    <div class="payment-modal__overlay" data-close-modal tabindex="-1"></div>
-    <div class="payment-modal__dialog">
-      <button type="button" class="payment-modal__close" aria-label="Закрыть" data-close-modal>
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <h2 class="payment-modal__title" id="modal-infographic-title">Выберите способ оплаты</h2>
-      <div class="payment-modal__options">
-        <a class="payment-modal__option btn btn--primary btn--block" href="https://qr.nspk.ru/BD20002U4T12753O9M8AH6BK7HV1BK9B" target="_blank" rel="noopener noreferrer">Оплата картой / кредитной</a>
-        <a class="payment-modal__option btn btn--primary btn--block" href="https://forma.tbank.ru/online/sso/89304efd-5dcf-4059-aebf-db2344ab9940" target="_blank" rel="noopener noreferrer">Рассрочка 3 месяца</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="payment-modal" id="modal-neurostat" role="dialog" aria-modal="true" aria-labelledby="modal-neurostat-title" aria-hidden="true" hidden>
-    <div class="payment-modal__overlay" data-close-modal tabindex="-1"></div>
-    <div class="payment-modal__dialog">
-      <button type="button" class="payment-modal__close" aria-label="Закрыть" data-close-modal>
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <h2 class="payment-modal__title" id="modal-neurostat-title">Выберите способ оплаты</h2>
-      <div class="payment-modal__options">
-        <a class="payment-modal__option btn btn--primary btn--block" href="https://qr.nspk.ru/BD20002DLUP82MFM8AD9R6BG0BB4IF13" target="_blank" rel="noopener noreferrer">Оплата картой / кредитной</a>
-      </div>
+      <h2 class="payment-modal__title" id="payment-modal-title">Выберите способ оплаты</h2>
+      <div class="payment-modal__options" id="payment-modal-options"></div>
     </div>
   </div>
 
@@ -611,6 +527,7 @@
   <script src="js/AnimatedContent.js"></script>
   <script src="js/platform-fit-animate.js"></script>
   <script src="js/directions-mesh.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/payment-modal.js?v=20260828-1"></script>
+  <script src="js/main.js?v=20260828-1"></script>
 </body>
 </html>

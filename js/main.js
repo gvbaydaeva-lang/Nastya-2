@@ -275,21 +275,37 @@
 
   /* Попапы выбора способа оплаты — тарифы */
   function initPaymentModals() {
-    var openBtns = document.querySelectorAll("[data-payment-modal]");
-    if (!openBtns.length) return;
+    var modal = document.getElementById("payment-modal");
+    var title = document.getElementById("payment-modal-title");
+    var options = document.getElementById("payment-modal-options");
+    var openBtns = document.querySelectorAll("[data-payment-tariff]");
+    var pageRegions = document.querySelectorAll("body > header, body > main, body > footer");
+    if (!modal || !title || !options || !openBtns.length || !window.PaymentModal) return;
 
     var activeBtn = null;
 
+    function setPageInert(inert) {
+      pageRegions.forEach(function (region) {
+        region.inert = inert;
+      });
+    }
+
     function openModal(btn) {
-      var modalId = btn.getAttribute("data-payment-modal");
-      var modal = document.getElementById(modalId);
-      if (!modal) return;
+      var tariffKey = btn.getAttribute("data-payment-tariff");
+      var rendered = window.PaymentModal.renderPaymentOptions(
+        tariffKey,
+        title,
+        options,
+        document
+      );
+      if (!rendered) return;
 
       activeBtn = btn;
       modal.removeAttribute("hidden");
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
       document.body.classList.add("payment-modal-open");
+      setPageInert(true);
 
       var closeBtn = modal.querySelector(".payment-modal__close");
       if (closeBtn) closeBtn.focus();
@@ -300,6 +316,7 @@
       modal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("payment-modal-open");
       modal.setAttribute("hidden", "");
+      setPageInert(false);
 
       if (activeBtn) {
         activeBtn.focus();
@@ -314,18 +331,34 @@
       });
     });
 
-    document.querySelectorAll(".payment-modal").forEach(function (modal) {
-      modal.querySelectorAll("[data-close-modal]").forEach(function (el) {
-        el.addEventListener("click", function () {
-          closeModal(modal);
-        });
+    modal.querySelectorAll("[data-close-modal]").forEach(function (el) {
+      el.addEventListener("click", function () {
+        closeModal(modal);
       });
     });
 
     document.addEventListener("keydown", function (e) {
-      if (e.key !== "Escape") return;
-      var opened = document.querySelector(".payment-modal.is-open");
-      if (opened) closeModal(opened);
+      if (!modal.classList.contains("is-open")) return;
+
+      if (e.key === "Escape") {
+        closeModal(modal);
+        return;
+      }
+
+      if (e.key !== "Tab") return;
+
+      var focusable = modal.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])');
+      var currentIndex = Array.prototype.indexOf.call(focusable, document.activeElement);
+      var nextIndex = window.PaymentModal.getWrappedFocusIndex(
+        currentIndex,
+        focusable.length,
+        e.shiftKey
+      );
+
+      if (nextIndex !== -1) {
+        e.preventDefault();
+        focusable[nextIndex].focus();
+      }
     });
   }
 
