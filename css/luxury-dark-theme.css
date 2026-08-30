@@ -469,6 +469,15 @@ label,
   background: linear-gradient(to left, #0b0c0b 0%, transparent 100%);
 }
 
+/* === Reviews / results: same visual thread, quieter than the tariff stage === */
+#reviews.section--dark {
+  background:
+    radial-gradient(ellipse 58% 44% at 18% 0%, rgba(86, 109, 81, 0.14) 0%, transparent 72%),
+    radial-gradient(ellipse 52% 42% at 84% 88%, rgba(184, 122, 69, 0.1) 0%, transparent 72%),
+    linear-gradient(165deg, #171a16 0%, #111311 54%, #0b0c0b 100%);
+  border-block-color: rgba(184, 122, 69, 0.13);
+}
+
 .section--tight .section__title,
 .section--tight .section__subtitle {
   color: var(--text-heading);

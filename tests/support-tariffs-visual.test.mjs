@@ -25,4 +25,6 @@ test("support and tariffs use the approved quiet visual treatment", () => {
   assert.match(themeCss, /#tariffs\.section--tight/);
   assert.match(themeCss, /#10120f/);
   assert.match(themeCss, /#tariffs\.section--tight \.tariffs-feed__fade--left/);
+  assert.match(themeCss, /#reviews\.section--dark/);
+  assert.match(themeCss, /#171a16/);
 });
