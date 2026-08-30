@@ -5,11 +5,17 @@
 
 /* --- Единая палитра: warm matte amber / burnt copper --- */
 .section--support {
+  --support-bg-quiet: #1b211e;
   --support-amber: #b87a45;
   --support-amber-soft: rgba(184, 122, 69, 0.28);
   --support-amber-glow: rgba(184, 122, 69, 0.32);
   --support-amber-matte: rgba(184, 122, 69, 0.18);
   --support-num: #c88a4d;
+  background:
+    radial-gradient(ellipse 72% 56% at 84% 8%, rgba(184, 122, 69, 0.11) 0%, transparent 68%),
+    radial-gradient(ellipse 68% 54% at 8% 88%, rgba(86, 109, 81, 0.16) 0%, transparent 70%),
+    linear-gradient(145deg, #0d100f 0%, var(--support-bg-quiet) 48%, #111311 100%);
+  border-block-color: rgba(184, 122, 69, 0.16);
 }
 
 /* Мягкие диффузные пятна (под контентом) */

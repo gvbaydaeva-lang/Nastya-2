@@ -452,6 +452,23 @@ label,
   background: transparent;
 }
 
+/* === Tariffs: quieter stage for the existing hand-scrolled cards === */
+#tariffs.section--tight {
+  background:
+    radial-gradient(ellipse 64% 40% at 50% 0%, rgba(184, 122, 69, 0.12) 0%, transparent 72%),
+    radial-gradient(ellipse 42% 58% at 2% 70%, rgba(86, 109, 81, 0.1) 0%, transparent 72%),
+    linear-gradient(180deg, #10120f 0%, #151310 52%, #0b0c0b 100%);
+  border-block: 1px solid rgba(184, 122, 69, 0.13);
+}
+
+#tariffs.section--tight .tariffs-feed__fade--left {
+  background: linear-gradient(to right, #10120f 0%, transparent 100%);
+}
+
+#tariffs.section--tight .tariffs-feed__fade--right {
+  background: linear-gradient(to left, #0b0c0b 0%, transparent 100%);
+}
+
 .section--tight .section__title,
 .section--tight .section__subtitle {
   color: var(--text-heading);
