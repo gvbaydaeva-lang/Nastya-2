@@ -40,85 +40,132 @@
   background: transparent;
 }
 
-/* --- Предметы: читаемая мягкая декорация --- */
-.section--directions .directions__prop {
+/* --- Выбранный визуал: телефон и карточки направлений --- */
+.section--directions .directions-device {
   position: absolute;
-  display: block;
-  height: auto;
-  max-width: none;
-  pointer-events: none;
-  user-select: none;
-  -webkit-user-drag: none;
-  border: none;
-  box-shadow: none;
-  background: none;
-}
-
-/* Ноутбук: справа-снизу, заметный, без «постерного» blur/mask */
-.section--directions .directions__prop--laptop {
-  right: -4%;
-  bottom: -6%;
-  top: auto;
-  width: clamp(520px, 38vw, 620px);
-  max-width: 620px;
-  z-index: 1;
-  opacity: 0.5;
-  transform: rotate(-2deg);
-  transform-origin: 85% 100%;
-  filter: blur(0.7px);
-  -webkit-mask-image: radial-gradient(
-    ellipse 140% 125% at 78% 88%,
-    #000 0%,
-    #000 82%,
-    transparent 100%
-  );
-  mask-image: radial-gradient(
-    ellipse 140% 125% at 78% 88%,
-    #000 0%,
-    #000 82%,
-    transparent 100%
-  );
-}
-
-/* Блокнот: снизу, ближе к центру-слева */
-.section--directions .directions__prop--notebook {
-  left: 6%;
-  bottom: -3%;
-  right: auto;
-  width: clamp(260px, 24vw, 340px);
-  max-width: 340px;
+  right: clamp(2rem, 7vw, 8rem);
+  top: 50%;
+  width: 430px;
+  height: 610px;
   z-index: 2;
-  opacity: 0.37;
-  transform: rotate(-1.5deg);
-  transform-origin: 40% 100%;
-  filter: blur(0.4px);
-  -webkit-mask-image: radial-gradient(
-    ellipse 130% 120% at 45% 90%,
-    #000 0%,
-    #000 78%,
-    transparent 100%
-  );
-  mask-image: radial-gradient(
-    ellipse 130% 120% at 45% 90%,
-    #000 0%,
-    #000 78%,
-    transparent 100%
-  );
+  transform: translateY(-43%);
 }
 
-/* Ручка: рядом с блокнотом */
-.section--directions .directions__prop--pen {
-  left: 4%;
-  bottom: 14%;
-  right: auto;
-  width: clamp(22px, 2.2vw, 32px);
-  z-index: 3;
-  opacity: 0.3;
-  transform: rotate(8deg);
-  filter: blur(0.35px);
-  -webkit-mask-image: radial-gradient(ellipse 130% 130% at 50% 55%, #000 0%, #000 85%, transparent 100%);
-  mask-image: radial-gradient(ellipse 130% 130% at 50% 55%, #000 0%, #000 85%, transparent 100%);
+.section--directions .directions-device::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(169, 82, 53, 0.26), rgba(169, 82, 53, 0) 69%);
+  transform: translate(-50%, -50%);
 }
+
+.section--directions .directions-device__phone {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 245px;
+  height: 500px;
+  padding: 10px;
+  background: #11100f;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 46px;
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.5);
+  transform: translate(-47%, -50%) rotate(5deg);
+}
+
+.section--directions .directions-device__screen {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  padding: 63px 19px 22px;
+  color: #221b18;
+  background: #f3ede5;
+  border-radius: 37px;
+}
+
+.section--directions .directions-device__speaker {
+  position: absolute;
+  left: 50%;
+  top: 18px;
+  width: 72px;
+  height: 10px;
+  background: #1d1b19;
+  border-radius: 99px;
+  transform: translateX(-50%);
+}
+
+.section--directions .directions-device__title {
+  margin: 0 0 23px;
+  font-family: "Prata", Georgia, serif;
+  font-size: 27px;
+  line-height: 1.1;
+}
+
+.section--directions .directions-device__course {
+  min-height: 98px;
+  margin-top: 13px;
+  padding: 21px 18px;
+  border-radius: 17px;
+}
+
+.section--directions .directions-device__course strong {
+  display: block;
+  font-family: "Prata", Georgia, serif;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.section--directions .directions-device__course span {
+  display: block;
+  width: 75%;
+  height: 6px;
+  margin-top: 16px;
+  border-radius: 99px;
+  background: currentColor;
+  opacity: 0.38;
+}
+
+.section--directions .directions-device__course--sage { color: #fff; background: #596147; }
+.section--directions .directions-device__course--clay { color: #fff; background: #d2947b; }
+.section--directions .directions-device__course--sand { color: #221b18; background: #e5d7c9; }
+
+.section--directions .directions-device__card {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 220px;
+  min-height: 78px;
+  padding: 14px 17px;
+  color: #221b18;
+  border-radius: 17px;
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.3);
+}
+
+.section--directions .directions-device__card i {
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #596147;
+}
+
+.section--directions .directions-device__card p,
+.section--directions .directions-device__card strong,
+.section--directions .directions-device__card span { display: block; margin: 0; }
+.section--directions .directions-device__card strong { font: 600 13px/1.25 "Onest", Arial, sans-serif; }
+.section--directions .directions-device__card span { margin-top: 3px; color: rgba(34, 27, 24, 0.58); font: 10px/1.3 "Onest", Arial, sans-serif; }
+.section--directions .directions-device__card--market { left: -4px; top: 92px; background: #d7ddc6; transform: rotate(-6deg); }
+.section--directions .directions-device__card--reels { right: -10px; top: 280px; color: #fff; background: #d2947b; transform: rotate(6deg); }
+.section--directions .directions-device__card--reels i { background: #a95235; }
+.section--directions .directions-device__card--reels span { color: rgba(255, 255, 255, 0.72); }
+.section--directions .directions-device__card--design { left: 2px; bottom: 72px; background: #e5d7c9; transform: rotate(-4deg); }
+.section--directions .directions-device__card--design i { background: #a95235; }
 
 /* --- Ambient veil (читаемость, без image-overlay) --- */
 .section--directions .directions__mesh-veil {
@@ -145,6 +192,8 @@
   z-index: 3;
 }
 
+.section--directions .section__head { max-width: min(62%, 760px); }
+
 /* --- Typography (только этот блок) --- */
 /* typography: .section__title / .section__subtitle — typography.css */
 .section--directions .section__title {
@@ -162,6 +211,9 @@
 
 /* --- Scroll shell — лёгкое стекло, часть сцены --- */
 .section--directions .directions-scroll {
+  width: min(60%, 690px);
+  margin-right: auto;
+  margin-left: 0;
   background: rgba(245, 240, 233, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
@@ -237,33 +289,9 @@
 
 /* --- Mobile: та же логика, объекты остаются видимыми --- */
 @media (max-width: 900px) {
-  .section--directions .directions__prop--laptop {
-    right: -6%;
-    bottom: -5%;
-    top: auto;
-    width: min(72vw, 420px);
-    max-width: none;
-    opacity: 0.42;
-    transform: rotate(-2deg);
-    filter: blur(0.6px);
-  }
-
-  .section--directions .directions__prop--notebook {
-    left: 2%;
-    bottom: -2%;
-    width: clamp(200px, 42vw, 300px);
-    opacity: 0.32;
-    transform: rotate(-1deg);
-    filter: blur(0.4px);
-  }
-
-  .section--directions .directions__prop--pen {
-    left: 1%;
-    bottom: 12%;
-    width: clamp(20px, 3vw, 28px);
-    opacity: 0.28;
-    filter: blur(0.35px);
-  }
+  .section--directions .directions-device { right: -35px; width: 380px; transform: translateY(-42%) scale(0.84); }
+  .section--directions .section__head { max-width: 58%; }
+  .section--directions .directions-scroll { width: 56%; }
 
   .section--directions .section__subtitle,
   .section--directions .section__subtitle--directions {
@@ -279,24 +307,192 @@
 }
 
 @media (max-width: 480px) {
-  .section--directions .directions__prop--laptop {
-    right: -8%;
-    bottom: -4%;
-    width: min(78vw, 360px);
-    opacity: 0.38;
-    filter: blur(0.55px);
-  }
+  .section--directions { padding-top: 4rem; }
+  .section--directions .directions__scene { position: relative; height: 500px; margin-top: 1.5rem; }
+  .section--directions .directions__mesh-wrap { position: relative; }
+  .section--directions .directions-device { left: 50%; right: auto; top: 50%; width: 390px; transform: translate(-50%, -50%) scale(0.78); }
+  .section--directions .directions__inner { margin-top: -500px; }
+  .section--directions .section__head { max-width: none; margin-bottom: 520px; }
+  .section--directions .directions-scroll { width: 100%; }
+}
 
-  .section--directions .directions__prop--notebook {
-    left: 0%;
-    bottom: 0%;
-    width: min(46vw, 260px);
-    opacity: 0.28;
-  }
+/* === Directions preview layout: phone + floating cards === */
+.section--directions .section-heading { position: relative; z-index: 2; max-width: 760px; margin-bottom: 3.4rem; }
+.section--directions .section-heading > p:last-child { color: rgba(255,255,255,.62); }
+.section--directions .directions__layout { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(340px, .65fr); gap: clamp(45px, 6vw, 86px); align-items: center; }
+.section--directions .direction-list { border-top: 1px solid rgba(255,255,255,.16); }
+.section--directions .direction-list article { display: grid; grid-template-columns: 52px .9fr 1.1fr 30px; gap: 18px; align-items: center; min-height: 105px; border-bottom: 1px solid rgba(255,255,255,.16); transition: padding .25s ease, background .25s ease; }
+.section--directions .direction-list article:hover { padding-inline: 18px; background: rgba(255,255,255,.04); }
+.section--directions .direction-list article > span { color: #b5bd9f; font-size: 11px; }
+.section--directions .direction-list h3 { margin: 0; color: #fff; font: 400 22px/1.3 var(--font-display, Georgia, serif); }
+.section--directions .direction-list p { margin: 0; color: rgba(255,255,255,.58); font-size: 13px; }
+.section--directions .direction-list b { color: #a95235; font-size: 22px; font-weight: 400; }
+.section--directions .directions-visual { position: relative; min-height: 620px; isolation: isolate; }
+.section--directions .directions-visual::before { content: ""; position: absolute; z-index: -1; left: 50%; top: 50%; width: 440px; height: 440px; border-radius: 50%; background: radial-gradient(circle, rgba(169,82,53,.28), rgba(169,82,53,0) 69%); transform: translate(-50%, -50%); }
+.section--directions .directions-phone { position: absolute; left: 50%; top: 50%; width: 250px; height: 500px; padding: 10px; background: #11100f; border: 1px solid rgba(255,255,255,.2); border-radius: 46px; box-shadow: 0 35px 70px rgba(0,0,0,.48); transform: translate(-44%, -49%) rotate(5deg); }
+.section--directions .directions-phone__screen { position: relative; height: 100%; overflow: hidden; padding: 63px 19px 22px; color: #221b18; background: #f3ede5; border-radius: 37px; }
+.section--directions .directions-phone__speaker { position: absolute; left: 50%; top: 18px; width: 72px; height: 10px; background: #1d1b19; border-radius: 99px; transform: translateX(-50%); }
+.section--directions .directions-phone__screen > p { margin: 0 0 24px; font: 28px/1.1 var(--font-display, Georgia, serif); }
+.section--directions .directions-phone__course { min-height: 99px; margin-top: 13px; padding: 22px 18px; border-radius: 17px; }
+.section--directions .directions-phone__course strong { display: block; font: 400 19px/1.2 var(--font-display, Georgia, serif); }
+.section--directions .directions-phone__course span { display: block; width: 75%; height: 6px; margin-top: 17px; border-radius: 99px; background: currentColor; opacity: .38; }
+.section--directions .directions-phone__course--sage { color: #fff; background: #596147; }
+.section--directions .directions-phone__course--clay { color: #fff; background: #d39a82; }
+.section--directions .directions-phone__course--sand { color: #221b18; background: #e5d7c9; }
+.section--directions .directions-float-card { position: absolute; z-index: 2; display: flex; align-items: center; gap: 13px; width: 220px; min-height: 78px; padding: 14px 17px; color: #221b18; border-radius: 17px; box-shadow: 0 18px 35px rgba(0,0,0,.28); }
+.section--directions .directions-float-card i { flex: 0 0 32px; width: 32px; height: 32px; border-radius: 50%; background: #596147; }
+.section--directions .directions-float-card p, .section--directions .directions-float-card strong, .section--directions .directions-float-card span { display: block; margin: 0; }
+.section--directions .directions-float-card strong { font: 600 13px/1.25 var(--font-body, Arial, sans-serif); }
+.section--directions .directions-float-card span { margin-top: 3px; color: rgba(34,27,24,.58); font: 10px/1.3 var(--font-body, Arial, sans-serif); }
+.section--directions .directions-float-card--market { left: -5px; top: 110px; background: #d7ddc6; transform: rotate(-6deg); }
+.section--directions .directions-float-card--reels { right: -22px; top: 285px; color: #fff; background: #d39a82; transform: rotate(6deg); }
+.section--directions .directions-float-card--reels i { background: #a95235; }
+.section--directions .directions-float-card--reels span { color: rgba(255,255,255,.72); }
+.section--directions .directions-float-card--design { left: 0; bottom: 80px; background: #e5d7c9; transform: rotate(-4deg); }
+.section--directions .directions-float-card--design i { background: #a95235; }
 
-  .section--directions .directions__prop--pen {
-    opacity: 0.25;
-    width: clamp(18px, 5vw, 24px);
-    filter: blur(0.3px);
-  }
+@media (max-width: 900px) {
+  .section--directions .directions__layout { grid-template-columns: minmax(0, 1.2fr) minmax(290px, .8fr); gap: 30px; }
+  .section--directions .directions-visual { min-height: 560px; transform: scale(.9); transform-origin: center; }
+}
+
+@media (max-width: 767px) {
+  .section--directions .section-heading { max-width: none; }
+  .section--directions .directions__layout { display: flex; flex-direction: column; gap: 38px; }
+  .section--directions .directions-visual { order: -1; width: 100%; min-height: 500px; transform: scale(.82); transform-origin: top center; }
+  .section--directions .direction-list { width: 100%; }
+  .section--directions .direction-list article { grid-template-columns: 40px 1fr 25px; gap: 12px; padding: 20px 0; }
+  .section--directions .direction-list p { grid-column: 2 / -1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section--directions .direction-list article { transition: none; }
+}
+
+/* === Learning map signature === */
+.section--directions .directions-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, .68fr);
+  gap: clamp(36px, 6vw, 92px);
+  align-items: center;
+  margin-bottom: 58px;
+}
+
+.section--directions .directions-intro .section-heading { margin-bottom: 0; }
+
+.section--directions .directions-map {
+  position: relative;
+  width: min(100%, 460px);
+  aspect-ratio: 1;
+  justify-self: end;
+}
+
+.section--directions .directions-map::after {
+  content: "";
+  position: absolute;
+  inset: 14%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(169, 82, 53, .16), transparent 70%);
+  pointer-events: none;
+}
+
+.section--directions .directions-map svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.section--directions .directions-map__orbit { fill: none; stroke: rgba(215, 221, 198, .18); stroke-width: 1; }
+.section--directions .directions-map__orbit--inner { stroke: rgba(169, 82, 53, .5); stroke-dasharray: 2 12; }
+.section--directions .directions-map__arc { fill: none; stroke: #a95235; stroke-width: 3; stroke-linecap: round; }
+.section--directions .directions-map__core { fill: rgba(89, 97, 71, .94); filter: drop-shadow(0 18px 20px rgba(0,0,0,.24)); }
+.section--directions .directions-map__number { fill: #fffdf9; font: 400 54px "Prata", Georgia, serif; }
+.section--directions .directions-map__caption { fill: #d7ddc6; font: 11px "Onest", Arial, sans-serif; letter-spacing: 2px; }
+.section--directions .directions-map__nodes circle { fill: #d7ddc6; stroke: #251d1a; stroke-width: 7; }
+.section--directions .directions-map__labels { fill: #f1e8dd; font: 13px "Onest", Arial, sans-serif; letter-spacing: .04em; }
+
+@media (max-width: 900px) {
+  .section--directions .directions-intro { grid-template-columns: minmax(0, 1fr) minmax(250px, .7fr); gap: 28px; }
+  .section--directions .directions-map { width: min(100%, 350px); }
+}
+
+@media (max-width: 760px) {
+  .section--directions .directions-intro { display: block; margin-bottom: 36px; }
+  .section--directions .directions-map { width: min(100%, 390px); margin: 34px auto 0; }
+}
+
+/* === Exact editorial directions block from design-preview === */
+.section--directions {
+  color: #fff;
+  background: #221b18;
+  padding: 118px 0;
+}
+
+.section--directions .section-heading {
+  max-width: 780px;
+  margin-bottom: 55px;
+}
+
+.section--directions .section-heading > p:last-child {
+  max-width: 590px;
+  margin-top: 25px;
+  color: rgba(255, 255, 255, .62);
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+.section--directions .section-heading h2 {
+  max-width: 690px;
+  margin: 0;
+  color: #fffdf9;
+  font: 400 clamp(38px, 4.1vw, 60px)/1.1 "Prata", Georgia, serif;
+  letter-spacing: -.035em;
+}
+
+.section--directions .direction-list {
+  width: 100%;
+  border-top: 1px solid rgba(255, 255, 255, .16);
+}
+
+.section--directions .direction-list article {
+  display: grid;
+  grid-template-columns: 80px .75fr 1.25fr 40px;
+  gap: 24px;
+  align-items: center;
+  min-height: 112px;
+  border-bottom: 1px solid rgba(255, 255, 255, .16);
+  transition: padding .25s ease, background .25s ease;
+}
+
+.section--directions .direction-list article:hover {
+  padding-inline: 18px;
+  background: rgba(255, 255, 255, .04);
+}
+
+.section--directions .direction-list article > span {
+  color: #b5bd9f;
+  font: 400 11px/1.4 "Onest", Arial, sans-serif;
+}
+
+.section--directions .direction-list h3 {
+  margin: 0;
+  color: #fffdf9;
+  font: 400 24px/1.3 "Prata", Georgia, serif;
+}
+
+.section--directions .direction-list p {
+  margin: 0;
+  color: rgba(255, 255, 255, .58);
+  font: 400 14px/1.55 "Onest", Arial, sans-serif;
+}
+
+.section--directions .direction-list b {
+  color: #a95235;
+  font: 400 22px/1 "Onest", Arial, sans-serif;
+}
+
+@media (max-width: 760px) {
+  .section--directions { padding: 82px 0; }
+  .section--directions .section-heading { margin-bottom: 38px; }
+  .section--directions .section-heading h2 { font-size: clamp(34px, 10vw, 45px); }
+  .section--directions .section-heading > p:last-child { margin-top: 24px; font-size: 16px; }
+  .section--directions .direction-list article { grid-template-columns: 40px 1fr 25px; gap: 12px; min-height: 0; padding: 20px 0; }
+  .section--directions .direction-list article:hover { padding-inline: 0; }
+  .section--directions .direction-list h3 { font-size: 20px; }
+  .section--directions .direction-list p { grid-column: 2 / -1; font-size: 14px; }
 }
