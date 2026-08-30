@@ -1,0 +1,152 @@
+/* Editorial continuation from “Отзывы и результаты”. Source HTML and earlier blocks stay unchanged. */
+:root {
+  --ed-charcoal: #151613;
+  --ed-charcoal-2: #24251f;
+  --ed-paper: #e8ded1;
+  --ed-paper-light: #f4efe7;
+  --ed-ink: #24231f;
+  --ed-muted: #6c6961;
+  --ed-olive: #6c755e;
+  --ed-terra: #a95235;
+  --ed-line: rgba(36, 35, 31, 0.18);
+}
+
+/* Отзывы и результаты */
+#reviews.section--dark {
+  background:
+    radial-gradient(ellipse 65% 52% at 82% 12%, rgba(108, 117, 94, 0.16), transparent 67%),
+    linear-gradient(145deg, var(--ed-charcoal) 0%, var(--ed-charcoal-2) 100%);
+  border-block: 1px solid rgba(244, 239, 231, 0.12);
+}
+
+#reviews .section__title { color: var(--ed-paper-light); }
+#reviews .section__subtitle { color: rgba(244, 239, 231, 0.7); }
+#reviews .reviews-swipe-hint { color: #b5bd9f; }
+
+#reviews .review-card img {
+  padding: 8px;
+  background: var(--ed-paper-light);
+  border: 1px solid rgba(244, 239, 231, 0.18);
+  border-radius: 4px;
+  box-shadow: 0 28px 64px rgba(0, 0, 0, 0.38);
+}
+
+/* Обо мне */
+#curator.section {
+  position: relative;
+  overflow: hidden;
+  background: var(--ed-paper);
+  border-block: 1px solid rgba(36, 35, 31, 0.12);
+}
+
+#curator.section::before {
+  content: "";
+  position: absolute;
+  right: -12vw;
+  top: -18vw;
+  width: min(44vw, 560px);
+  height: min(44vw, 560px);
+  border: 1px solid rgba(108, 117, 94, 0.28);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+#curator .container { position: relative; z-index: 1; }
+#curator .section__title { color: var(--ed-ink); }
+#curator .curator__lead { color: var(--ed-ink); font-weight: 500; }
+#curator .curator__body { color: var(--ed-muted); }
+
+#curator .curator__photo {
+  width: clamp(300px, 38vw, 430px);
+}
+
+#curator .curator__photo-inner {
+  overflow: hidden;
+  background: #d8ccbd;
+  border-radius: 2px;
+  box-shadow: 0 24px 48px rgba(36, 35, 31, 0.14);
+}
+
+#curator .curator__photo-img {
+  max-height: min(82vh, 660px);
+  object-fit: cover;
+  object-position: center center;
+}
+
+#curator .btn--primary {
+  background: var(--ed-terra);
+  color: var(--ed-paper-light);
+  border-radius: 3px;
+  box-shadow: none;
+}
+
+#curator .btn--primary:hover { background: #8e422d; color: var(--ed-paper-light); }
+
+/* Частые вопросы */
+#faq.section--tight {
+  background: var(--ed-paper);
+  border-bottom: 1px solid rgba(36, 35, 31, 0.12);
+}
+
+#faq .section__title { color: var(--ed-ink); }
+#faq .faq { gap: 0; border-top: 1px solid var(--ed-line); }
+
+#faq .faq__item {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--ed-line);
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+#faq .faq__item:hover,
+#faq .faq__item[open] { border-color: var(--ed-terra); }
+
+#faq .faq__item summary { padding: 1.35rem 0; color: var(--ed-ink); font-size: 1rem; }
+#faq .faq__item summary::after { color: var(--ed-terra); }
+#faq .faq__item p { padding: 0 2.25rem 1.3rem 0; color: var(--ed-muted); font-size: 0.94rem; }
+
+/* Финальный CTA и футер */
+#contacts.cta-final {
+  background:
+    radial-gradient(ellipse 58% 62% at 82% 18%, rgba(169, 82, 53, 0.22), transparent 65%),
+    linear-gradient(150deg, #151613 0%, #24251f 100%);
+  border-top: 0;
+  color: var(--ed-paper-light);
+}
+
+#contacts .cta-final__glow { display: none; }
+#contacts .cta-final__eyebrow { color: #b5bd9f; }
+#contacts .cta-final__lead,
+#contacts .cta-final__outro { color: var(--ed-paper-light); }
+#contacts .cta-final__note,
+#contacts .cta-final__list li { color: rgba(244, 239, 231, 0.68); }
+#contacts .cta-final__list li::before { color: #b5bd9f; }
+
+#contacts .cta-channel {
+  color: var(--ed-paper-light);
+  background: transparent;
+  border-color: rgba(244, 239, 231, 0.24);
+  border-radius: 3px;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+#contacts .cta-channel:hover {
+  color: var(--ed-paper-light);
+  background: rgba(169, 82, 53, 0.18);
+  border-color: var(--ed-terra);
+  box-shadow: none;
+}
+
+.footer { background: #10110f; border-top-color: rgba(244, 239, 231, 0.12); }
+.footer__copy { color: rgba(244, 239, 231, 0.52); }
+
+@media (max-width: 700px) {
+  #curator .curator__photo { width: min(360px, 92vw); }
+  #curator .curator__photo-img { max-height: min(74vh, 560px); }
+  #reviews .review-card img { padding: 6px; }
+}

@@ -462,6 +462,11 @@ label,
   border-block: 1px solid rgba(86, 96, 67, 0.18);
 }
 
+#tariffs.section--tight .section__title,
+#tariffs.section--tight .section__subtitle {
+  color: var(--text-heading);
+}
+
 #tariffs.section--tight .tariffs-feed.is-scrollable::before {
   background: rgba(86, 96, 67, 0.16);
 }
