@@ -455,18 +455,23 @@ label,
 /* === Tariffs: quieter stage for the existing hand-scrolled cards === */
 #tariffs.section--tight {
   background:
-    radial-gradient(ellipse 64% 40% at 50% 0%, rgba(184, 122, 69, 0.12) 0%, transparent 72%),
-    radial-gradient(ellipse 42% 58% at 2% 70%, rgba(86, 109, 81, 0.1) 0%, transparent 72%),
-    linear-gradient(180deg, #10120f 0%, #151310 52%, #0b0c0b 100%);
-  border-block: 1px solid rgba(184, 122, 69, 0.13);
+    repeating-linear-gradient(118deg, rgba(86, 96, 67, 0.035) 0 1px, transparent 1px 18px),
+    radial-gradient(ellipse 62% 42% at 86% 2%, rgba(210, 148, 123, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 58% 50% at 8% 86%, rgba(86, 96, 67, 0.14) 0%, transparent 72%),
+    linear-gradient(180deg, #879078 0%, #d9d2c7 34%, #e8ded2 100%);
+  border-block: 1px solid rgba(86, 96, 67, 0.18);
+}
+
+#tariffs.section--tight .tariffs-feed.is-scrollable::before {
+  background: rgba(86, 96, 67, 0.16);
 }
 
 #tariffs.section--tight .tariffs-feed__fade--left {
-  background: linear-gradient(to right, #10120f 0%, transparent 100%);
+  background: linear-gradient(to right, #d9d2c7 0%, transparent 100%);
 }
 
 #tariffs.section--tight .tariffs-feed__fade--right {
-  background: linear-gradient(to left, #0b0c0b 0%, transparent 100%);
+  background: linear-gradient(to left, #e8ded2 0%, transparent 100%);
 }
 
 /* === Reviews / results: same visual thread, quieter than the tariff stage === */
