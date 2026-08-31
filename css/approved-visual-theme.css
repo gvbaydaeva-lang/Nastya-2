@@ -88,7 +88,7 @@ a { color: var(--accent); }
   inset: 0 0 0 auto;
   z-index: -1;
   width: 52%;
-  background: linear-gradient(90deg, #dfe3da 0%, rgba(223, 227, 218, .1) 40%), url("../assets/support-linen-sage.png") right center / cover no-repeat;
+  background: linear-gradient(90deg, #dfe3da 0%, rgba(223, 227, 218, .18) 42%, transparent 72%), url("../assets/support-notebook-pen.png") right center / cover no-repeat;
 }
 #support .support__steps { border-top-color: rgba(22, 37, 29, .3); }
 #support .support__steps-item { border-bottom-color: rgba(22, 37, 29, .22); }
