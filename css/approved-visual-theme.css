@@ -46,6 +46,7 @@ p, li, .section__subtitle, .hero__lead, .direction-card p, .support__card p,
 a { color: var(--accent); }
 
 .hero, .preview-hero, #curator, #faq { background: var(--bg); }
+#curator.section, #faq.section--tight { background: var(--bg); }
 .preview-audience__card, .support__card, .direction-card, .tariff-slide { background: var(--bg-elevated); border-color: var(--border); }
 .preview-audience__card--accent { background: var(--text); color: #f3f2ee; }
 .preview-audience__card--accent h3, .preview-audience__card--accent p { color: #f3f2ee; }
@@ -79,7 +80,7 @@ a { color: var(--accent); }
 #reviews .section__subtitle { color: #d9ddd7; }
 
 /* Final CTA: soft linen, calm outlined channels, terracotta hover. */
-#contacts.cta-final { background: #eeeae2; color: var(--text); border-top-color: var(--border); }
+#contacts.cta-final { background: var(--bg-elevated); color: var(--text); border-top-color: var(--border); }
 #contacts .cta-final__glow { opacity: .025; }
 #contacts .cta-final__eyebrow, #contacts .cta-final__lead, #contacts .cta-final__note,
 #contacts .cta-final__outro, #contacts .cta-final__list li { color: var(--text) !important; opacity: 1; }
