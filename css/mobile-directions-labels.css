@@ -1,17 +1,16 @@
 /* Mobile-only: keep the labels of the directions map within the viewport. */
+.section--directions .directions-map__labels--mobile {
+  display: none;
+}
+
 @media (max-width: 760px) {
-  .section--directions .directions-map__labels {
+  .section--directions .directions-map__labels--desktop {
+    display: none;
+  }
+
+  .section--directions .directions-map__labels--mobile {
+    display: block;
     font-size: 14px;
     letter-spacing: 0;
-  }
-
-  .section--directions .directions-map__label--wb-ozon,
-  .section--directions .directions-map__label--telegram {
-    x: 78px;
-  }
-
-  .section--directions .directions-map__label--ai,
-  .section--directions .directions-map__label--design {
-    x: 382px;
   }
 }

@@ -7,17 +7,17 @@ const mobileCssUrl = new URL("../css/mobile-directions-labels.css", import.meta.
 const approvedThemeUrl = new URL("../css/approved-visual-theme.css", import.meta.url);
 const notebookImageUrl = new URL("../assets/support-notebook-pen.png", import.meta.url);
 
-test("mobile directions labels remain inside the learning map", () => {
+test("mobile directions use a dedicated in-circle label layout", () => {
   const html = fs.readFileSync(pageUrl, "utf8");
   const css = fs.readFileSync(mobileCssUrl, "utf8");
 
-  for (const label of ["wb-ozon", "telegram", "ai", "design"]) {
-    assert.match(html, new RegExp(`directions-map__label--${label}`));
-  }
-  assert.match(css, /directions-map__label--wb-ozon[\s\S]*x:\s*78px/);
-  assert.match(css, /directions-map__label--telegram[\s\S]*x:\s*78px/);
-  assert.match(css, /directions-map__label--ai[\s\S]*x:\s*382px/);
-  assert.match(css, /directions-map__label--design[\s\S]*x:\s*382px/);
+  assert.match(html, /directions-map__labels--mobile/);
+  assert.match(html, />Нейросети<\/text>/);
+  assert.match(html, />WB \/ OZON<\/text>/);
+  assert.match(html, />TELEGRAM<\/text>/);
+  assert.match(css, /directions-map__labels--mobile\s*\{\s*display:\s*none/);
+  assert.match(css, /directions-map__labels--mobile\s*\{[\s\S]*display:\s*block/);
+  assert.match(css, /directions-map__labels--desktop\s*\{[\s\S]*display:\s*none/);
 });
 
 test("support quotation uses the notebook image and the audience card has no mini route", () => {
