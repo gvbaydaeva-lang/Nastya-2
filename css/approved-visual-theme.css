@@ -64,15 +64,36 @@ a { color: var(--accent); }
 #directions .directions-map__labels { fill: var(--text); }
 #directions .directions-map__caption { fill: var(--text-muted); }
 
-/* Support: soft neutral surface with fully opaque readable copy. */
-#support.section--support { background: var(--bg-muted); color: var(--text); border-block-color: var(--border); }
+/* Support: linen surface with a quiet sage editorial detail in the quotation. */
+#support.section--support { background: #f3f2ee; color: var(--text); border-block-color: var(--border); }
 #support .support__bg { opacity: 0; }
 #support .support__intro h2, #support .support__intro p, #support .support__intro blockquote,
 #support .support__steps-item h3, #support .support__steps-item p, #support .support__steps-item > span { color: var(--text); }
 #support .support__intro p:not(.support__kicker), #support .support__steps-item p { color: var(--text-muted); opacity: 1; }
-#support .support__intro blockquote { border-color: rgba(22, 37, 29, .3); border-left-color: var(--accent); }
+#support .support__intro blockquote {
+  position: relative;
+  isolation: isolate;
+  min-height: 13rem;
+  padding: 1.5rem 12rem 1.5rem 1.75rem;
+  overflow: hidden;
+  background: #dfe3da;
+  border-color: rgba(22, 37, 29, .3);
+  border-left-color: var(--accent);
+}
+#support .support__intro blockquote::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: -1;
+  width: 52%;
+  background: linear-gradient(90deg, #dfe3da 0%, rgba(223, 227, 218, .1) 40%), url("../assets/support-linen-sage.png") right center / cover no-repeat;
+}
 #support .support__steps { border-top-color: rgba(22, 37, 29, .3); }
 #support .support__steps-item { border-bottom-color: rgba(22, 37, 29, .22); }
+@media (max-width: 700px) {
+  #support .support__intro blockquote { min-height: 0; padding: 1.4rem 1.5rem 11rem; }
+  #support .support__intro blockquote::before { top: auto; width: 100%; height: 55%; }
+}
 
 /* Reviews stays the only large green section. */
 #reviews.section--dark { background: var(--text); color: #f3f2ee; }
