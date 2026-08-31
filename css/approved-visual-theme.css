@@ -1,8 +1,8 @@
-/* Approved visual layer: Literata + Golos Text, one palette, visible contrast. */
+/* Approved visual layer: one restrained sans-serif typeface. */
 :root {
-  --font-sans: "Golos Text", sans-serif;
-  --font-display: "Literata", Georgia, serif;
-  --font-section: "Literata", Georgia, serif;
+  --font-sans: "Onest", sans-serif;
+  --font-display: "Onest", sans-serif;
+  --font-section: "Onest", sans-serif;
   --bg: #e7e8e4;
   --bg-elevated: #f3f2ee;
   --bg-muted: #d9ddd7;
@@ -18,20 +18,22 @@
 }
 
 html, body { background: var(--bg); color: var(--text); }
-body { font-family: var(--font-sans); font-size: 18px; line-height: 1.65; letter-spacing: 0; }
+body { font-family: var(--font-sans); font-size: 18px; line-height: 1.62; letter-spacing: 0; }
+body * { font-family: var(--font-sans) !important; }
 h1, h2, h3, h4, .section__title, .logo, .cta-final__eyebrow {
   font-family: var(--font-display) !important;
   color: var(--text-heading) !important;
-  letter-spacing: -.035em;
+  letter-spacing: -.03em;
 }
-h1 { font-size: clamp(3.25rem, 7vw, 6.5rem); line-height: .98; font-weight: 700; }
-h2, .section__title { font-size: clamp(2.4rem, 5vw, 4.5rem); line-height: 1.04; font-weight: 600; }
-h3 { font-size: clamp(1.35rem, 2.4vw, 2rem); line-height: 1.12; font-weight: 600; }
+h1 { font-size: clamp(3.25rem, 5vw, 4.25rem); line-height: 1.08; font-weight: 500; }
+h2, .section__title { font-size: clamp(2.5rem, 3.6vw, 3.25rem); line-height: 1.12; font-weight: 500; }
+h3 { font-size: clamp(1.25rem, 1.7vw, 1.5rem); line-height: 1.3; font-weight: 500; }
 p, li, .section__subtitle, .hero__lead, .direction-card p, .support__card p,
 .faq__answer, .tariff__desc, .review-card, .btn, button, input, textarea, label, a {
   font-family: var(--font-sans) !important;
   line-height: 1.65;
 }
+strong, b, button, .btn, .preview-button, .tariff-slide__buy { font-weight: 500 !important; }
 .section { padding-block: clamp(5rem, 10vw, 9rem); }
 .section__head { margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
 .section__subtitle { max-width: 38rem; margin-top: 1.5rem; color: var(--text-muted); }
@@ -170,8 +172,8 @@ footer.footer, footer.footer .footer__copy { color: var(--text-muted); }
 *:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 @media (max-width: 700px) {
   body { font-size: 17px; }
-  h1 { font-size: clamp(2.75rem, 13vw, 4.25rem); }
-  h2, .section__title { font-size: clamp(2.25rem, 10vw, 3.4rem); }
+  h1 { font-size: clamp(2.5rem, 10.25vw, 2.75rem); line-height: 1.06; }
+  h2, .section__title { font-size: clamp(2rem, 8.5vw, 2.25rem); line-height: 1.1; }
   .section { padding-block: 4.5rem; }
 }
 @media (max-width: 520px) {

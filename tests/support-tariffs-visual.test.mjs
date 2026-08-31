@@ -32,8 +32,8 @@ test("support and tariffs use the approved quiet visual treatment", () => {
   assert.match(supportCss, /background:[\s\S]*var\(--support-bg-quiet\)/);
   assert.match(themeCss, /#tariffs\.section--tight/);
   assert.match(themeCss, /#tariffs\.section--tight \.tariffs-feed__fade--left/);
-  assert.match(approvedThemeCss, /--font-sans:\s*"Golos Text"/);
-  assert.match(approvedThemeCss, /--font-display:\s*"Literata"/);
+  assert.match(approvedThemeCss, /--font-sans:\s*"Onest"/);
+  assert.match(approvedThemeCss, /--font-display:\s*"Onest"/);
   assert.match(approvedThemeCss, /#directions\.section--directions/);
   assert.match(approvedThemeCss, /#contacts\.cta-final/);
   assert.match(approvedThemeCss, /flex-wrap:\s*nowrap/);
