@@ -56,8 +56,23 @@
 #curator .curator__lead { color: var(--ed-ink); font-weight: 500; }
 #curator .curator__body { color: var(--ed-muted); }
 
+@media (min-width: 701px) {
+  #curator .curator {
+    grid-template-columns: minmax(0, 430px) minmax(0, 1fr);
+    gap: clamp(3rem, 6vw, 6rem);
+  }
+
+  #curator .curator__photo {
+    width: 100%;
+    min-width: 0;
+  }
+
+  #curator .curator__bio { min-width: 0; }
+  #curator .curator__photo-inner { transform: none; }
+}
+
 #curator .curator__photo {
-  width: clamp(300px, 38vw, 430px);
+  width: 100%;
 }
 
 #curator .curator__photo-inner {
