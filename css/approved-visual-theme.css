@@ -79,6 +79,55 @@ a { color: var(--accent); }
 #reviews .section__title { color: #f3f2ee !important; }
 #reviews .section__subtitle { color: #d9ddd7; }
 
+/* FAQ: a nearly imperceptible editorial orbit keeps the light surface alive. */
+#faq.section--tight {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #e7e8e4;
+}
+#faq > .container { position: relative; z-index: 1; }
+#faq.section--tight::before,
+#faq.section--tight::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+}
+#faq.section--tight::before {
+  top: 50%;
+  right: clamp(-15rem, -12vw, -7rem);
+  width: clamp(20rem, 34vw, 34rem);
+  aspect-ratio: 1;
+  border: 1px solid rgba(22, 37, 29, .12);
+  border-radius: 50%;
+  box-shadow: 0 0 0 clamp(3rem, 6vw, 6rem) rgba(22, 37, 29, .045);
+  transform: translateY(-50%);
+  animation: faq-orbit-drift 18s ease-in-out infinite alternate;
+}
+#faq.section--tight::after {
+  top: 18%;
+  right: clamp(2rem, 7vw, 8rem);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(155, 73, 49, .32);
+  box-shadow: -7rem 12rem 0 2px rgba(22, 37, 29, .12), -2rem 22rem 0 0 rgba(22, 37, 29, .12);
+  animation: faq-orbit-drift 14s ease-in-out infinite alternate-reverse;
+}
+@keyframes faq-orbit-drift {
+  from { transform: translate3d(0, -50%, 0) rotate(0deg); }
+  to { transform: translate3d(-10px, calc(-50% - 8px), 0) rotate(3deg); }
+}
+@media (max-width: 700px) {
+  #faq.section--tight::before { top: 78%; right: -13rem; }
+  #faq.section--tight::after { top: 11%; right: 2rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #faq.section--tight::before,
+  #faq.section--tight::after { animation: none; }
+}
+
 /* Final CTA: soft linen, calm outlined channels, terracotta hover. */
 #contacts.cta-final { background: var(--bg-elevated); color: var(--text); border-top-color: var(--border); }
 #contacts .cta-final__glow { opacity: .025; }
