@@ -53,6 +53,7 @@
 
 #curator .container { position: relative; z-index: 1; }
 #curator .section__title { color: var(--ed-ink); }
+#curator .curator__title--mobile { display: none; }
 #curator .curator__lead { color: var(--ed-ink); font-weight: 500; }
 #curator .curator__body { color: var(--ed-muted); }
 
@@ -161,6 +162,12 @@
 .footer__copy { color: rgba(244, 239, 231, 0.52); }
 
 @media (max-width: 700px) {
+  #curator .curator__title--mobile {
+    display: block;
+    margin: 0 0 1.25rem;
+    text-align: center;
+  }
+  #curator .curator__title--desktop { display: none; }
   #curator .curator__photo { width: min(360px, 92vw); }
   #curator .curator__photo-img { max-height: min(74vh, 560px); }
   #reviews .review-card img { padding: 6px; }
