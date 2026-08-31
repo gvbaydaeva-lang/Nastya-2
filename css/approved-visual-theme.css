@@ -1,0 +1,111 @@
+/* Approved visual layer: Literata + Golos Text, one palette, visible contrast. */
+:root {
+  --font-sans: "Golos Text", sans-serif;
+  --font-display: "Literata", Georgia, serif;
+  --font-section: "Literata", Georgia, serif;
+  --bg: #e7e8e4;
+  --bg-elevated: #f3f2ee;
+  --bg-muted: #d9ddd7;
+  --text: #16251d;
+  --text-heading: #16251d;
+  --text-muted: #405046;
+  --text-soft: #59665e;
+  --accent: #9b4931;
+  --accent-dim: #873b27;
+  --accent-hover: #873b27;
+  --border: rgba(22, 37, 29, .18);
+  --border-strong: rgba(22, 37, 29, .38);
+}
+
+html, body { background: var(--bg); color: var(--text); }
+body { font-family: var(--font-sans); font-size: 18px; line-height: 1.65; letter-spacing: 0; }
+h1, h2, h3, h4, .section__title, .logo, .cta-final__eyebrow {
+  font-family: var(--font-display) !important;
+  color: var(--text-heading) !important;
+  letter-spacing: -.035em;
+}
+h1 { font-size: clamp(3.25rem, 7vw, 6.5rem); line-height: .98; font-weight: 700; }
+h2, .section__title { font-size: clamp(2.4rem, 5vw, 4.5rem); line-height: 1.04; font-weight: 600; }
+h3 { font-size: clamp(1.35rem, 2.4vw, 2rem); line-height: 1.12; font-weight: 600; }
+p, li, .section__subtitle, .hero__lead, .direction-card p, .support__card p,
+.faq__answer, .tariff__desc, .review-card, .btn, button, input, textarea, label, a {
+  font-family: var(--font-sans) !important;
+  line-height: 1.65;
+}
+.section { padding-block: clamp(5rem, 10vw, 9rem); }
+.section__head { margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+.section__subtitle { max-width: 38rem; margin-top: 1.5rem; color: var(--text-muted); }
+
+.header, .preview-header { background: rgba(231, 232, 228, .9); border-color: var(--border); }
+.nav a, .preview-nav a, .logo__muted, .preview-brand__role { color: var(--text-muted); }
+.btn--primary, .preview-button--primary, .tariff-slide__buy {
+  background: var(--accent) !important; color: #fffdf9 !important; border-color: var(--accent) !important;
+}
+.btn--primary:hover, .preview-button--primary:hover, .tariff-slide__buy:hover { background: var(--accent-hover) !important; }
+.btn--outline, .preview-button--outline { color: var(--text) !important; border-color: var(--border-strong) !important; background: transparent !important; }
+a { color: var(--accent); }
+
+.hero, .preview-hero, #curator, #faq { background: var(--bg); }
+.preview-audience__card, .support__card, .direction-card, .tariff-slide { background: var(--bg-elevated); border-color: var(--border); }
+.preview-audience__card--accent { background: var(--text); color: #f3f2ee; }
+.preview-audience__card--accent h3, .preview-audience__card--accent p { color: #f3f2ee; }
+
+/* Directions: quiet paper surface, green reserved for Reviews. */
+#directions.section--directions {
+  background: var(--bg); color: var(--text); border-block-color: var(--border);
+}
+#directions .eyebrow, #directions .section-heading h2, #directions .section-heading > p:last-child,
+#directions .direction-list h3, #directions .direction-list p, #directions .direction-list article > span { color: var(--text); }
+#directions .section-heading > p:last-child, #directions .direction-list p { color: var(--text-muted); opacity: 1; }
+#directions .direction-list { border-top-color: var(--border-strong); }
+#directions .direction-list article { border-bottom-color: var(--border); }
+#directions .direction-list b { color: var(--accent); }
+#directions .directions-map__labels { fill: var(--text); }
+#directions .directions-map__caption { fill: var(--text-muted); }
+
+/* Support: soft neutral surface with fully opaque readable copy. */
+#support.section--support { background: var(--bg-muted); color: var(--text); border-block-color: var(--border); }
+#support .support__bg { opacity: 0; }
+#support .support__intro h2, #support .support__intro p, #support .support__intro blockquote,
+#support .support__steps-item h3, #support .support__steps-item p, #support .support__steps-item > span { color: var(--text); }
+#support .support__intro p:not(.support__kicker), #support .support__steps-item p { color: var(--text-muted); opacity: 1; }
+#support .support__intro blockquote { border-color: rgba(22, 37, 29, .3); border-left-color: var(--accent); }
+#support .support__steps { border-top-color: rgba(22, 37, 29, .3); }
+#support .support__steps-item { border-bottom-color: rgba(22, 37, 29, .22); }
+
+/* Reviews stays the only large green section. */
+#reviews.section--dark { background: var(--text); color: #f3f2ee; }
+#reviews .section__title { color: #f3f2ee !important; }
+#reviews .section__subtitle { color: #d9ddd7; }
+
+/* Final CTA: soft linen, calm outlined channels, terracotta hover. */
+#contacts.cta-final { background: #eeeae2; color: var(--text); border-top-color: var(--border); }
+#contacts .cta-final__glow { opacity: .025; }
+#contacts .cta-final__eyebrow, #contacts .cta-final__lead, #contacts .cta-final__note,
+#contacts .cta-final__outro, #contacts .cta-final__list li { color: var(--text) !important; opacity: 1; }
+#contacts .cta-final__note, #contacts .cta-final__outro, #contacts .cta-final__list li { color: var(--text-muted) !important; }
+#contacts .cta-final__channels { display: flex; flex-wrap: nowrap; gap: 10px; width: 100%; }
+#contacts .cta-channel {
+  flex: 1 1 0; min-width: 0; justify-content: center; gap: 8px; padding: 12px 10px;
+  color: var(--text) !important; background: rgba(22, 37, 29, .055); border-color: rgba(22, 37, 29, .22);
+}
+#contacts .cta-channel__label { font-size: 14px; }
+#contacts .cta-channel:hover { color: #fffdf9 !important; background: var(--accent); border-color: var(--accent); }
+#contacts .cta-channel:hover .cta-channel__icon { color: #fffdf9; }
+
+footer.footer { background: #f3f2ee; border-top-color: var(--border); }
+footer.footer, footer.footer .footer__copy { color: var(--text-muted); }
+
+*:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+@media (max-width: 700px) {
+  body { font-size: 17px; }
+  h1 { font-size: clamp(2.75rem, 13vw, 4.25rem); }
+  h2, .section__title { font-size: clamp(2.25rem, 10vw, 3.4rem); }
+  .section { padding-block: 4.5rem; }
+}
+@media (max-width: 520px) {
+  #contacts .cta-final__channels { gap: 6px; }
+  #contacts .cta-channel { padding: 10px 6px; gap: 5px; }
+  #contacts .cta-channel__label { font-size: 12px; }
+  #contacts .cta-channel__icon svg { width: 18px; height: 18px; }
+}
